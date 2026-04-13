@@ -6,77 +6,76 @@
 <title>블로그 업로드 — 대시보드</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;margin:0;padding:0;background:#0f172a;color:#e2e8f0}
-a{color:#60a5fa;text-decoration:none}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;margin:0;padding:0;background:#f1f5f9;color:#334155}
+a{color:#3b82f6;text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Nav - matches other pages */
-.top-nav{position:sticky;top:0;z-index:100;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1e293b;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-.top-nav h1{font-size:1.1rem;font-weight:800;color:#f8fafc}
-.top-nav h1 span{color:#8b5cf6}
-.top-nav-right{display:flex;gap:8px;align-items:center;font-size:0.8rem;color:#94a3b8}
-.nav-link{padding:6px 14px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#94a3b8;font-size:0.76rem;font-weight:600;text-decoration:none;transition:all 0.15s}
-.nav-link:hover{background:#334155;color:#e2e8f0;text-decoration:none}
-.nav-link.active{background:#8b5cf6;border-color:#8b5cf6;color:#fff}
+/* === Shared Nav === */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:0 24px;display:flex;align-items:center;height:52px}
+.nav-left{font-size:1.05rem;font-weight:800;color:#1e293b;margin-right:auto;white-space:nowrap}
+.nav-left span{color:#3b82f6}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{padding:6px 14px;background:transparent;border:1px solid #e2e8f0;border-radius:8px;color:#64748b;font-size:0.76rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+.nav-link:hover{background:#f1f5f9;color:#334155;text-decoration:none}
+.nav-link.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
 
-.blog-container{max-width:960px;margin:0 auto;padding:24px 20px 60px}
+.blog-container{max-width:960px;margin:0 auto;padding:28px 20px 60px}
 
-h1.page-title{text-align:center;color:#f1f5f9;margin-bottom:8px;font-size:1.4rem;font-weight:800}
-h1.page-title em{color:#8b5cf6;font-style:normal}
-.subtitle{text-align:center;color:#64748b;margin-bottom:30px;font-size:0.88rem}
+h1.page-title{text-align:center;color:#1e293b;margin-bottom:8px;font-size:1.4rem;font-weight:800}
+h1.page-title em{color:#3b82f6;font-style:normal}
+.subtitle{text-align:center;color:#94a3b8;margin-bottom:28px;font-size:0.88rem}
 
 /* Progress summary */
 .blog-stats{display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
-.blog-stat{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px 20px;text-align:center;min-width:100px}
-.blog-stat-num{font-size:1.3rem;font-weight:800;color:#f8fafc}
-.blog-stat-label{font-size:0.72rem;color:#64748b;margin-top:2px}
-.progress-bar{height:5px;background:#334155;border-radius:3px;margin-top:8px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);border-radius:3px;transition:width 0.3s}
+.blog-stat{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px 20px;text-align:center;min-width:100px}
+.blog-stat-num{font-size:1.3rem;font-weight:800;color:#1e293b}
+.blog-stat-label{font-size:0.72rem;color:#94a3b8;margin-top:2px}
+.progress-bar{height:5px;background:#e2e8f0;border-radius:3px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:3px;transition:width 0.3s}
 
 /* Post cards */
-.post-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;margin-bottom:20px;transition:opacity 0.3s}
+.post-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:20px;transition:opacity 0.3s}
 .post-card.done{opacity:0.45}
 .post-card.done .post-num{background:#22c55e}
 .post-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-.post-num{background:#8b5cf6;color:white;padding:4px 12px;border-radius:20px;font-weight:bold;font-size:13px}
-.post-category{background:rgba(139,92,246,0.15);color:#a78bfa;padding:4px 12px;border-radius:20px;font-size:12px}
-.post-date{color:#64748b;font-size:12px}
-.post-title{font-size:1.05rem;font-weight:bold;margin-bottom:12px;color:#f1f5f9}
+.post-num{background:#3b82f6;color:white;padding:4px 12px;border-radius:20px;font-weight:bold;font-size:13px}
+.post-category{background:#f0f4ff;color:#3b82f6;padding:4px 12px;border-radius:20px;font-size:12px}
+.post-date{color:#94a3b8;font-size:12px}
+.post-title{font-size:1.05rem;font-weight:bold;margin-bottom:12px;color:#1e293b}
 .info-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
-.copy-btn{background:#334155;color:#e2e8f0;border:1px solid #475569;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s}
+.copy-btn{background:#f8fafc;color:#334155;border:1px solid #e2e8f0;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s}
 .copy-btn:hover{background:#3b82f6;border-color:#3b82f6;color:#fff}
 .copy-btn.copied{background:#22c55e;border-color:#22c55e;color:#fff}
-.tags-display{background:#0f172a;border:1px solid #334155;padding:8px 12px;border-radius:8px;font-size:12px;color:#94a3b8;margin-bottom:12px;word-break:break-all}
-.content-preview{border:1px solid #334155;border-radius:8px;padding:16px;margin-top:12px;max-height:300px;overflow-y:auto;font-size:13px;line-height:1.6;background:#0f172a;color:#cbd5e1}
+.tags-display{background:#f8fafc;border:1px solid #e2e8f0;padding:8px 12px;border-radius:8px;font-size:12px;color:#64748b;margin-bottom:12px;word-break:break-all}
+.content-preview{border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-top:12px;max-height:300px;overflow-y:auto;font-size:13px;line-height:1.6;background:#f8fafc;color:#334155}
 .content-preview table{border-collapse:collapse;width:100%}
-.content-preview th,.content-preview td{border:1px solid #334155;padding:6px 8px;font-size:12px;color:#cbd5e1}
-.content-preview th{background:#1e293b}
-.content-preview h3{color:#f1f5f9;font-size:1rem;margin:16px 0 8px}
-.content-preview p{color:#cbd5e1}
-.content-preview a{color:#60a5fa}
-.content-preview b{color:#f1f5f9}
-.toggle-btn{background:#0f172a;color:#94a3b8;border:1px solid #334155;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s}
-.toggle-btn:hover{background:#334155;color:#e2e8f0}
+.content-preview th,.content-preview td{border:1px solid #e2e8f0;padding:6px 8px;font-size:12px;color:#334155}
+.content-preview th{background:#f1f5f9}
+.content-preview h3{color:#1e293b;font-size:1rem;margin:16px 0 8px}
+.content-preview p{color:#334155}
+.content-preview a{color:#3b82f6}
+.content-preview b{color:#1e293b}
+.toggle-btn{background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:all 0.15s}
+.toggle-btn:hover{background:#e2e8f0;color:#334155}
 .hidden{display:none}
 
 /* Old nav hidden */
 .nav{display:none!important}
 
-textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospace;font-size:11px;border:1px solid #334155;border-radius:8px;padding:8px;display:none;background:#0f172a;color:#94a3b8}
+textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospace;font-size:11px;border:1px solid #e2e8f0;border-radius:8px;padding:8px;display:none;background:#f8fafc;color:#64748b}
 
 /* Section headers */
-.section-header{font-size:0.95rem;font-weight:700;color:#94a3b8;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center}
-.section-header .count{background:#1e293b;color:#94a3b8;padding:3px 12px;border-radius:12px;font-size:12px;font-weight:600;border:1px solid #334155}
-.section-header.done-header{color:#4ade80;border-color:#22c55e30}
-.section-header.done-header .count{background:rgba(34,197,94,0.1);color:#4ade80;border-color:#22c55e30}
+.section-header{font-size:0.95rem;font-weight:700;color:#64748b;margin:28px 0 14px;padding-bottom:8px;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+.section-header .count{background:#f8fafc;color:#64748b;padding:3px 12px;border-radius:12px;font-size:12px;font-weight:600;border:1px solid #e2e8f0}
+.section-header.done-header{color:#16a34a;border-color:rgba(34,197,94,0.3)}
+.section-header.done-header .count{background:rgba(34,197,94,0.06);color:#16a34a;border-color:rgba(34,197,94,0.2)}
 
 /* Mobile */
 @media(max-width:768px){
-  .top-nav{padding:12px 16px;flex-wrap:wrap;gap:8px}
-  .top-nav h1{font-size:1rem}
-  .top-nav-right{width:100%;overflow-x:auto;gap:6px}
-  .top-nav-right::-webkit-scrollbar{display:none}
-  .blog-container{padding:16px 14px 40px}
+  .top-nav{padding:0 16px;height:48px}
+  .nav-left{font-size:0.95rem}
+  .nav-link{padding:5px 10px;font-size:0.72rem}
+  .blog-container{padding:20px 14px 40px}
   h1.page-title{font-size:1.15rem}
   .post-card{padding:18px 16px}
   .post-title{font-size:0.95rem}
@@ -95,10 +94,11 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </head>
 <body>
 <div class="top-nav">
-  <h1>블로그 <span>업로드</span></h1>
-  <div class="top-nav-right">
+  <div class="nav-left"><span>My</span> Dashboard</div>
+  <div class="nav-links">
     <a href="index.html" class="nav-link">홈</a>
     <a href="project-dashboard.html" class="nav-link">프로젝트</a>
+    <a href="workout-dashboard.html" class="nav-link">워크아웃</a>
     <a href="blog-upload-dashboard.html" class="nav-link active">블로그</a>
   </div>
 </div>
@@ -124,7 +124,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>"연봉 4,000만원이면 월급이 얼마나 되지?" 취업 준비생이든 이직을 고민하시든, 실제 통장에 들어오는 금액이 가장 궁금하실 겁니다.</p>
 <p>이 글에서는 <b>연봉 4,000만원</b>의 4대보험, 세금 공제 항목을 하나하나 뜯어보고, 부양가족 유무에 따른 실수령액 차이까지 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;margin-bottom:8px;">목차</p>
 <p style="margin:4px 0;"> 1. 연봉 4,000만원 공제 내역표</p>
 <p style="margin:4px 0;"> 2. 4대보험, 각각 왜 내는 걸까?</p>
@@ -137,7 +137,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>연봉 4,000만원 공제 내역표</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0;">
-<tr style="background:rgba(59,130,246,0.08);"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">금액</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">비율</th></tr>
+<tr style="background:#f0f4ff;"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">금액</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">비율</th></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">세전 월급</td><td style="padding:8px;border:1px solid #334155;">3,333,333원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">100%</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">국민연금</td><td style="padding:8px;border:1px solid #334155;">-158,333원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">4.75%</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">건강보험</td><td style="padding:8px;border:1px solid #334155;">-118,167원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">3.545%</td></tr>
@@ -161,7 +161,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>부양가족에 따른 실수령액 차이</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0;">
-<tr style="background:rgba(59,130,246,0.08);"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">구분</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">본인만 (1인)</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">부양���족 1명 (2인)</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">부양가족 2명 (3인)</th></tr>
+<tr style="background:#f0f4ff;"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">구분</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">본인만 (1인)</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">부양���족 1명 (2인)</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">부양가족 2명 (3인)</th></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">소득세</td><td style="padding:8px;border:1px solid #334155;">70,663원</td><td style="padding:8px;border:1px solid #334155;">58,163원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">45,663원</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">지방소득세</td><td style="padding:8px;border:1px solid #334155;">7,066원</td><td style="padding:8px;border:1px solid #334155;">5,816원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">4,566원</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;"><b>월 실수령액</b></td><td style="padding:8px;border:1px solid #334155;"><b>2,933,967원</b></td><td style="padding:8px;border:1px solid #334155;"><b>2,947,717원</b></td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;"><b>2,961,467원</b></td></tr>
@@ -188,7 +188,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>• 부양가족 추가 시, 비과세 수당 있을 시 실수령액 증가</p>
 
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><a href="https://salarykorea.site/salary-4000" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">더 정확한 계산은 월급연구소에서 해보세요</a></p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><a href="https://salarykorea.site/salary-4000" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">더 정확한 계산은 월급연구소에서 해보세요</a></p>
 
 <h3>자주 묻는 질문</h3>
 <p style="font-weight:bold;margin-top:16px;">Q. 연봉에 퇴직금이 포함되어 있나요?</p>
@@ -200,7 +200,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 국세청 근로소득 간이세액표 (hometax.go.kr)</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;">함께 읽으면 좋은 글</p>
 <p>• <a href="https://salarykorea.site/salary-table" target="_blank" style="color:#60a5fa;text-decoration:none;">연봉별 실수령액 비교표 (2400만~2억)</a></p>
 <p>• <a href="https://salarykorea.site/guide-insurance" target="_blank" style="color:#60a5fa;text-decoration:none;">4대보험 완벽 가이드</a></p>
@@ -214,7 +214,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&quot;연봉 4,000만원이면 월급이 얼마나 되지?&quot; 취업 준비생이든 이직을 고민하시든, 실제 통장에 들어오는 금액이 가장 궁금하실 겁니다.&lt;/p&gt;
 &lt;p&gt;이 글에서는 &lt;b&gt;연봉 4,000만원&lt;/b&gt;의 4대보험, 세금 공제 항목을 하나하나 뜯어보고, 부양가족 유무에 따른 실수령액 차이까지 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;margin-bottom:8px;&quot;&gt;목차&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 1. 연봉 4,000만원 공제 내역표&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 2. 4대보험, 각각 왜 내는 걸까?&lt;/p&gt;
@@ -227,7 +227,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;연봉 4,000만원 공제 내역표&lt;/h3&gt;
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:12px 0;&quot;&gt;
-&lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;금액&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;비율&lt;/th&gt;&lt;/tr&gt;
+&lt;tr style=&quot;background:#f0f4ff;&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;금액&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;비율&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;세전 월급&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;3,333,333원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;100%&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;국민연금&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;-158,333원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;4.75%&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;건강보험&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;-118,167원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;3.545%&lt;/td&gt;&lt;/tr&gt;
@@ -251,7 +251,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;부양가족에 따른 실수령액 차이&lt;/h3&gt;
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:12px 0;&quot;&gt;
-&lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;구분&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;본인만 (1인)&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;부양���족 1명 (2인)&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;부양가족 2명 (3인)&lt;/th&gt;&lt;/tr&gt;
+&lt;tr style=&quot;background:#f0f4ff;&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;구분&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;본인만 (1인)&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;부양���족 1명 (2인)&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;부양가족 2명 (3인)&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;소득세&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;70,663원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;58,163원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;45,663원&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;지방소득세&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;7,066원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;5,816원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;4,566원&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;&lt;b&gt;월 실수령액&lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;&lt;b&gt;2,933,967원&lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;&lt;b&gt;2,947,717원&lt;/b&gt;&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;&lt;b&gt;2,961,467원&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
@@ -278,7 +278,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;• 부양가족 추가 시, 비과세 수당 있을 시 실수령액 증가&lt;/p&gt;
 
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/salary-4000&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;더 정확한 계산은 월급연구소에서 해보세요&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/salary-4000&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;더 정확한 계산은 월급연구소에서 해보세요&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;자주 묻는 질문&lt;/h3&gt;
 &lt;p style=&quot;font-weight:bold;margin-top:16px;&quot;&gt;Q. 연봉에 퇴직금이 포함되어 있나요?&lt;/p&gt;
@@ -290,7 +290,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 국세청 근로소득 간이세액표 (hometax.go.kr)&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/salary-table&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;연봉별 실수령액 비교표 (2400만~2억)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/guide-insurance&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;4대보험 완벽 가이드&lt;/a&gt;&lt;/p&gt;
@@ -304,7 +304,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>"갑자기 회사에서 나오게 됐는데, 실업급여 받을 수 있을까?" 퇴사 후 가장 먼저 드는 걱정이죠. 조건만 맞으면 최대 9개월간 월 198만원까지 받을 수 있습니다.</p>
 <p>이 글에서는 <b>실업급여 수급 조건 5가지, 금액 계산법, 지급 기간, 신청 절차</b>까지 한 번에 정리해 드리겠습니다. 퇴사를 앞두고 계신 분이라면 꼭 확인하세요.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;margin-bottom:8px;">목차</p>
 <p style="margin:4px 0;"> 1. 실업급여 받는 조건 5가지</p>
 <p style="margin:4px 0;"> 2. 실업급여 금액 계산</p>
@@ -324,7 +324,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>실업급여 금액 계산</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0;">
-<tr style="background:rgba(59,130,246,0.08);"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">내용</th></tr>
+<tr style="background:#f0f4ff;"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">내용</th></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">계산 공식</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;"><b>퇴직 전 평균임금의 60%</b></td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">1일 상한액</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">66,000원 (2026년 기준)</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">1일 하한액</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">66,048원 (최저임금의 80%)</td></tr>
@@ -336,7 +336,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>실업급여 지급 기간</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0;">
-<tr style="background:rgba(59,130,246,0.08);"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">고용보험 가입 기간</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">50세 미만</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">50세 이상/장애인</th></tr>
+<tr style="background:#f0f4ff;"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">고용보험 가입 기간</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">50세 미만</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">50세 이상/장애인</th></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">1년 미만</td><td style="padding:8px;border:1px solid #334155;">120일 (4개월)</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">120일 (4개월)</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">1~3년</td><td style="padding:8px;border:1px solid #334155;">150일 (5개월)</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">180일 (6개월)</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">3~5년</td><td style="padding:8px;border:1px solid #334155;">180일 (6개월)</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">210일 (7개월)</td></tr>
@@ -367,7 +367,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>• 취업으로 인정되면 '조기재취업수당'(남은 급여의 50%)을 받을 수 있어요.</p>
 
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><a href="https://salarykorea.site/unemployment" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">더 정확한 계산은 월급연구소에서 해보세요</a></p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><a href="https://salarykorea.site/unemployment" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">더 정확한 계산은 월급연구소에서 해보세요</a></p>
 
 <h3>자주 묻는 질문</h3>
 <p style="font-weight:bold;margin-top:16px;">Q. 계약직 만료도 실업급여 대상인가요?</p>
@@ -379,7 +379,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 고용노동부 고용24 (work24.go.kr)</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;">함께 읽으면 좋은 글</p>
 <p>• <a href="https://salarykorea.site/unemployment" target="_blank" style="color:#60a5fa;text-decoration:none;">실업급여 계산기 — 내 수급액 바로 확인</a></p>
 <p>• <a href="https://salarykorea.site/monthly-salary" target="_blank" style="color:#60a5fa;text-decoration:none;">월급 세후 계산기 — 내 월급 실수령액 확인</a></p>
@@ -392,7 +392,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&quot;갑자기 회사에서 나오게 됐는데, 실업급여 받을 수 있을까?&quot; 퇴사 후 가장 먼저 드는 걱정이죠. 조건만 맞으면 최대 9개월간 월 198만원까지 받을 수 있습니다.&lt;/p&gt;
 &lt;p&gt;이 글에서는 &lt;b&gt;실업급여 수급 조건 5가지, 금액 계산법, 지급 기간, 신청 절차&lt;/b&gt;까지 한 번에 정리해 드리겠습니다. 퇴사를 앞두고 계신 분이라면 꼭 확인하세요.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;margin-bottom:8px;&quot;&gt;목차&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 1. 실업급여 받는 조건 5가지&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 2. 실업급여 금액 계산&lt;/p&gt;
@@ -412,7 +412,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;실업급여 금액 계산&lt;/h3&gt;
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:12px 0;&quot;&gt;
-&lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;내용&lt;/th&gt;&lt;/tr&gt;
+&lt;tr style=&quot;background:#f0f4ff;&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;내용&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;계산 공식&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;&lt;b&gt;퇴직 전 평균임금의 60%&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;1일 상한액&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;66,000원 (2026년 기준)&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;1일 하한액&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;66,048원 (최저임금의 80%)&lt;/td&gt;&lt;/tr&gt;
@@ -424,7 +424,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;실업급여 지급 기간&lt;/h3&gt;
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:12px 0;&quot;&gt;
-&lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;고용보험 가입 기간&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;50세 미만&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;50세 이상/장애인&lt;/th&gt;&lt;/tr&gt;
+&lt;tr style=&quot;background:#f0f4ff;&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;고용보험 가입 기간&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;50세 미만&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;50세 이상/장애인&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;1년 미만&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;120일 (4개월)&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;120일 (4개월)&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;1~3년&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;150일 (5개월)&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;180일 (6개월)&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;3~5년&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;180일 (6개월)&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;210일 (7개월)&lt;/td&gt;&lt;/tr&gt;
@@ -455,7 +455,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;• 취업으로 인정되면 &#x27;조기재취업수당&#x27;(남은 급여의 50%)을 받을 수 있어요.&lt;/p&gt;
 
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/unemployment&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;더 정확한 계산은 월급연구소에서 해보세요&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/unemployment&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;더 정확한 계산은 월급연구소에서 해보세요&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3&gt;자주 묻는 질문&lt;/h3&gt;
 &lt;p style=&quot;font-weight:bold;margin-top:16px;&quot;&gt;Q. 계약직 만료도 실업급여 대상인가요?&lt;/p&gt;
@@ -467,7 +467,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 고용노동부 고용24 (work24.go.kr)&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/unemployment&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;실업급여 계산기 — 내 수급액 바로 확인&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;월급 세후 계산기 — 내 월급 실수령액 확인&lt;/a&gt;&lt;/p&gt;
@@ -480,7 +480,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>"첫 월급이 생각보다 너무 적어요..." 이런 경험을 하신 분들이 정말 많습니다. 연봉 3,000만원이면 월 250만원을 받을 거라 기대했는데, 통장에는 220만원도 안 찍히는 현실.</p>
 <p>이 글에서는 <b>첫 월급 받기 전에 반드시 알아야 할 5가지</b>를 정리했습니다. 4대보험 공제부터 연말정산 준비, 월급 관리법까지 — 미리 알면 돈을 잃지 않습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;margin-bottom:8px;">목차</p>
 <p style="margin:4px 0;"> 1. 월급 = 연봉 ÷ 12가 아닐 수 있다</p>
 <p style="margin:4px 0;"> 2. 4대보험은 첫 달부터 빠진다</p>
@@ -499,7 +499,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>4대보험은 첫 달부터 빠진다</h3>
 <table style="width:100%;border-collapse:collapse;margin:12px 0;">
-<tr style="background:rgba(59,130,246,0.08);"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">공제 항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">연봉 3,000만원</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">연봉 4,000만원</th></tr>
+<tr style="background:#f0f4ff;"><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">공제 항목</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">연봉 3,000만원</th><th style="padding:10px 8px;border:1px solid #334155;text-align:center;">연봉 4,000만원</th></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">국민연금 (4.75%)</td><td style="padding:8px;border:1px solid #334155;">118,750원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">158,333원</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">건강보험 (3.545%)</td><td style="padding:8px;border:1px solid #334155;">88,625원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">118,167원</td></tr>
 <tr><td style="padding:8px;border:1px solid #334155;">장기요양보험</td><td style="padding:8px;border:1px solid #334155;">11,353원</td><td style="padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;">15,137원</td></tr>
@@ -547,7 +547,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 국세청 (hometax.go.kr) / 국민건강보험공단 (nhis.or.kr)</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <p style="font-weight:bold;">함께 읽으면 좋은 글</p>
 <p>• <a href="https://salarykorea.site/index" target="_blank" style="color:#60a5fa;text-decoration:none;">연봉 실수령액 계산기 — 내 월급 바로 확인</a></p>
 <p>• <a href="https://salarykorea.site/guide-insurance" target="_blank" style="color:#60a5fa;text-decoration:none;">4대보험 완벽 가이드</a></p>
@@ -556,14 +556,14 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>• <a href="https://salarykorea.site/entry-salary-ranking" target="_blank" style="color:#60a5fa;text-decoration:none;">2026 대졸 초봉 순위 TOP 20</a></p>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><a href="https://salarykorea.site/monthly-salary" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">내 월급 세후 실수령액 바로 계산하기</a></p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><a href="https://salarykorea.site/monthly-salary" target="_blank" style="color:#60a5fa;font-weight:bold;text-decoration:none;">내 월급 세후 실수령액 바로 계산하기</a></p>
 
 <p style="margin-top:20px;">첫 월급, 미리 계산해보고 싶다면 위 계산기에서 부양가족·비과세까지 반영해 확인해보세요. 사회초년생 월급 관련 궁금한 점은 댓글로 남겨주세요!</p></div><textarea class="raw-content" id="raw-8" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-04-07&lt;/p&gt;
 
 &lt;p&gt;&quot;첫 월급이 생각보다 너무 적어요...&quot; 이런 경험을 하신 분들이 정말 많습니다. 연봉 3,000만원이면 월 250만원을 받을 거라 기대했는데, 통장에는 220만원도 안 찍히는 현실.&lt;/p&gt;
 &lt;p&gt;이 글에서는 &lt;b&gt;첫 월급 받기 전에 반드시 알아야 할 5가지&lt;/b&gt;를 정리했습니다. 4대보험 공제부터 연말정산 준비, 월급 관리법까지 — 미리 알면 돈을 잃지 않습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;margin-bottom:8px;&quot;&gt;목차&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 1. 월급 = 연봉 ÷ 12가 아닐 수 있다&lt;/p&gt;
 &lt;p style=&quot;margin:4px 0;&quot;&gt; 2. 4대보험은 첫 달부터 빠진다&lt;/p&gt;
@@ -582,7 +582,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;4대보험은 첫 달부터 빠진다&lt;/h3&gt;
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:12px 0;&quot;&gt;
-&lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;공제 항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;연봉 3,000만원&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;연봉 4,000만원&lt;/th&gt;&lt;/tr&gt;
+&lt;tr style=&quot;background:#f0f4ff;&quot;&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;공제 항목&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;연봉 3,000만원&lt;/th&gt;&lt;th style=&quot;padding:10px 8px;border:1px solid #334155;text-align:center;&quot;&gt;연봉 4,000만원&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;국민연금 (4.75%)&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;118,750원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;158,333원&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;건강보험 (3.545%)&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;88,625원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;118,167원&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;장기요양보험&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;&quot;&gt;11,353원&lt;/td&gt;&lt;td style=&quot;padding:8px;border:1px solid #334155;font-weight:bold;color:#60a5fa;&quot;&gt;15,137원&lt;/td&gt;&lt;/tr&gt;
@@ -630,7 +630,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 국세청 (hometax.go.kr) / 국민건강보험공단 (nhis.or.kr)&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;p style=&quot;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/index&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;연봉 실수령액 계산기 — 내 월급 바로 확인&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/guide-insurance&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;4대보험 완벽 가이드&lt;/a&gt;&lt;/p&gt;
@@ -639,13 +639,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;• &lt;a href=&quot;https://salarykorea.site/entry-salary-ranking&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;text-decoration:none;&quot;&gt;2026 대졸 초봉 순위 TOP 20&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;내 월급 세후 실수령액 바로 계산하기&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; target=&quot;_blank&quot; style=&quot;color:#60a5fa;font-weight:bold;text-decoration:none;&quot;&gt;내 월급 세후 실수령액 바로 계산하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;p style=&quot;margin-top:20px;&quot;&gt;첫 월급, 미리 계산해보고 싶다면 위 계산기에서 부양가족·비과세까지 반영해 확인해보세요. 사회초년생 월급 관련 궁금한 점은 댓글로 남겨주세요!&lt;/p&gt;</textarea><input type="hidden" id="title-8" value="첫 월급 받기 전 알아야 할 5가지"></div><div class="post-card" id="post-9" data-num="9"><div class="post-header"><div><span class="post-num">#009</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-04-16</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(9)" id="done-btn-9">완료 처리</button></div></div><div class="post-title">연봉별 실수령액 비교표 (2400만원~2억까지 한눈에)</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,9)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,9)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,9)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(9)">미리보기</button></div><div class="tags-display">연봉,실수령액,급여계산,연봉계산기,세금공제,4대보험,세후급여,급여명세,실효세율,연봉비교,직장인,봉급</div><div class="content-preview hidden" id="preview-9"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-04-20</p>
 
 <p>직장인이라면 누구나 궁금해하는 질문, "내 월급에서 실제로 얼마가 나올까?" 연봉이 정해져도 여러 공제 항목 때문에 실수령액은 예상보다 적습니다. 이 포스트에서는 2026년 기준으로 연봉 2400만원부터 2억원까지 다양한 구간의 실수령액을 한눈에 비교할 수 있는 표를 제시합니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <strong>목차</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li>연봉별 실수령액 대형 비교표</li>
@@ -782,7 +782,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <li>건강보험공단 보험료율 공지</li>
 </ul>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <strong>함께 읽으면 좋은 글</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li><a href="https://salarykorea.site/monthly-salary">월급에서 공제되는 항목 총정리</a></li>
@@ -791,7 +791,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 <strong>더 정확한 실수령액을 알고 싶다면?</strong><br>
 급여명세서의 공제 항목들을 위 표와 비교해보세요. 상황에 따라 예상과 다를 수 있습니다.
 </p>
@@ -800,7 +800,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p&gt;직장인이라면 누구나 궁금해하는 질문, &quot;내 월급에서 실제로 얼마가 나올까?&quot; 연봉이 정해져도 여러 공제 항목 때문에 실수령액은 예상보다 적습니다. 이 포스트에서는 2026년 기준으로 연봉 2400만원부터 2억원까지 다양한 구간의 실수령액을 한눈에 비교할 수 있는 표를 제시합니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;목차&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;연봉별 실수령액 대형 비교표&lt;/li&gt;
@@ -937,7 +937,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;li&gt;건강보험공단 보험료율 공지&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;함께 읽으면 좋은 글&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/monthly-salary&quot;&gt;월급에서 공제되는 항목 총정리&lt;/a&gt;&lt;/li&gt;
@@ -946,7 +946,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 &lt;strong&gt;더 정확한 실수령액을 알고 싶다면?&lt;/strong&gt;&lt;br&gt;
 급여명세서의 공제 항목들을 위 표와 비교해보세요. 상황에 따라 예상과 다를 수 있습니다.
 &lt;/p&gt;
@@ -955,7 +955,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p>연봉 5000만원은 한국의 중산층 월급으로 많은 직장인들이 지향하는 연봉대입니다. 하지만 다양한 공제 항목 때문에 실제 수령액은 예상보다 적을 수 있습니다. 특히 부양가족 수에 따라 세금이 크게 달라집니다. 이 포스트에서는 부양가족 0명부터 3명까지 구체적인 계산 예시를 통해 비교해봅니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <strong>목차</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li>월급 기본 계산</li>
@@ -1131,7 +1131,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <li>건강보험공단 보험료율</li>
 </ul>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <strong>함께 읽으면 좋은 글</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li><a href="https://salarykorea.site/salary-table">연봉별 실수령액 비교표 2400만~2억</a></li>
@@ -1140,7 +1140,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 <strong>부양가족이 있다면?</strong><br>
 매년 5월 월급에 환급이 있는지 꼭 확인하세요. 기본공제를 제대로 신청하면 추가 환급금을 받을 수 있습니다.
 </p>
@@ -1149,7 +1149,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p&gt;연봉 5000만원은 한국의 중산층 월급으로 많은 직장인들이 지향하는 연봉대입니다. 하지만 다양한 공제 항목 때문에 실제 수령액은 예상보다 적을 수 있습니다. 특히 부양가족 수에 따라 세금이 크게 달라집니다. 이 포스트에서는 부양가족 0명부터 3명까지 구체적인 계산 예시를 통해 비교해봅니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;목차&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;월급 기본 계산&lt;/li&gt;
@@ -1325,7 +1325,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;li&gt;건강보험공단 보험료율&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;함께 읽으면 좋은 글&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/salary-table&quot;&gt;연봉별 실수령액 비교표 2400만~2억&lt;/a&gt;&lt;/li&gt;
@@ -1334,7 +1334,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 &lt;strong&gt;부양가족이 있다면?&lt;/strong&gt;&lt;br&gt;
 매년 5월 월급에 환급이 있는지 꼭 확인하세요. 기본공제를 제대로 신청하면 추가 환급금을 받을 수 있습니다.
 &lt;/p&gt;
@@ -1343,7 +1343,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p>자식에게 용돈을 주거나 부모님께서 자산을 물려주실 때 "증여세"가 얼마나 나올까 걱정하는 분들이 많습니다. 다행히 가족 관계에 따라 일정 범위는 세금 없이 증여할 수 있습니다. 2026년 기준 증여세 면제한도를 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <strong>목차</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li>관계별 증여세 면제한도</li>
@@ -1498,7 +1498,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <li>대법원 판례 및 국세청 예규</li>
 </ul>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <strong>함께 읽으면 좋은 글</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li><a href="https://salarykorea.site/index">세금 가이드 홈</a></li>
@@ -1507,7 +1507,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 <strong>큰 금액의 증여를 계획 중이라면?</strong><br>
 세무 전문가와 상담하여 절세 전략을 수립하면 불필요한 세금을 절약할 수 있습니다.
 </p>
@@ -1516,7 +1516,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p&gt;자식에게 용돈을 주거나 부모님께서 자산을 물려주실 때 &quot;증여세&quot;가 얼마나 나올까 걱정하는 분들이 많습니다. 다행히 가족 관계에 따라 일정 범위는 세금 없이 증여할 수 있습니다. 2026년 기준 증여세 면제한도를 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;목차&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;관계별 증여세 면제한도&lt;/li&gt;
@@ -1671,7 +1671,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;li&gt;대법원 판례 및 국세청 예규&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;함께 읽으면 좋은 글&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/index&quot;&gt;세금 가이드 홈&lt;/a&gt;&lt;/li&gt;
@@ -1680,7 +1680,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 &lt;strong&gt;큰 금액의 증여를 계획 중이라면?&lt;/strong&gt;&lt;br&gt;
 세무 전문가와 상담하여 절세 전략을 수립하면 불필요한 세금을 절약할 수 있습니다.
 &lt;/p&gt;
@@ -1689,7 +1689,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p>편의점이나 카페에서 아르바이트를 하는 학생들과 직장인들이 자주 놓치는 게 바로 "주휴수당"입니다. 법적으로 당연히 받아야 하는 수당이지만, 많은 업체에서 이를 제대로 주지 않기도 합니다. 주휴수당이 무엇이고 어떻게 계산하는지 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <strong>목차</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li>주휴수당의 정의와 법적 근거</li>
@@ -1835,7 +1835,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <li>대법원 판례 (주휴수당 관련)</li>
 </ul>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <strong>함께 읽으면 좋은 글</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li><a href="https://salarykorea.site/unemployment">실업급여 신청 방법</a></li>
@@ -1844,7 +1844,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 <strong>주휴수당 미지급은 법 위반입니다!</strong><br>
 당당하게 요구하세요. 고용노동부 신고도 가능합니다.
 </p>
@@ -1853,7 +1853,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p&gt;편의점이나 카페에서 아르바이트를 하는 학생들과 직장인들이 자주 놓치는 게 바로 &quot;주휴수당&quot;입니다. 법적으로 당연히 받아야 하는 수당이지만, 많은 업체에서 이를 제대로 주지 않기도 합니다. 주휴수당이 무엇이고 어떻게 계산하는지 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;목차&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;주휴수당의 정의와 법적 근거&lt;/li&gt;
@@ -1999,7 +1999,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;li&gt;대법원 판례 (주휴수당 관련)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;함께 읽으면 좋은 글&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/unemployment&quot;&gt;실업급여 신청 방법&lt;/a&gt;&lt;/li&gt;
@@ -2008,7 +2008,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 &lt;strong&gt;주휴수당 미지급은 법 위반입니다!&lt;/strong&gt;&lt;br&gt;
 당당하게 요구하세요. 고용노동부 신고도 가능합니다.
 &lt;/p&gt;
@@ -2017,7 +2017,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p>의료비 보장을 위해 실비보험에 가입하려고 할 때 "1세대", "2세대", "3세대", "4세대" 같은 용어를 자주 봅니다. 이들은 출시 시기에 따라 보장 범위와 자기부담금 체계가 다릅니다. 어떤 상품을 선택해야 하는지 명확히 이해하기 위해 각 세대별 차이점을 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <strong>목차</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li>실비보험 세대별 출시 시기 및 특징</li>
@@ -2218,7 +2218,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <li>생명보험협회 상품 비교</li>
 </ul>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <strong>함께 읽으면 좋은 글</strong>
 <ul style="margin:8px 0;padding-left:20px;">
 <li><a href="https://salarykorea.site/guide-insurance">4대보험과 민영보험의 차이</a></li>
@@ -2227,7 +2227,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 <strong>실비보험 가입 전 체크리스트</strong><br>
 본인이 현재 가진 보험의 세대를 확인하고, 보장 한도와 자기부담금을 꼼꼼히 비교한 후 가입하세요.
 </p>
@@ -2236,7 +2236,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p&gt;의료비 보장을 위해 실비보험에 가입하려고 할 때 &quot;1세대&quot;, &quot;2세대&quot;, &quot;3세대&quot;, &quot;4세대&quot; 같은 용어를 자주 봅니다. 이들은 출시 시기에 따라 보장 범위와 자기부담금 체계가 다릅니다. 어떤 상품을 선택해야 하는지 명확히 이해하기 위해 각 세대별 차이점을 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;목차&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;실비보험 세대별 출시 시기 및 특징&lt;/li&gt;
@@ -2437,7 +2437,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;li&gt;생명보험협회 상품 비교&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;strong&gt;함께 읽으면 좋은 글&lt;/strong&gt;
 &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/guide-insurance&quot;&gt;4대보험과 민영보험의 차이&lt;/a&gt;&lt;/li&gt;
@@ -2446,7 +2446,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 &lt;strong&gt;실비보험 가입 전 체크리스트&lt;/strong&gt;&lt;br&gt;
 본인이 현재 가진 보험의 세대를 확인하고, 보장 한도와 자기부담금을 꼼꼼히 비교한 후 가입하세요.
 &lt;/p&gt;
@@ -2455,7 +2455,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p>아파트를 새로 살 때 생각해야 할 것이 많습니다. 월세, 대출금리, 관리비... 그런데 <b>취득세</b>는 종종 빠뜨리곤 합니다. 그런데 이게 생각보다 큰 돈입니다. 6억 원짜리 아파트를 사면 취득세만 1,800만 원이 나올 수 있다는 거, 알고 있었나요? 이 글에서는 취득세를 어떻게 계산하는지, 그리고 어떻게 절감할 수 있는지 명확하게 설명하겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <p style="margin:0;font-weight:bold;">목차</p>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>취득세란 무엇인가?</li>
@@ -2475,7 +2475,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">구분</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">6억 이하</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">6억 초과~9억 이하</th>
@@ -2508,7 +2508,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <h3>취득세 계산 방법과 실제 예시</h3>
 <p>취득세는 다음 공식으로 계산합니다:</p>
-<p style="background:rgba(59,130,246,0.08);padding:12px;border-radius:4px;text-align:center;"><b>취득세 = 취득가격 × 세율</b></p>
+<p style="background:#f0f4ff;padding:12px;border-radius:4px;text-align:center;"><b>취득세 = 취득가격 × 세율</b></p>
 
 <p><b>예시 1) 1주택자가 5억 원짜리 아파트 구매</b></p>
 <p>5억 원 × 1% = <b>500만 원</b></p>
@@ -2521,7 +2521,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">아파트 가격</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">1주택자</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">2주택자</th>
@@ -2578,7 +2578,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;">출처: 국세청 부동산 취득세 안내, 각 지방국세청 공식 문서</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="margin:0 0 12px 0;font-weight:bold;">함께 읽으면 좋은 글</p>
  <ul style="margin:8px 0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/index" style="color:#0066cc;">연봉 실수령액 계산기 — 세금 계산도 정확하게</a></li>
@@ -2588,13 +2588,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>더 정확한 취득세를 계산하고 싶다면</b><br><a href="https://salarykorea.site/acquisition-tax" style="color:#0066cc;text-decoration:none;">salarykorea.site의 취득세 계산기</a>를 이용해보세요. 지역별, 개수별 정확한 세금을 1초에 계산할 수 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>더 정확한 취득세를 계산하고 싶다면</b><br><a href="https://salarykorea.site/acquisition-tax" style="color:#0066cc;text-decoration:none;">salarykorea.site의 취득세 계산기</a>를 이용해보세요. 지역별, 개수별 정확한 세금을 1초에 계산할 수 있습니다.</p>
 
 <p>취득세는 주택 구입에서 피할 수 없는 비용입니다. 다만 생애최초 감면, 조정대상지역 재검토 등으로 줄일 여지가 있습니다. 집을 사기 전에 꼭 계산해보고 예산을 세우세요!</p></div><textarea class="raw-content" id="raw-14" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-04-29&lt;/p&gt;
 
 &lt;p&gt;아파트를 새로 살 때 생각해야 할 것이 많습니다. 월세, 대출금리, 관리비... 그런데 &lt;b&gt;취득세&lt;/b&gt;는 종종 빠뜨리곤 합니다. 그런데 이게 생각보다 큰 돈입니다. 6억 원짜리 아파트를 사면 취득세만 1,800만 원이 나올 수 있다는 거, 알고 있었나요? 이 글에서는 취득세를 어떻게 계산하는지, 그리고 어떻게 절감할 수 있는지 명확하게 설명하겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0;font-weight:bold;&quot;&gt;목차&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;취득세란 무엇인가?&lt;/li&gt;
@@ -2614,7 +2614,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;구분&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;6억 이하&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;6억 초과~9억 이하&lt;/th&gt;
@@ -2647,7 +2647,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;h3&gt;취득세 계산 방법과 실제 예시&lt;/h3&gt;
 &lt;p&gt;취득세는 다음 공식으로 계산합니다:&lt;/p&gt;
-&lt;p style=&quot;background:rgba(59,130,246,0.08);padding:12px;border-radius:4px;text-align:center;&quot;&gt;&lt;b&gt;취득세 = 취득가격 × 세율&lt;/b&gt;&lt;/p&gt;
+&lt;p style=&quot;background:#f0f4ff;padding:12px;border-radius:4px;text-align:center;&quot;&gt;&lt;b&gt;취득세 = 취득가격 × 세율&lt;/b&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;예시 1) 1주택자가 5억 원짜리 아파트 구매&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;5억 원 × 1% = &lt;b&gt;500만 원&lt;/b&gt;&lt;/p&gt;
@@ -2660,7 +2660,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;아파트 가격&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;1주택자&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;2주택자&lt;/th&gt;
@@ -2717,7 +2717,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;&quot;&gt;출처: 국세청 부동산 취득세 안내, 각 지방국세청 공식 문서&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0 0 12px 0;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;&quot;&gt;연봉 실수령액 계산기 — 세금 계산도 정확하게&lt;/a&gt;&lt;/li&gt;
@@ -2727,13 +2727,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;더 정확한 취득세를 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/acquisition-tax&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 취득세 계산기&lt;/a&gt;를 이용해보세요. 지역별, 개수별 정확한 세금을 1초에 계산할 수 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;더 정확한 취득세를 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/acquisition-tax&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 취득세 계산기&lt;/a&gt;를 이용해보세요. 지역별, 개수별 정확한 세금을 1초에 계산할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;취득세는 주택 구입에서 피할 수 없는 비용입니다. 다만 생애최초 감면, 조정대상지역 재검토 등으로 줄일 여지가 있습니다. 집을 사기 전에 꼭 계산해보고 예산을 세우세요!&lt;/p&gt;</textarea><input type="hidden" id="title-14" value="취득세 계산법 — 아파트 살 때 세금 얼마나 나올까?"></div><div class="post-card" id="post-15" data-num="15"><div class="post-header"><div><span class="post-num">#015</span> <span class="post-category">직장인 꿀팁</span> <span class="post-date">2026-04-22</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(15)" id="done-btn-15">완료 처리</button></div></div><div class="post-title">퇴사 전 반드시 확인해야 할 체크리스트 7가지</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,15)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,15)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,15)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(15)">미리보기</button></div><div class="tags-display">퇴사,퇴직금,연차수당,실업급여,4대보험,퇴직소득세,경력증명서,직장인,퇴사체크리스트,퇴사전확인,건강보험,임의계속가입</div><div class="content-preview hidden" id="preview-15"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-02</p>
 
 <p>퇴사 결정이 서서 설레기도 하고 떨리기도 합니다. 새로운 회사로 가든, 휴식을 취하든, 창업을 하든... 그런데 <b>서류 처리를 잘못하면 나중에 큰 손실</b>을 볼 수 있습니다. 퇴사 후 3개월이 지나면 청구하기 어려운 돈도 있고, 놓친 혜택도 있습니다. 이 글에서는 퇴사 전에 꼭 확인해야 할 7가지를 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <p style="margin:0;font-weight:bold;">목차</p>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>1. 퇴직금 계산 확인하기</li>
@@ -2749,7 +2749,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>1. 퇴직금 계산 확인하기</h3>
 <p>퇴직금은 1년 이상 근무한 모든 직원에게 주어지는 법정 권리입니다. <b>월급의 30일분을 1년 근무에 대해 지급</b>합니다. 퇴사 전 인사담당자에게 반드시 퇴직금 계산서를 요청하세요. 계산식은 다음과 같습니다:</p>
 
-<p style="background:rgba(59,130,246,0.08);padding:12px;border-radius:4px;text-align:center;"><b>퇴직금 = (최종월급 ÷ 30) × 근무일수</b></p>
+<p style="background:#f0f4ff;padding:12px;border-radius:4px;text-align:center;"><b>퇴직금 = (최종월급 ÷ 30) × 근무일수</b></p>
 
 <p>예를 들어 월급이 400만 원이고 정확히 5년을 근무했다면, 400만 원 ÷ 30 × 1,825일 ≈ <b>약 2,433만 원</b>입니다. 계산서를 받으면 꼭 확인하고, 이상하면 지사무 같은 기관에 상담을 받으세요.</p>
 
@@ -2763,7 +2763,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">보험 종류</th>
  <th style="border:1px solid #334155;padding:10px;text-align:left;">처리 방법</th>
  </tr>
@@ -2817,7 +2817,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;">출처: 고용노동부 공식 안내, 국세청 퇴직소득세 기준, 근로기준법</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="margin:0 0 12px 0;font-weight:bold;">함께 읽으면 좋은 글</p>
  <ul style="margin:8px 0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/retirement" style="color:#0066cc;">퇴직금 계산기 — 정확한 퇴직금 알아보기</a></li>
@@ -2827,13 +2827,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>퇴직금과 실업급여를 정확하게 계산하고 싶다면</b><br><a href="https://salarykorea.site/index" style="color:#0066cc;text-decoration:none;">salarykorea.site의 계산기들</a>을 활용하세요. 국민연금, 실업급여, 세금까지 한 번에 확인할 수 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>퇴직금과 실업급여를 정확하게 계산하고 싶다면</b><br><a href="https://salarykorea.site/index" style="color:#0066cc;text-decoration:none;">salarykorea.site의 계산기들</a>을 활용하세요. 국민연금, 실업급여, 세금까지 한 번에 확인할 수 있습니다.</p>
 
 <p>퇴사는 새로운 시작이지만, 서류 처리는 매우 중요합니다. 이 7가지를 꼭 확인하면 나중에 후회 없이 새로운 길을 걸을 수 있습니다. 화이팅!</p></div><textarea class="raw-content" id="raw-15" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-02&lt;/p&gt;
 
 &lt;p&gt;퇴사 결정이 서서 설레기도 하고 떨리기도 합니다. 새로운 회사로 가든, 휴식을 취하든, 창업을 하든... 그런데 &lt;b&gt;서류 처리를 잘못하면 나중에 큰 손실&lt;/b&gt;을 볼 수 있습니다. 퇴사 후 3개월이 지나면 청구하기 어려운 돈도 있고, 놓친 혜택도 있습니다. 이 글에서는 퇴사 전에 꼭 확인해야 할 7가지를 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0;font-weight:bold;&quot;&gt;목차&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;1. 퇴직금 계산 확인하기&lt;/li&gt;
@@ -2849,7 +2849,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;1. 퇴직금 계산 확인하기&lt;/h3&gt;
 &lt;p&gt;퇴직금은 1년 이상 근무한 모든 직원에게 주어지는 법정 권리입니다. &lt;b&gt;월급의 30일분을 1년 근무에 대해 지급&lt;/b&gt;합니다. 퇴사 전 인사담당자에게 반드시 퇴직금 계산서를 요청하세요. 계산식은 다음과 같습니다:&lt;/p&gt;
 
-&lt;p style=&quot;background:rgba(59,130,246,0.08);padding:12px;border-radius:4px;text-align:center;&quot;&gt;&lt;b&gt;퇴직금 = (최종월급 ÷ 30) × 근무일수&lt;/b&gt;&lt;/p&gt;
+&lt;p style=&quot;background:#f0f4ff;padding:12px;border-radius:4px;text-align:center;&quot;&gt;&lt;b&gt;퇴직금 = (최종월급 ÷ 30) × 근무일수&lt;/b&gt;&lt;/p&gt;
 
 &lt;p&gt;예를 들어 월급이 400만 원이고 정확히 5년을 근무했다면, 400만 원 ÷ 30 × 1,825일 ≈ &lt;b&gt;약 2,433만 원&lt;/b&gt;입니다. 계산서를 받으면 꼭 확인하고, 이상하면 지사무 같은 기관에 상담을 받으세요.&lt;/p&gt;
 
@@ -2863,7 +2863,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;보험 종류&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;처리 방법&lt;/th&gt;
  &lt;/tr&gt;
@@ -2917,7 +2917,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;&quot;&gt;출처: 고용노동부 공식 안내, 국세청 퇴직소득세 기준, 근로기준법&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0 0 12px 0;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/retirement&quot; style=&quot;color:#0066cc;&quot;&gt;퇴직금 계산기 — 정확한 퇴직금 알아보기&lt;/a&gt;&lt;/li&gt;
@@ -2927,13 +2927,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;퇴직금과 실업급여를 정확하게 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 계산기들&lt;/a&gt;을 활용하세요. 국민연금, 실업급여, 세금까지 한 번에 확인할 수 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;퇴직금과 실업급여를 정확하게 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 계산기들&lt;/a&gt;을 활용하세요. 국민연금, 실업급여, 세금까지 한 번에 확인할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;퇴사는 새로운 시작이지만, 서류 처리는 매우 중요합니다. 이 7가지를 꼭 확인하면 나중에 후회 없이 새로운 길을 걸을 수 있습니다. 화이팅!&lt;/p&gt;</textarea><input type="hidden" id="title-15" value="퇴사 전 반드시 확인해야 할 체크리스트 7가지"></div><div class="post-card" id="post-16" data-num="16"><div class="post-header"><div><span class="post-num">#016</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-04-23</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(16)" id="done-btn-16">완료 처리</button></div></div><div class="post-title">공무원 9급 봉급 실수령액 — 호봉별 비교</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,16)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,16)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,16)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(16)">미리보기</button></div><div class="tags-display">공무원9급,공무원봉급,공무원급여,호봉표,9급공무원,실수령액,공무원연봉,공무원시험,9급vs7급,공무원수당,정근수당,명절상여금</div><div class="content-preview hidden" id="preview-16"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-03</p>
 
 <p>공무원은 안정적인 직업의 대명사입니다. 하지만 <b>"9급 공무원이 실제로 얼마를 받을까?"</b> 하는 궁금증은 시험 준비생들의 큰 관심사입니다. 봉급표에 나온 숫자와 실제로 통장에 들어오는 돈은 다릅니다. 이 글에서는 2026년 기준 9급 공무원의 호봉별 실수령액을 상세하게 정리했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <p style="margin:0;font-weight:bold;">목차</p>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>2026년 9급 공무원 봉급표</li>
@@ -2949,7 +2949,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:8px;text-align:center;">호봉</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">월 봉급</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">호봉</th>
@@ -3023,7 +3023,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:8px;text-align:center;">호봉</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">봉급</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">수당(추정)</th>
@@ -3075,7 +3075,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">항목</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">9급 1호봉</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">7급 1호봉</th>
@@ -3114,7 +3114,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;">출처: 인사혁신처 공무원 봉급표, 각 지방자치단체 공무원 보수 규정</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="margin:0 0 12px 0;font-weight:bold;">함께 읽으면 좋은 글</p>
  <ul style="margin:8px 0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/salary-table" style="color:#0066cc;">연봉별 실수령액 비교표 — 다른 직업과 비교하기</a></li>
@@ -3124,13 +3124,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>정확한 실수령액을 계산하고 싶다면</b><br><a href="https://salarykorea.site/index" style="color:#0066cc;text-decoration:none;">salarykorea.site의 연봉 계산기</a>에 공무원 봉급을 입력해보세요. 정확한 세금과 실수령액을 확인할 수 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>정확한 실수령액을 계산하고 싶다면</b><br><a href="https://salarykorea.site/index" style="color:#0066cc;text-decoration:none;">salarykorea.site의 연봉 계산기</a>에 공무원 봉급을 입력해보세요. 정확한 세금과 실수령액을 확인할 수 있습니다.</p>
 
 <p>공무원 9급은 안정적인 직업입니다. 봉급은 매해 오르고, 명절상여금도 충실하며, 복리후생도 좋습니다. 이 글이 공무원 준비생분들에게 도움이 되기를 바랍니다!</p></div><textarea class="raw-content" id="raw-16" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-03&lt;/p&gt;
 
 &lt;p&gt;공무원은 안정적인 직업의 대명사입니다. 하지만 &lt;b&gt;&quot;9급 공무원이 실제로 얼마를 받을까?&quot;&lt;/b&gt; 하는 궁금증은 시험 준비생들의 큰 관심사입니다. 봉급표에 나온 숫자와 실제로 통장에 들어오는 돈은 다릅니다. 이 글에서는 2026년 기준 9급 공무원의 호봉별 실수령액을 상세하게 정리했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0;font-weight:bold;&quot;&gt;목차&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;2026년 9급 공무원 봉급표&lt;/li&gt;
@@ -3146,7 +3146,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;호봉&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;월 봉급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;호봉&lt;/th&gt;
@@ -3220,7 +3220,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;호봉&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;봉급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;수당(추정)&lt;/th&gt;
@@ -3272,7 +3272,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;항목&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;9급 1호봉&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;7급 1호봉&lt;/th&gt;
@@ -3311,7 +3311,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;&quot;&gt;출처: 인사혁신처 공무원 봉급표, 각 지방자치단체 공무원 보수 규정&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0 0 12px 0;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/salary-table&quot; style=&quot;color:#0066cc;&quot;&gt;연봉별 실수령액 비교표 — 다른 직업과 비교하기&lt;/a&gt;&lt;/li&gt;
@@ -3321,13 +3321,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 실수령액을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 연봉 계산기&lt;/a&gt;에 공무원 봉급을 입력해보세요. 정확한 세금과 실수령액을 확인할 수 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 실수령액을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 연봉 계산기&lt;/a&gt;에 공무원 봉급을 입력해보세요. 정확한 세금과 실수령액을 확인할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;공무원 9급은 안정적인 직업입니다. 봉급은 매해 오르고, 명절상여금도 충실하며, 복리후생도 좋습니다. 이 글이 공무원 준비생분들에게 도움이 되기를 바랍니다!&lt;/p&gt;</textarea><input type="hidden" id="title-16" value="공무원 9급 봉급 실수령액 — 호봉별 비교"></div><div class="post-card" id="post-17" data-num="17"><div class="post-header"><div><span class="post-num">#017</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-04-24</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(17)" id="done-btn-17">완료 처리</button></div></div><div class="post-title">간호사 연봉 실수령액 — 경력별 월급 총정리</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,17)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,17)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,17)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(17)">미리보기</button></div><div class="tags-display">간호사연봉,간호사월급,간호사실수령액,간호사급여,경력별연봉,3교대수당,야간근무수당,간호사채용,병원별연봉,간호사처우,의료인연봉,간호사초봉</div><div class="content-preview hidden" id="preview-17"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-04</p>
 
 <p>간호사는 의료 현장의 핵심 직종입니다. 높은 책임감과 불규칙한 근무 패턴으로 유명하지만, 경력에 따라 <b>연봉도 크게 달라집니다</b>. 신입 간호사와 10년 경력 간호사의 월급은 거의 2배 차이가 날 수 있습니다. 이 글에서는 2026년 기준 간호사 경력별 연봉과 실수령액을 상세하게 분석했습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <p style="margin:0;font-weight:bold;">목차</p>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>경력별 간호사 연봉 현황</li>
@@ -3343,7 +3343,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:center;">경력</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">월 기본급</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">수당 포함</th>
@@ -3395,7 +3395,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">병원 유형</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">신입 월급</th>
  <th style="border:1px solid #334155;padding:10px;text-align:center;">3년 경력</th>
@@ -3447,7 +3447,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:8px;text-align:center;">경력</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">총 월급</th>
  <th style="border:1px solid #334155;padding:8px;text-align:center;">4대보험</th>
@@ -3513,7 +3513,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;">출처: 한국병원협회 급여 조사, 각 의료기관 채용공고, 보건복지부 의료인력 현황</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="margin:0 0 12px 0;font-weight:bold;">함께 읽으면 좋은 글</p>
  <ul style="margin:8px 0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/salary-table" style="color:#0066cc;">연봉별 실수령액 비교표 — 다른 직업과 비교하기</a></li>
@@ -3523,13 +3523,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>정확한 간호사 실수령액을 계산하고 싶다면</b><br><a href="https://salarykorea.site/monthly-salary" style="color:#0066cc;text-decoration:none;">salarykorea.site의 월급 계산기</a>를 이용해보세요. 수당까지 포함한 정확한 금액을 계산할 수 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>정확한 간호사 실수령액을 계산하고 싶다면</b><br><a href="https://salarykorea.site/monthly-salary" style="color:#0066cc;text-decoration:none;">salarykorea.site의 월급 계산기</a>를 이용해보세요. 수당까지 포함한 정확한 금액을 계산할 수 있습니다.</p>
 
 <p>간호사는 환자의 생명을 지키는 중요한 직종입니다. 하지만 고된 근무와 높은 책임감에 비해 대우가 부족했던 것이 사실입니다. 다행히 최근 처우 개선 움직임이 활발해지고 있습니다. 이 글이 간호사를 꿈꾸는 분들에게 도움이 되기를 바랍니다.</p></div><textarea class="raw-content" id="raw-17" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-04&lt;/p&gt;
 
 &lt;p&gt;간호사는 의료 현장의 핵심 직종입니다. 높은 책임감과 불규칙한 근무 패턴으로 유명하지만, 경력에 따라 &lt;b&gt;연봉도 크게 달라집니다&lt;/b&gt;. 신입 간호사와 10년 경력 간호사의 월급은 거의 2배 차이가 날 수 있습니다. 이 글에서는 2026년 기준 간호사 경력별 연봉과 실수령액을 상세하게 분석했습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0;font-weight:bold;&quot;&gt;목차&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;경력별 간호사 연봉 현황&lt;/li&gt;
@@ -3545,7 +3545,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;경력&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;월 기본급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;수당 포함&lt;/th&gt;
@@ -3597,7 +3597,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;병원 유형&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;신입 월급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:center;&quot;&gt;3년 경력&lt;/th&gt;
@@ -3649,7 +3649,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;경력&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;총 월급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:8px;text-align:center;&quot;&gt;4대보험&lt;/th&gt;
@@ -3715,7 +3715,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;&quot;&gt;출처: 한국병원협회 급여 조사, 각 의료기관 채용공고, 보건복지부 의료인력 현황&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0 0 12px 0;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/salary-table&quot; style=&quot;color:#0066cc;&quot;&gt;연봉별 실수령액 비교표 — 다른 직업과 비교하기&lt;/a&gt;&lt;/li&gt;
@@ -3725,13 +3725,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 간호사 실수령액을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 월급 계산기&lt;/a&gt;를 이용해보세요. 수당까지 포함한 정확한 금액을 계산할 수 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 간호사 실수령액을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 월급 계산기&lt;/a&gt;를 이용해보세요. 수당까지 포함한 정확한 금액을 계산할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;간호사는 환자의 생명을 지키는 중요한 직종입니다. 하지만 고된 근무와 높은 책임감에 비해 대우가 부족했던 것이 사실입니다. 다행히 최근 처우 개선 움직임이 활발해지고 있습니다. 이 글이 간호사를 꿈꾸는 분들에게 도움이 되기를 바랍니다.&lt;/p&gt;</textarea><input type="hidden" id="title-17" value="간호사 연봉 실수령액 — 경력별 월급 총정리"></div><div class="post-card" id="post-18" data-num="18"><div class="post-header"><div><span class="post-num">#018</span> <span class="post-category">세금·절세</span> <span class="post-date">2026-04-25</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(18)" id="done-btn-18">완료 처리</button></div></div><div class="post-title">연말정산 왕초보 가이드 — 처음이라면 이것만 읽으세요</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,18)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,18)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,18)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(18)">미리보기</button></div><div class="tags-display">연말정산,세금환급,소득공제,세액공제,신용카드공제,의료비공제,교육비공제,연금저축,간소화서비스,홈택스,근로소득세,직장인세금</div><div class="content-preview hidden" id="preview-18"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-05</p>
 
 <p>연말정산이 다가오면 직장인들이 가장 많이 하는 검색어는 "연말정산 뭔가요?" 입니다. 처음 직장을 다니는 분들에게는 정말 낯선 개념이죠. <b>연말정산은 쉽게 말해 "13월의 월급"</b>을 조정하는 과정입니다. 이 글에서는 연말정산이 정확히 무엇인지, 어떤 공제를 받을 수 있는지, 그리고 환급과 추가납부는 왜 생기는지 명확하게 설명하겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <p style="margin:0;font-weight:bold;">목차</p>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>연말정산이란 무엇인가?</li>
@@ -3753,7 +3753,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
  <thead>
- <tr style="background:rgba(59,130,246,0.08);border:1px solid #334155;">
+ <tr style="background:#f0f4ff;border:1px solid #334155;">
  <th style="border:1px solid #334155;padding:10px;text-align:left;">구분</th>
  <th style="border:1px solid #334155;padding:10px;text-align:left;">소득공제</th>
  <th style="border:1px solid #334155;padding:10px;text-align:left;">세액공제</th>
@@ -3847,7 +3847,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;">출처: 국세청 연말정산 기본 안내, 2026년 연말정산 개정사항</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="margin:0 0 12px 0;font-weight:bold;">함께 읽으면 좋은 글</p>
  <ul style="margin:8px 0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/medical-tax" style="color:#0066cc;">의료비 세액공제 계산기 — 얼마나 환급받을까?</a></li>
@@ -3857,13 +3857,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>정확한 환급금을 계산하고 싶다면</b><br><a href="https://salarykorea.site/guide-tax" style="color:#0066cc;text-decoration:none;">salarykorea.site의 연말정산 계산기</a>를 활용하세요. 당신의 공제 항목을 입력하면 예상 환급액을 즉시 확인할 수 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>정확한 환급금을 계산하고 싶다면</b><br><a href="https://salarykorea.site/guide-tax" style="color:#0066cc;text-decoration:none;">salarykorea.site의 연말정산 계산기</a>를 활용하세요. 당신의 공제 항목을 입력하면 예상 환급액을 즉시 확인할 수 있습니다.</p>
 
 <p>연말정산은 처음엔 복잡해 보이지만, 알고 나면 충분히 챙길 수 있는 권리입니다. 간소화 서비스를 활용해서 간편하게 준비하고, 작은 환급이라도 놓치지 마세요. 당신의 돈은 당신이 지켜야 합니다!</p></div><textarea class="raw-content" id="raw-18" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-05&lt;/p&gt;
 
 &lt;p&gt;연말정산이 다가오면 직장인들이 가장 많이 하는 검색어는 &quot;연말정산 뭔가요?&quot; 입니다. 처음 직장을 다니는 분들에게는 정말 낯선 개념이죠. &lt;b&gt;연말정산은 쉽게 말해 &quot;13월의 월급&quot;&lt;/b&gt;을 조정하는 과정입니다. 이 글에서는 연말정산이 정확히 무엇인지, 어떤 공제를 받을 수 있는지, 그리고 환급과 추가납부는 왜 생기는지 명확하게 설명하겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0;font-weight:bold;&quot;&gt;목차&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;연말정산이란 무엇인가?&lt;/li&gt;
@@ -3885,7 +3885,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
  &lt;thead&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);border:1px solid #334155;&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;border:1px solid #334155;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;구분&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;소득공제&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:10px;text-align:left;&quot;&gt;세액공제&lt;/th&gt;
@@ -3979,7 +3979,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;padding-top:16px;border-top:1px solid #eee;&quot;&gt;출처: 국세청 연말정산 기본 안내, 2026년 연말정산 개정사항&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;margin:0 0 12px 0;font-weight:bold;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/medical-tax&quot; style=&quot;color:#0066cc;&quot;&gt;의료비 세액공제 계산기 — 얼마나 환급받을까?&lt;/a&gt;&lt;/li&gt;
@@ -3989,13 +3989,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 환급금을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/guide-tax&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 연말정산 계산기&lt;/a&gt;를 활용하세요. 당신의 공제 항목을 입력하면 예상 환급액을 즉시 확인할 수 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 환급금을 계산하고 싶다면&lt;/b&gt;&lt;br&gt;&lt;a href=&quot;https://salarykorea.site/guide-tax&quot; style=&quot;color:#0066cc;text-decoration:none;&quot;&gt;salarykorea.site의 연말정산 계산기&lt;/a&gt;를 활용하세요. 당신의 공제 항목을 입력하면 예상 환급액을 즉시 확인할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;연말정산은 처음엔 복잡해 보이지만, 알고 나면 충분히 챙길 수 있는 권리입니다. 간소화 서비스를 활용해서 간편하게 준비하고, 작은 환급이라도 놓치지 마세요. 당신의 돈은 당신이 지켜야 합니다!&lt;/p&gt;</textarea><input type="hidden" id="title-18" value="연말정산 왕초보 가이드 — 처음이라면 이것만 읽으세요"></div><div class="post-card" id="post-19" data-num="19"><div class="post-header"><div><span class="post-num">#019</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-04-26</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(19)" id="done-btn-19">완료 처리</button></div></div><div class="post-title">4대보험 각각 얼마나 떼이나? 2026년 요율 총정리</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,19)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,19)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,19)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(19)">미리보기</button></div><div class="tags-display">4대보험,건강보험,국민연금,고용보험,장기요양보험,보험료,보험공제,2026세율,연봉계산,급여공제,실수령액,직장인필수</div><div class="content-preview hidden" id="preview-19"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-08</p>
 
 <p>"월급에서 4대보험 공제가 이렇게 많이 떨어지나요?" 직장인들이 가장 많이 하는 질문입니다. 실제로 월급을 받으면 국민연금, 건강보험, 장기요양보험, 고용보험이 일시에 차감됩니다. 이 글에서는 2026년 최신 4대보험 요율을 정확하게 정리하고, 연봉별 공제액을 계산해 드립니다. 회사가 제대로 공제하고 있는지 확인하는 방법도 알려드리겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <b>목차</b>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>2026년 4대보험 요율 한눈에</li>
@@ -4009,7 +4009,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>2026년 4대보험 요율 (근로자 부담)</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">보험종류</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">요율</th>
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">월급에서 차감</th>
@@ -4041,7 +4041,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>4대보험은 <b>근로자와 사업주가 절반씩 분담</b>하는 방식입니다. 다만 보험 종류별로 비율이 다릅니다:</p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">보험</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">근로자</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">사업주</th>
@@ -4072,7 +4072,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p>실제 월급에서 4대보험이 얼마나 차감되는지 확인해 보세요:</p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">연봉</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">월 기본급</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">국민연금</th>
@@ -4147,7 +4147,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;">출처: 국민연금공단, 국민건강보험공단, 고용노동부 2026년 보험료 고시</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="font-weight:bold;margin-bottom:12px;">함께 읽으면 좋은 글</p>
  <ul style="margin:0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/index" style="color:#007bff;text-decoration:none;">연봉 실수령액 정확하게 계산하기</a></li>
@@ -4157,13 +4157,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>정확한 실수령액을 알고 싶다면?</b><br/>위의 계산기를 이용해 당신의 연봉에서 정확히 얼마를 받을 수 있는지 확인해 보세요.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>정확한 실수령액을 알고 싶다면?</b><br/>위의 계산기를 이용해 당신의 연봉에서 정확히 얼마를 받을 수 있는지 확인해 보세요.</p>
 
 <p>4대보험은 미래의 안전을 위한 투자입니다. 이 글을 통해 자신의 월급 공제액이 올바른지 확인하고, 더 현명한 직장인이 되길 바랍니다.</p></div><textarea class="raw-content" id="raw-19" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-08&lt;/p&gt;
 
 &lt;p&gt;&quot;월급에서 4대보험 공제가 이렇게 많이 떨어지나요?&quot; 직장인들이 가장 많이 하는 질문입니다. 실제로 월급을 받으면 국민연금, 건강보험, 장기요양보험, 고용보험이 일시에 차감됩니다. 이 글에서는 2026년 최신 4대보험 요율을 정확하게 정리하고, 연봉별 공제액을 계산해 드립니다. 회사가 제대로 공제하고 있는지 확인하는 방법도 알려드리겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;b&gt;목차&lt;/b&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;2026년 4대보험 요율 한눈에&lt;/li&gt;
@@ -4177,7 +4177,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;2026년 4대보험 요율 (근로자 부담)&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;보험종류&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;요율&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;월급에서 차감&lt;/th&gt;
@@ -4209,7 +4209,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;4대보험은 &lt;b&gt;근로자와 사업주가 절반씩 분담&lt;/b&gt;하는 방식입니다. 다만 보험 종류별로 비율이 다릅니다:&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;보험&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;근로자&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;사업주&lt;/th&gt;
@@ -4240,7 +4240,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;실제 월급에서 4대보험이 얼마나 차감되는지 확인해 보세요:&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;연봉&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;월 기본급&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;국민연금&lt;/th&gt;
@@ -4315,7 +4315,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;&quot;&gt;출처: 국민연금공단, 국민건강보험공단, 고용노동부 2026년 보험료 고시&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;font-weight:bold;margin-bottom:12px;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#007bff;text-decoration:none;&quot;&gt;연봉 실수령액 정확하게 계산하기&lt;/a&gt;&lt;/li&gt;
@@ -4325,13 +4325,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 실수령액을 알고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 계산기를 이용해 당신의 연봉에서 정확히 얼마를 받을 수 있는지 확인해 보세요.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;정확한 실수령액을 알고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 계산기를 이용해 당신의 연봉에서 정확히 얼마를 받을 수 있는지 확인해 보세요.&lt;/p&gt;
 
 &lt;p&gt;4대보험은 미래의 안전을 위한 투자입니다. 이 글을 통해 자신의 월급 공제액이 올바른지 확인하고, 더 현명한 직장인이 되길 바랍니다.&lt;/p&gt;</textarea><input type="hidden" id="title-19" value="4대보험 각각 얼마나 떼이나? 2026년 요율 총정리"></div><div class="post-card" id="post-20" data-num="20"><div class="post-header"><div><span class="post-num">#020</span> <span class="post-category">보험·의료비</span> <span class="post-date">2026-04-27</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(20)" id="done-btn-20">완료 처리</button></div></div><div class="post-title">의료비 세액공제 받는 법 — 얼마부터 공제 가능할까?</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,20)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,20)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,20)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(20)">미리보기</button></div><div class="tags-display">의료비세액공제,의료비공제,치과비,안경비,난임시술,연말정산,세금환급,세금,절세,의료비영수증,실비보험,2026세율</div><div class="content-preview hidden" id="preview-20"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-11</p>
 
 <p>치과 치료, 안경 구입, 난임시술... 이런 의료비는 "<b>총급여의 3% 초과분</b>"부터 세금 환급이 가능합니다. 2026년 기준, 의료비 세액공제의 정확한 기준과 공제율을 알려드리겠습니다. 연말정산 때 제대로 신청하면 수십만 원의 세금을 돌려받을 수 있습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <b>목차</b>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>의료비 세액공제 기본 조건</li>
@@ -4356,7 +4356,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>연봉별 의료비 공제 기준액</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">총급여</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">3% 기준액</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">이 이상부터 공제</th>
@@ -4393,7 +4393,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p><b>공제 가능 의료비:</b></p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">공제 가능</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">공제율</th>
  </tr>
@@ -4504,7 +4504,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;">출처: 국세청 연말정산 가이드, 건강보험공단 2026년 의료비 기준</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="font-weight:bold;margin-bottom:12px;">함께 읽으면 좋은 글</p>
  <ul style="margin:0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/guide-tax" style="color:#007bff;text-decoration:none;">2026년 연말정산 완벽 가이드</a></li>
@@ -4514,13 +4514,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>의료비 세액공제까지 계산하고 싶다면?</b><br/>위의 의료비 세액공제 계산기로 정확한 환급액을 미리 확인해 보세요.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>의료비 세액공제까지 계산하고 싶다면?</b><br/>위의 의료비 세액공제 계산기로 정확한 환급액을 미리 확인해 보세요.</p>
 
 <p>의료비 세액공제는 연말정산에서 가장 실질적인 혜택 중 하나입니다. 영수증을 꼼꼼히 관리하고, 이 글을 참고해 정확하게 신청하면 예상보다 훨씬 많은 세금을 돌려받을 수 있습니다.</p></div><textarea class="raw-content" id="raw-20" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-11&lt;/p&gt;
 
 &lt;p&gt;치과 치료, 안경 구입, 난임시술... 이런 의료비는 &quot;&lt;b&gt;총급여의 3% 초과분&lt;/b&gt;&quot;부터 세금 환급이 가능합니다. 2026년 기준, 의료비 세액공제의 정확한 기준과 공제율을 알려드리겠습니다. 연말정산 때 제대로 신청하면 수십만 원의 세금을 돌려받을 수 있습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;b&gt;목차&lt;/b&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;의료비 세액공제 기본 조건&lt;/li&gt;
@@ -4545,7 +4545,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;연봉별 의료비 공제 기준액&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;총급여&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;3% 기준액&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;이 이상부터 공제&lt;/th&gt;
@@ -4582,7 +4582,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&lt;b&gt;공제 가능 의료비:&lt;/b&gt;&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;공제 가능&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;공제율&lt;/th&gt;
  &lt;/tr&gt;
@@ -4693,7 +4693,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;&quot;&gt;출처: 국세청 연말정산 가이드, 건강보험공단 2026년 의료비 기준&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;font-weight:bold;margin-bottom:12px;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/guide-tax&quot; style=&quot;color:#007bff;text-decoration:none;&quot;&gt;2026년 연말정산 완벽 가이드&lt;/a&gt;&lt;/li&gt;
@@ -4703,13 +4703,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;의료비 세액공제까지 계산하고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 의료비 세액공제 계산기로 정확한 환급액을 미리 확인해 보세요.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;의료비 세액공제까지 계산하고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 의료비 세액공제 계산기로 정확한 환급액을 미리 확인해 보세요.&lt;/p&gt;
 
 &lt;p&gt;의료비 세액공제는 연말정산에서 가장 실질적인 혜택 중 하나입니다. 영수증을 꼼꼼히 관리하고, 이 글을 참고해 정확하게 신청하면 예상보다 훨씬 많은 세금을 돌려받을 수 있습니다.&lt;/p&gt;</textarea><input type="hidden" id="title-20" value="의료비 세액공제 받는 법 — 얼마부터 공제 가능할까?"></div><div class="post-card" id="post-21" data-num="21"><div class="post-header"><div><span class="post-num">#021</span> <span class="post-category">세금·절세</span> <span class="post-date">2026-04-28</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(21)" id="done-btn-21">완료 처리</button></div></div><div class="post-title">자발적 퇴사도 실업급여 받을 수 있는 경우</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,21)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,21)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,21)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(21)">미리보기</button></div><div class="tags-display">실업급여,자발적퇴사,실업급여조건,직장인필수,고용센터,임금체불,괴롭힘,통근곤란,건강악화,가족돌봄,부당해고,실업급여신청</div><div class="content-preview hidden" id="preview-21"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-12</p>
 
 <p>"자발적 퇴사하면 실업급여를 못 받는다"는 건 <b>절반의 진실</b>입니다. 실제로는 <b>정당한 사유가 있는 자발적 퇴사</b>라면 실업급여를 받을 수 있습니다. 임금 체불, 직장 내 괴롭힘, 건강 악화, 가족돌봄 등의 경우 실업급여 신청이 가능합니다. 이 글에서는 자발적 퇴사로도 실업급여를 받을 수 있는 모든 사유와 신청 절차를 상세히 설명합니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <b>목차</b>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>자발적 퇴사와 정당한 사유</li>
@@ -4821,7 +4821,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>실업급여 금액 계산</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">항목</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">기준</th>
  </tr>
@@ -4846,7 +4846,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>근무 기간별 실업급여 수령 기간</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">고용보험 가입 기간</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">실업급여 수령 기간</th>
  </tr>
@@ -4887,7 +4887,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;">출처: 고용노동부 실업급여 기준, 고용센터 공식 안내</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="font-weight:bold;margin-bottom:12px;">함께 읽으면 좋은 글</p>
  <ul style="margin:0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/unemployment" style="color:#007bff;text-decoration:none;">실업급여 계산기</a></li>
@@ -4897,13 +4897,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>실업급여 금액이 궁금하다면?</b><br/>위의 실업급여 계산기로 당신의 예상 수령액을 미리 확인해 보세요.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>실업급여 금액이 궁금하다면?</b><br/>위의 실업급여 계산기로 당신의 예상 수령액을 미리 확인해 보세요.</p>
 
 <p>자발적 퇴사도 정당한 사유가 있다면 실업급여를 받을 수 있습니다. 혹시 부당한 대우로 퇴사를 고려 중이라면, 먼저 고용센터에 상담을 받고 증거를 확보한 후 신청하기를 권장합니다.</p></div><textarea class="raw-content" id="raw-21" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-12&lt;/p&gt;
 
 &lt;p&gt;&quot;자발적 퇴사하면 실업급여를 못 받는다&quot;는 건 &lt;b&gt;절반의 진실&lt;/b&gt;입니다. 실제로는 &lt;b&gt;정당한 사유가 있는 자발적 퇴사&lt;/b&gt;라면 실업급여를 받을 수 있습니다. 임금 체불, 직장 내 괴롭힘, 건강 악화, 가족돌봄 등의 경우 실업급여 신청이 가능합니다. 이 글에서는 자발적 퇴사로도 실업급여를 받을 수 있는 모든 사유와 신청 절차를 상세히 설명합니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;b&gt;목차&lt;/b&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;자발적 퇴사와 정당한 사유&lt;/li&gt;
@@ -5015,7 +5015,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;실업급여 금액 계산&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;항목&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;기준&lt;/th&gt;
  &lt;/tr&gt;
@@ -5040,7 +5040,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;근무 기간별 실업급여 수령 기간&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;고용보험 가입 기간&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;실업급여 수령 기간&lt;/th&gt;
  &lt;/tr&gt;
@@ -5081,7 +5081,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;&quot;&gt;출처: 고용노동부 실업급여 기준, 고용센터 공식 안내&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;font-weight:bold;margin-bottom:12px;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/unemployment&quot; style=&quot;color:#007bff;text-decoration:none;&quot;&gt;실업급여 계산기&lt;/a&gt;&lt;/li&gt;
@@ -5091,13 +5091,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;실업급여 금액이 궁금하다면?&lt;/b&gt;&lt;br/&gt;위의 실업급여 계산기로 당신의 예상 수령액을 미리 확인해 보세요.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;실업급여 금액이 궁금하다면?&lt;/b&gt;&lt;br/&gt;위의 실업급여 계산기로 당신의 예상 수령액을 미리 확인해 보세요.&lt;/p&gt;
 
 &lt;p&gt;자발적 퇴사도 정당한 사유가 있다면 실업급여를 받을 수 있습니다. 혹시 부당한 대우로 퇴사를 고려 중이라면, 먼저 고용센터에 상담을 받고 증거를 확보한 후 신청하기를 권장합니다.&lt;/p&gt;</textarea><input type="hidden" id="title-21" value="자발적 퇴사도 실업급여 받을 수 있는 경우"></div><div class="post-card" id="post-22" data-num="22"><div class="post-header"><div><span class="post-num">#022</span> <span class="post-category">직장인 꿀팁</span> <span class="post-date">2026-04-29</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(22)" id="done-btn-22">완료 처리</button></div></div><div class="post-title">수습기간 3개월 — 급여 90%만 주는 게 합법인가?</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,22)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,22)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,22)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(22)">미리보기</button></div><div class="tags-display">수습기간,수습급여,최저임금,급여,근로기준법,부당하대,무급수습,연차,4대보험,노동법</div><div class="content-preview hidden" id="preview-22"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-13</p>
 
 <p>새로 입사한 회사에서 "수습기간이니까 급여 90%만 줄게요"라는 말을 들었다면? <b>대부분의 경우 불법입니다.</b> 근로기준법에서는 수습기간 급여 감액을 엄격하게 제한하고 있습니다. 이 글에서는 수습기간 급여의 법적 기준, 합법인 경우와 불법인 경우를 명확하게 구분해 드립니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <b>목차</b>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>수습기간 급여 감액의 법적 기준</li>
@@ -5121,7 +5121,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>수습기간 급여 90% 지급이 합법인 경우</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">조건</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">결과</th>
  </tr>
@@ -5196,7 +5196,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p><b>최저임금: 10,320원/시간</b></p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">계산 방식</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">월 최저임금</th>
  </tr>
@@ -5277,7 +5277,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;">출처: 근로기준법, 고용노동부 수습 관련 지침</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="font-weight:bold;margin-bottom:12px;">함께 읽으면 좋은 글</p>
  <ul style="margin:0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/index" style="color:#007bff;text-decoration:none;">연봉 실수령액 정확하게 계산하기</a></li>
@@ -5287,13 +5287,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>수습 급여가 적절한지 확인하고 싶다면?</b><br/>위의 계산기를 이용해 당신의 상황을 법적으로 검토해 보세요.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>수습 급여가 적절한지 확인하고 싶다면?</b><br/>위의 계산기를 이용해 당신의 상황을 법적으로 검토해 보세요.</p>
 
 <p>수습기간은 직장인의 새로운 시작입니다. 회사의 일방적 조건에 흔들리지 마시고, 법적 기준을 알고 정당한 대우를 요청하세요. 부당한 관행이 의심된다면 망설이지 말고 근로청이나 노동청에 상담하시기 바랍니다.</p></div><textarea class="raw-content" id="raw-22" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-13&lt;/p&gt;
 
 &lt;p&gt;새로 입사한 회사에서 &quot;수습기간이니까 급여 90%만 줄게요&quot;라는 말을 들었다면? &lt;b&gt;대부분의 경우 불법입니다.&lt;/b&gt; 근로기준법에서는 수습기간 급여 감액을 엄격하게 제한하고 있습니다. 이 글에서는 수습기간 급여의 법적 기준, 합법인 경우와 불법인 경우를 명확하게 구분해 드립니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;b&gt;목차&lt;/b&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;수습기간 급여 감액의 법적 기준&lt;/li&gt;
@@ -5317,7 +5317,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;수습기간 급여 90% 지급이 합법인 경우&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;조건&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;결과&lt;/th&gt;
  &lt;/tr&gt;
@@ -5392,7 +5392,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&lt;b&gt;최저임금: 10,320원/시간&lt;/b&gt;&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;계산 방식&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;월 최저임금&lt;/th&gt;
  &lt;/tr&gt;
@@ -5473,7 +5473,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;&quot;&gt;출처: 근로기준법, 고용노동부 수습 관련 지침&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;font-weight:bold;margin-bottom:12px;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#007bff;text-decoration:none;&quot;&gt;연봉 실수령액 정확하게 계산하기&lt;/a&gt;&lt;/li&gt;
@@ -5483,13 +5483,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;수습 급여가 적절한지 확인하고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 계산기를 이용해 당신의 상황을 법적으로 검토해 보세요.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;수습 급여가 적절한지 확인하고 싶다면?&lt;/b&gt;&lt;br/&gt;위의 계산기를 이용해 당신의 상황을 법적으로 검토해 보세요.&lt;/p&gt;
 
 &lt;p&gt;수습기간은 직장인의 새로운 시작입니다. 회사의 일방적 조건에 흔들리지 마시고, 법적 기준을 알고 정당한 대우를 요청하세요. 부당한 관행이 의심된다면 망설이지 말고 근로청이나 노동청에 상담하시기 바랍니다.&lt;/p&gt;</textarea><input type="hidden" id="title-22" value="수습기간 3개월 — 급여 90%만 주는 게 합법인가?"></div><div class="post-card" id="post-23" data-num="23"><div class="post-header"><div><span class="post-num">#023</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-04-30</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(23)" id="done-btn-23">완료 처리</button></div></div><div class="post-title">IT 개발자 평균 연봉 실수령액 (신입~시니어)</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,23)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,23)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,23)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(23)">미리보기</button></div><div class="tags-display">개발자연봉,IT연봉,신입개발자,시니어개발자,프론트엔드,백엔드,풀스택,대기업,스타트업,실수령액,연봉협상,2026</div><div class="content-preview hidden" id="preview-23"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-14</p>
 
 <p>개발자는 IT 업계에서 가장 높은 연봉을 받는 직군입니다. 하지만 <b>공시된 연봉</b>과 <b>실제 받는 금액(실수령액)</b>은 큰 차이가 있습니다. 이 글에서는 2026년 기준으로 신입부터 시니어까지 개발자의 연봉 현실과 4대보험, 소득세를 차감한 실제 월급을 정확하게 계산해 드립니다. 프론트엔드, 백엔드, 풀스택 직무별 비교와 대기업 vs 스타트업 차이도 함께 살펴봅시다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
  <b>목차</b>
  <ul style="margin:8px 0;padding-left:20px;">
  <li>개발자 경력별 평균 연봉 (2026년)</li>
@@ -5503,7 +5503,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>개발자 경력별 평균 연봉 (2026년 기준)</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">경력</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">연봉 범위</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">평균</th>
@@ -5540,7 +5540,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p><b>2026년 기준 직무별 평균 연봉:</b></p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">직무</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">신입</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">주니어</th>
@@ -5581,7 +5581,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <h3>대기업 vs 스타트업 연봉 비교</h3>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">회사 규모</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">신입</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">주니어</th>
@@ -5616,7 +5616,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p><b>신입 개발자 (3,200만원 연봉)</b></p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">항목</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">금액</th>
  </tr>
@@ -5653,7 +5653,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 <p><b>시니어 개발자 (6,800만원 연봉)</b></p>
 
 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
- <tr style="background:rgba(59,130,246,0.08);">
+ <tr style="background:#f0f4ff;">
  <th style="border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;">항목</th>
  <th style="border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;">금액</th>
  </tr>
@@ -5743,7 +5743,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 <p style="color:#64748b;font-size:13px;margin-top:24px;">출처: 2026년 IT 업계 연봉 통계, 직용노동부 임금자료</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
  <p style="font-weight:bold;margin-bottom:12px;">함께 읽으면 좋은 글</p>
  <ul style="margin:0;padding-left:20px;font-size:14px;">
  <li><a href="https://salarykorea.site/index" style="color:#007bff;text-decoration:none;">연봉 실수령액 정확하게 계산하기</a></li>
@@ -5754,13 +5754,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;"><b>당신의 개발자 연봉은 적절한가요?</b><br/>위의 실수령액 계산기를 통해 시장 평균과 비교해 보세요. 공정한 대우를 받을 권리가 있습니다.</p>
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;"><b>당신의 개발자 연봉은 적절한가요?</b><br/>위의 실수령액 계산기를 통해 시장 평균과 비교해 보세요. 공정한 대우를 받을 권리가 있습니다.</p>
 
 <p>개발자는 기술력만큼 연봉 협상 능력도 중요합니다. 이 글의 시장 데이터를 바탕으로 자신의 가치를 정확히 평가하고, 정당한 대우를 받으시기 바랍니다.</p></div><textarea class="raw-content" id="raw-23" readonly>&lt;p style=&quot;color:#64748b;font-size:13px;&quot;&gt;최종 업데이트: 2026-05-14&lt;/p&gt;
 
 &lt;p&gt;개발자는 IT 업계에서 가장 높은 연봉을 받는 직군입니다. 하지만 &lt;b&gt;공시된 연봉&lt;/b&gt;과 &lt;b&gt;실제 받는 금액(실수령액)&lt;/b&gt;은 큰 차이가 있습니다. 이 글에서는 2026년 기준으로 신입부터 시니어까지 개발자의 연봉 현실과 4대보험, 소득세를 차감한 실제 월급을 정확하게 계산해 드립니다. 프론트엔드, 백엔드, 풀스택 직무별 비교와 대기업 vs 스타트업 차이도 함께 살펴봅시다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;b&gt;목차&lt;/b&gt;
  &lt;ul style=&quot;margin:8px 0;padding-left:20px;&quot;&gt;
  &lt;li&gt;개발자 경력별 평균 연봉 (2026년)&lt;/li&gt;
@@ -5774,7 +5774,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;개발자 경력별 평균 연봉 (2026년 기준)&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;경력&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;연봉 범위&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;평균&lt;/th&gt;
@@ -5811,7 +5811,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&lt;b&gt;2026년 기준 직무별 평균 연봉:&lt;/b&gt;&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;직무&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;신입&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;주니어&lt;/th&gt;
@@ -5852,7 +5852,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;h3&gt;대기업 vs 스타트업 연봉 비교&lt;/h3&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;회사 규모&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;신입&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;주니어&lt;/th&gt;
@@ -5887,7 +5887,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&lt;b&gt;신입 개발자 (3,200만원 연봉)&lt;/b&gt;&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;항목&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;금액&lt;/th&gt;
  &lt;/tr&gt;
@@ -5924,7 +5924,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 &lt;p&gt;&lt;b&gt;시니어 개발자 (6,800만원 연봉)&lt;/b&gt;&lt;/p&gt;
 
 &lt;table style=&quot;width:100%;border-collapse:collapse;margin:16px 0;&quot;&gt;
- &lt;tr style=&quot;background:rgba(59,130,246,0.08);&quot;&gt;
+ &lt;tr style=&quot;background:#f0f4ff;&quot;&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:left;font-weight:bold;&quot;&gt;항목&lt;/th&gt;
  &lt;th style=&quot;border:1px solid #334155;padding:12px;text-align:center;font-weight:bold;&quot;&gt;금액&lt;/th&gt;
  &lt;/tr&gt;
@@ -6014,7 +6014,7 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:24px;&quot;&gt;출처: 2026년 IT 업계 연봉 통계, 직용노동부 임금자료&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
  &lt;p style=&quot;font-weight:bold;margin-bottom:12px;&quot;&gt;함께 읽으면 좋은 글&lt;/p&gt;
  &lt;ul style=&quot;margin:0;padding-left:20px;font-size:14px;&quot;&gt;
  &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#007bff;text-decoration:none;&quot;&gt;연봉 실수령액 정확하게 계산하기&lt;/a&gt;&lt;/li&gt;
@@ -6025,13 +6025,13 @@ textarea.raw-content{width:100%;height:200px;margin-top:8px;font-family:monospac
  &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;당신의 개발자 연봉은 적절한가요?&lt;/b&gt;&lt;br/&gt;위의 실수령액 계산기를 통해 시장 평균과 비교해 보세요. 공정한 대우를 받을 권리가 있습니다.&lt;/p&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;&lt;b&gt;당신의 개발자 연봉은 적절한가요?&lt;/b&gt;&lt;br/&gt;위의 실수령액 계산기를 통해 시장 평균과 비교해 보세요. 공정한 대우를 받을 권리가 있습니다.&lt;/p&gt;
 
 &lt;p&gt;개발자는 기술력만큼 연봉 협상 능력도 중요합니다. 이 글의 시장 데이터를 바탕으로 자신의 가치를 정확히 평가하고, 정당한 대우를 받으시기 바랍니다.&lt;/p&gt;</textarea><input type="hidden" id="title-23" value="IT 개발자 평균 연봉 실수령액 (신입~시니어)"></div><div class="post-card" id="post-24" data-num="24"><div class="post-header"><div><span class="post-num">#024</span> <span class="post-category">연봉·급여</span> <span class="post-date">2026-05-01</span></div><div><button class="toggle-btn done-toggle-btn" onclick="toggleDone(24)" id="done-btn-24">완료 처리</button></div></div><div class="post-title">연봉 100만원 올랐는데 월급은 7만원만 올랐다? 이유 분석</div><div class="info-row"><button class="copy-btn" onclick="copyTitle(this,24)">제목 복사</button><button class="copy-btn" onclick="copyTags(this,24)">태그 복사</button><button class="copy-btn" onclick="copyContent(this,24)">본문 복사</button><button class="toggle-btn" onclick="togglePreview(24)">미리보기</button></div><div class="tags-display">연봉인상,월급계산,세금계산,4대보험,실수령액,급여,소득세,연말정산,인상효과,공제,보험료,실급여</div><div class="content-preview hidden" id="preview-24"><p style="color:#64748b;font-size:13px;">최종 업데이트: 2026-05-15</p>
 
 <p>회사에서 연봉이 100만원 올랐다고 했는데, 실제로 받는 월급은 7만원밖에 안 올랐다? 이런 경험을 한 직장인들이 많습니다. 겉보기에는 불공정해 보이지만, 이것은 <b>세금과 보험료 구조</b> 때문입니다. 이 글에서는 연봉 인상분이 실수령액에 어떻게 반영되는지, 그리고 왜 그렇게 되는지 상세히 분석하겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <b>목차</b><br>
 1. 연봉 인상분에서 빠지는 것들<br>
 2. 실제 사례 1: 3000만원 → 3100만원<br>
@@ -6191,7 +6191,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 국세청 간이세액표(2026), 국민연금공단, 건강보험공단</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <b>함께 읽으면 좋은 글</b>
 <ul style="margin:10px 0;padding-left:20px;font-size:14px;">
 <li><a href="https://salarykorea.site/salary-table">연봉별 실수령액 비교표</a> - 2000만원부터 8000만원까지 한눈에</li>
@@ -6201,7 +6201,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 당신의 정확한 월급을 알고 싶다면?<br>
 <a href="https://salarykorea.site/index" style="color:#0066cc;text-decoration:none;font-weight:bold;">연봉 실수령액 계산기 바로가기 →</a>
 </p>
@@ -6210,7 +6210,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 
 &lt;p&gt;회사에서 연봉이 100만원 올랐다고 했는데, 실제로 받는 월급은 7만원밖에 안 올랐다? 이런 경험을 한 직장인들이 많습니다. 겉보기에는 불공정해 보이지만, 이것은 &lt;b&gt;세금과 보험료 구조&lt;/b&gt; 때문입니다. 이 글에서는 연봉 인상분이 실수령액에 어떻게 반영되는지, 그리고 왜 그렇게 되는지 상세히 분석하겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;목차&lt;/b&gt;&lt;br&gt;
 1. 연봉 인상분에서 빠지는 것들&lt;br&gt;
 2. 실제 사례 1: 3000만원 → 3100만원&lt;br&gt;
@@ -6370,7 +6370,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 국세청 간이세액표(2026), 국민연금공단, 건강보험공단&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;함께 읽으면 좋은 글&lt;/b&gt;
 &lt;ul style=&quot;margin:10px 0;padding-left:20px;font-size:14px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/salary-table&quot;&gt;연봉별 실수령액 비교표&lt;/a&gt; - 2000만원부터 8000만원까지 한눈에&lt;/li&gt;
@@ -6380,7 +6380,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 당신의 정확한 월급을 알고 싶다면?&lt;br&gt;
 &lt;a href=&quot;https://salarykorea.site/index&quot; style=&quot;color:#0066cc;text-decoration:none;font-weight:bold;&quot;&gt;연봉 실수령액 계산기 바로가기 →&lt;/a&gt;
 &lt;/p&gt;
@@ -6389,7 +6389,7 @@ A: 근로기준법상 비과세 수당의 범위가 정해져 있습니다. 식�
 
 <p>프리랜서나 강사로 활동하면서 매번 받는 비용에서 3.3%가 원천징수되는 것을 보셨을 겁니다. "이 돈은 다시 돌려받는 건가?"라는 의문이 생기죠. 정답은 <b>상황에 따라 다릅니다</b>. 이 글에서는 3.3% 세금 구조, 종합소득세 신고 시 환급받는 방법, 그리고 절세 전략을 정확하게 설명하겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <b>목차</b><br>
 1. 3.3% 원천징수의 구조<br>
 2. 종합소득세 신고 시 환급 원리<br>
@@ -6568,7 +6568,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 국세청 종합소득세 신고 안내, 기준경비율표(2026)</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <b>함께 읽으면 좋은 글</b>
 <ul style="margin:10px 0;padding-left:20px;font-size:14px;">
 <li><a href="https://salarykorea.site/freelancer-tax">프리랜서 3.3% 세금 계산기</a> - 당신의 환급액 예측하기</li>
@@ -6579,7 +6579,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 프리랜서 세금을 정확하게 계산하고 싶다면?<br>
 <a href="https://salarykorea.site/freelancer-tax" style="color:#0066cc;text-decoration:none;font-weight:bold;">프리랜서 3.3% 세금 계산기 바로가기 →</a>
 </p>
@@ -6588,7 +6588,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 
 &lt;p&gt;프리랜서나 강사로 활동하면서 매번 받는 비용에서 3.3%가 원천징수되는 것을 보셨을 겁니다. &quot;이 돈은 다시 돌려받는 건가?&quot;라는 의문이 생기죠. 정답은 &lt;b&gt;상황에 따라 다릅니다&lt;/b&gt;. 이 글에서는 3.3% 세금 구조, 종합소득세 신고 시 환급받는 방법, 그리고 절세 전략을 정확하게 설명하겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;목차&lt;/b&gt;&lt;br&gt;
 1. 3.3% 원천징수의 구조&lt;br&gt;
 2. 종합소득세 신고 시 환급 원리&lt;br&gt;
@@ -6767,7 +6767,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 국세청 종합소득세 신고 안내, 기준경비율표(2026)&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;함께 읽으면 좋은 글&lt;/b&gt;
 &lt;ul style=&quot;margin:10px 0;padding-left:20px;font-size:14px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/freelancer-tax&quot;&gt;프리랜서 3.3% 세금 계산기&lt;/a&gt; - 당신의 환급액 예측하기&lt;/li&gt;
@@ -6778,7 +6778,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 프리랜서 세금을 정확하게 계산하고 싶다면?&lt;br&gt;
 &lt;a href=&quot;https://salarykorea.site/freelancer-tax&quot; style=&quot;color:#0066cc;text-decoration:none;font-weight:bold;&quot;&gt;프리랜서 3.3% 세금 계산기 바로가기 →&lt;/a&gt;
 &lt;/p&gt;
@@ -6787,7 +6787,7 @@ A: 사업자등록하면 부가가치세도 내야 하므로, 소득 규모가 �
 
 <p>실비보험에 가입했는데 병원에 갈 때마다 "자기부담금"이라는 비용을 내야 한다고 하죠. 이 자기부담금은 <b>가입한 보험 상품의 세대에 따라 완전히 다릅니다</b>. 몇 천만원을 낸 보험인데 정작 청구할 때 많은 비용을 본인이 부담하게 되는 경우가 많습니다. 이 글에서는 세대별 자기부담금 비율을 명확하게 설명하고, 실제 병원비 사례로 계산해보겠습니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <b>목차</b><br>
 1. 실비보험 세대별 자기부담금 비율<br>
 2. 1세대 vs 2세대 vs 3세대 비교<br>
@@ -6997,7 +6997,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 "상품
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 금융감독원 실비보험 가이드(2026), 대형 보험사 상품 정보</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <b>함께 읽으면 좋은 글</b>
 <ul style="margin:10px 0;padding-left:20px;font-size:14px;">
 <li><a href="https://salarykorea.site/silbi">실비보험 계산기</a> - 당신의 자기부담금 계산</li>
@@ -7007,7 +7007,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 "상품
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 내 보험의 자기부담금을 정확히 알고 싶다면?<br>
 <a href="https://salarykorea.site/silbi" style="color:#0066cc;text-decoration:none;font-weight:bold;">실비보험 계산기 바로가기 →</a>
 </p>
@@ -7016,7 +7016,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 "상품
 
 &lt;p&gt;실비보험에 가입했는데 병원에 갈 때마다 &quot;자기부담금&quot;이라는 비용을 내야 한다고 하죠. 이 자기부담금은 &lt;b&gt;가입한 보험 상품의 세대에 따라 완전히 다릅니다&lt;/b&gt;. 몇 천만원을 낸 보험인데 정작 청구할 때 많은 비용을 본인이 부담하게 되는 경우가 많습니다. 이 글에서는 세대별 자기부담금 비율을 명확하게 설명하고, 실제 병원비 사례로 계산해보겠습니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;목차&lt;/b&gt;&lt;br&gt;
 1. 실비보험 세대별 자기부담금 비율&lt;br&gt;
 2. 1세대 vs 2세대 vs 3세대 비교&lt;br&gt;
@@ -7226,7 +7226,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 &quot;�
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 금융감독원 실비보험 가이드(2026), 대형 보험사 상품 정보&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;함께 읽으면 좋은 글&lt;/b&gt;
 &lt;ul style=&quot;margin:10px 0;padding-left:20px;font-size:14px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/silbi&quot;&gt;실비보험 계산기&lt;/a&gt; - 당신의 자기부담금 계산&lt;/li&gt;
@@ -7236,7 +7236,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 &quot;�
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 내 보험의 자기부담금을 정확히 알고 싶다면?&lt;br&gt;
 &lt;a href=&quot;https://salarykorea.site/silbi&quot; style=&quot;color:#0066cc;text-decoration:none;font-weight:bold;&quot;&gt;실비보험 계산기 바로가기 →&lt;/a&gt;
 &lt;/p&gt;
@@ -7245,7 +7245,7 @@ A: 보험 증권을 확인하거나, 보험사 고객센터에 전화해 &quot;�
 
 <p>2024년 대졸 초봉은 평균 2,400만원대입니다. "연봉 2400만원"이라고 들으면 월급이 200만원이라고 생각하기 쉽지만, <b>실제로 통장에 들어오는 금액은 180만원대</b>입니다. 사회에 첫발을 내딛는 신입사원들이 자신의 월급을 정확히 파악하지 못하면 재테크 계획을 세우기 어렵습니다. 이 글에서는 연봉 2400만원의 공제 내역을 상세히 분석하고, 신입사원이 실천할 수 있는 재테크 팁을 제공합니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <b>목차</b><br>
 1. 2400만원 연봉 공제 항목 상세표<br>
 2. 월 200만원에서 빠지는 것들<br>
@@ -7431,7 +7431,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 국세청 2026년 간이세액표, 직장인 연말정산 가이드</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <b>함께 읽으면 좋은 글</b>
 <ul style="margin:10px 0;padding-left:20px;font-size:14px;">
 <li><a href="https://salarykorea.site/salary-2400">연봉 2400만원 실수령액 계산기</a> - 정확한 월급 계산</li>
@@ -7442,7 +7442,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 당신의 정확한 월급과 재테크 계획을 세우려면?<br>
 <a href="https://salarykorea.site/monthly-salary" style="color:#0066cc;text-decoration:none;font-weight:bold;">월급 세후 계산기 바로가기 →</a>
 </p>
@@ -7451,7 +7451,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 
 &lt;p&gt;2024년 대졸 초봉은 평균 2,400만원대입니다. &quot;연봉 2400만원&quot;이라고 들으면 월급이 200만원이라고 생각하기 쉽지만, &lt;b&gt;실제로 통장에 들어오는 금액은 180만원대&lt;/b&gt;입니다. 사회에 첫발을 내딛는 신입사원들이 자신의 월급을 정확히 파악하지 못하면 재테크 계획을 세우기 어렵습니다. 이 글에서는 연봉 2400만원의 공제 내역을 상세히 분석하고, 신입사원이 실천할 수 있는 재테크 팁을 제공합니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;목차&lt;/b&gt;&lt;br&gt;
 1. 2400만원 연봉 공제 항목 상세표&lt;br&gt;
 2. 월 200만원에서 빠지는 것들&lt;br&gt;
@@ -7637,7 +7637,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 국세청 2026년 간이세액표, 직장인 연말정산 가이드&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;함께 읽으면 좋은 글&lt;/b&gt;
 &lt;ul style=&quot;margin:10px 0;padding-left:20px;font-size:14px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/salary-2400&quot;&gt;연봉 2400만원 실수령액 계산기&lt;/a&gt; - 정확한 월급 계산&lt;/li&gt;
@@ -7648,7 +7648,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 당신의 정확한 월급과 재테크 계획을 세우려면?&lt;br&gt;
 &lt;a href=&quot;https://salarykorea.site/monthly-salary&quot; style=&quot;color:#0066cc;text-decoration:none;font-weight:bold;&quot;&gt;월급 세후 계산기 바로가기 →&lt;/a&gt;
 &lt;/p&gt;
@@ -7657,7 +7657,7 @@ A: 네, 입사한 달부터 소득세가 징수되었으므로 12월 말 연말�
 
 <p>직장을 다니다가 퇴사하거나 정년을 앞두면, 가장 큰 관심사 중 하나가 "퇴직금이 얼마나 되는가?"입니다. 그런데 많은 직장인들이 퇴직금 계산 방식을 정확히 모르고 있습니다. 퇴직금은 <b>월급과 근속연수</b>로 결정되며, 세금을 얼마나 내는지도 미리 알아야 합니다. 이 글에서는 퇴직금 계산 공식, 연봉별 예시, 그리고 퇴직연금(DB/DC)과의 차이를 명확하게 설명합니다.</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;">
+<div style="background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;">
 <b>목차</b><br>
 1. 퇴직금 계산 공식<br>
 2. 연봉별 퇴직금 예시표<br>
@@ -7880,7 +7880,7 @@ A: 퇴직연금(DB/DC) 제도라면 가능합니다. 일시금 또는 연금 선
 
 <p style="color:#64748b;font-size:13px;margin-top:20px;">출처: 근로기준법 시행령, 국세청 퇴직소득세 기준(2026)</p>
 
-<div style="background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;">
+<div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
 <b>함께 읽으면 좋은 글</b>
 <ul style="margin:10px 0;padding-left:20px;font-size:14px;">
 <li><a href="https://salarykorea.site/retirement">퇴직금 계산기</a> - 당신의 퇴직금 추정액</li>
@@ -7891,7 +7891,7 @@ A: 퇴직연금(DB/DC) 제도라면 가능합니다. 일시금 또는 연금 선
 </ul>
 </div>
 
-<p style="margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;">
+<p style="margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;">
 당신의 퇴직금이 얼마나 될지 정확히 계산해보세요<br>
 <a href="https://salarykorea.site/retirement" style="color:#0066cc;text-decoration:none;font-weight:bold;">퇴직금 계산기 바로가기 →</a>
 </p>
@@ -7900,7 +7900,7 @@ A: 퇴직연금(DB/DC) 제도라면 가능합니다. 일시금 또는 연금 선
 
 &lt;p&gt;직장을 다니다가 퇴사하거나 정년을 앞두면, 가장 큰 관심사 중 하나가 &quot;퇴직금이 얼마나 되는가?&quot;입니다. 그런데 많은 직장인들이 퇴직금 계산 방식을 정확히 모르고 있습니다. 퇴직금은 &lt;b&gt;월급과 근속연수&lt;/b&gt;로 결정되며, 세금을 얼마나 내는지도 미리 알아야 합니다. 이 글에서는 퇴직금 계산 공식, 연봉별 예시, 그리고 퇴직연금(DB/DC)과의 차이를 명확하게 설명합니다.&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f8fafc;padding:16px 20px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;목차&lt;/b&gt;&lt;br&gt;
 1. 퇴직금 계산 공식&lt;br&gt;
 2. 연봉별 퇴직금 예시표&lt;br&gt;
@@ -8123,7 +8123,7 @@ A: 퇴직연금(DB/DC) 제도라면 가능합니다. 일시금 또는 연금 선
 
 &lt;p style=&quot;color:#64748b;font-size:13px;margin-top:20px;&quot;&gt;출처: 근로기준법 시행령, 국세청 퇴직소득세 기준(2026)&lt;/p&gt;
 
-&lt;div style=&quot;background:rgba(30,41,59,0.5);padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
+&lt;div style=&quot;background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;&quot;&gt;
 &lt;b&gt;함께 읽으면 좋은 글&lt;/b&gt;
 &lt;ul style=&quot;margin:10px 0;padding-left:20px;font-size:14px;&quot;&gt;
 &lt;li&gt;&lt;a href=&quot;https://salarykorea.site/retirement&quot;&gt;퇴직금 계산기&lt;/a&gt; - 당신의 퇴직금 추정액&lt;/li&gt;
@@ -8134,7 +8134,7 @@ A: 퇴직연금(DB/DC) 제도라면 가능합니다. 일시금 또는 연금 선
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;p style=&quot;margin:20px 0;padding:16px;background:rgba(59,130,246,0.08);border-radius:8px;text-align:center;&quot;&gt;
+&lt;p style=&quot;margin:20px 0;padding:16px;background:#f0f4ff;border-radius:8px;text-align:center;&quot;&gt;
 당신의 퇴직금이 얼마나 될지 정확히 계산해보세요&lt;br&gt;
 &lt;a href=&quot;https://salarykorea.site/retirement&quot; style=&quot;color:#0066cc;text-decoration:none;font-weight:bold;&quot;&gt;퇴직금 계산기 바로가기 →&lt;/a&gt;
 &lt;/p&gt;
@@ -8206,16 +8206,16 @@ function renderSections() {
       card.classList.add('done');
       btn.textContent = '완료 취소';
       btn.style.background = '#22c55e';
-      btn.style.color = 'white';
+      btn.style.color = '#fff';
       btn.style.border = '1px solid #22c55e';
       doneCards.push(card);
       doneCount++;
     } else {
       card.classList.remove('done');
       btn.textContent = '완료 처리';
-      btn.style.background = '#0f172a';
-      btn.style.color = '#94a3b8';
-      btn.style.border = '1px solid #334155';
+      btn.style.background = '#f8fafc';
+      btn.style.color = '#64748b';
+      btn.style.border = '1px solid #e2e8f0';
       pendingCards.push(card);
     }
   });

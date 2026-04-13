@@ -6,135 +6,128 @@
 <title>월급연구소 — 프로젝트 대시보드</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
-a{color:#60a5fa;text-decoration:none}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#f1f5f9;color:#334155;min-height:100vh}
+a{color:#3b82f6;text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Nav */
-.top-nav{position:sticky;top:0;z-index:100;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1e293b;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-.top-nav h1{font-size:1.1rem;font-weight:800;color:#f8fafc}
-.top-nav h1 span{color:#3b82f6}
-.top-nav-right{display:flex;gap:8px;align-items:center;font-size:0.8rem;color:#94a3b8}
-.nav-link{padding:6px 14px;background:#1e293b;border:1px solid #334155;border-radius:8px;color:#94a3b8;font-size:0.76rem;font-weight:600;text-decoration:none;transition:all 0.15s}
-.nav-link:hover{background:#334155;color:#e2e8f0;text-decoration:none}
+/* === Shared Nav === */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:0 24px;display:flex;align-items:center;height:52px}
+.nav-left{font-size:1.05rem;font-weight:800;color:#1e293b;margin-right:auto;white-space:nowrap}
+.nav-left span{color:#3b82f6}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{padding:6px 14px;background:transparent;border:1px solid #e2e8f0;border-radius:8px;color:#64748b;font-size:0.76rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+.nav-link:hover{background:#f1f5f9;color:#334155;text-decoration:none}
 .nav-link.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
+.nav-date{font-size:0.72rem;color:#94a3b8;margin-left:10px;white-space:nowrap}
 
 /* Layout */
-.container{max-width:1200px;margin:0 auto;padding:24px}
+.container{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
 
 /* Stats row */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-.stat-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:18px;text-align:center}
-.stat-num{font-size:1.8rem;font-weight:800;color:#f8fafc}
+.stat-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:#1e293b}
 .stat-label{font-size:0.73rem;color:#94a3b8;margin-top:4px}
 
 /* Tabs */
-.tabs{display:flex;gap:2px;margin-bottom:24px;background:#1e293b;border-radius:10px;padding:4px;border:1px solid #334155}
-.tab{flex:1;padding:10px 12px;font-size:0.82rem;font-weight:600;color:#64748b;cursor:pointer;border-radius:8px;transition:all 0.15s;text-align:center;white-space:nowrap}
-.tab:hover{color:#e2e8f0}
+.tabs{display:flex;gap:2px;margin-bottom:24px;background:#fff;border-radius:10px;padding:4px;border:1px solid #e2e8f0}
+.tab{flex:1;padding:10px 12px;font-size:0.82rem;font-weight:600;color:#94a3b8;cursor:pointer;border-radius:8px;transition:all 0.15s;text-align:center;white-space:nowrap}
+.tab:hover{color:#334155}
 .tab.active{color:#fff;background:#3b82f6}
 .tab-content{display:none}
 .tab-content.active{display:block}
 
 /* Cards */
-.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:24px;margin-bottom:20px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:20px}
 .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.card-title{font-size:0.95rem;font-weight:700;color:#f1f5f9;display:flex;align-items:center;gap:8px}
+.card-title{font-size:0.95rem;font-weight:700;color:#1e293b;display:flex;align-items:center;gap:8px}
 .card-badge{font-size:0.7rem;padding:3px 10px;border-radius:20px;font-weight:600}
-.badge-blue{background:#1e3a5f;color:#60a5fa}
-.badge-green{background:#14532d;color:#4ade80}
-.badge-yellow{background:#422006;color:#fbbf24}
-.badge-purple{background:#3b0764;color:#c084fc}
-.badge-red{background:#450a0a;color:#f87171}
+.badge-blue{background:rgba(59,130,246,0.1);color:#3b82f6}
+.badge-green{background:rgba(34,197,94,0.1);color:#16a34a}
+.badge-purple{background:rgba(139,92,246,0.1);color:#7c3aed}
 
 /* Progress */
-.progress-bar{height:6px;background:#334155;border-radius:3px;margin:12px 0 6px;overflow:hidden}
+.progress-bar{height:6px;background:#e2e8f0;border-radius:3px;margin:12px 0 6px;overflow:hidden}
 .progress-fill{height:100%;border-radius:3px;transition:width 0.5s}
 .progress-fill.blue{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
 .progress-text{font-size:0.75rem;color:#94a3b8}
 
 /* Category Group */
 .cat-group{margin-bottom:24px}
-.cat-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #1e293b}
+.cat-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9}
 .cat-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
-.cat-name{font-size:0.88rem;font-weight:700;color:#f1f5f9}
+.cat-name{font-size:0.88rem;font-weight:700;color:#1e293b}
 .cat-count{font-size:0.68rem;padding:2px 8px;border-radius:12px;font-weight:600;margin-left:auto}
 
 /* Task list */
 .task-list{list-style:none}
 .task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;font-size:0.84rem;line-height:1.5;cursor:pointer;transition:background 0.15s}
-.task-item:hover{background:rgba(255,255,255,0.03)}
+.task-item:hover{background:#f8fafc}
 .task-item.done{opacity:0.45}
 .task-item.done .task-text{text-decoration:line-through}
-.check-box{width:18px;height:18px;border:2px solid #475569;border-radius:5px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.check-box{width:18px;height:18px;border:2px solid #cbd5e1;border-radius:5px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
 .check-box.checked{background:#3b82f6;border-color:#3b82f6}
 .check-box.checked::after{content:'\2713';color:white;font-size:11px;font-weight:bold}
-.task-text{flex:1;color:#e2e8f0}
+.task-text{flex:1;color:#334155}
 
 /* Filter pills */
 .filter-bar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.filter-pill{padding:6px 14px;font-size:0.76rem;font-weight:600;color:#94a3b8;background:#0f172a;border:1px solid #334155;border-radius:20px;cursor:pointer;transition:all 0.15s}
-.filter-pill:hover{border-color:#475569;color:#e2e8f0}
+.filter-pill{padding:6px 14px;font-size:0.76rem;font-weight:600;color:#94a3b8;background:#fff;border:1px solid #e2e8f0;border-radius:20px;cursor:pointer;transition:all 0.15s}
+.filter-pill:hover{border-color:#cbd5e1;color:#334155}
 .filter-pill.active{background:#3b82f6;border-color:#3b82f6;color:#fff}
-
-/* Grid */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
 /* Timeline */
 .timeline{position:relative;padding-left:24px}
-.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#334155}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e2e8f0}
 .timeline-item{position:relative;padding-bottom:20px}
-.timeline-dot{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid #1e293b}
-.timeline-dot.done{background:#4ade80}
-.timeline-dot.current{background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.5)}
-.timeline-dot.upcoming{background:#475569}
-.timeline-date{font-size:0.72rem;color:#64748b;margin-bottom:2px}
-.timeline-content{font-size:0.85rem;color:#e2e8f0}
+.timeline-dot{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid #fff}
+.timeline-dot.done{background:#22c55e}
+.timeline-dot.current{background:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.3)}
+.timeline-dot.upcoming{background:#cbd5e1}
+.timeline-date{font-size:0.72rem;color:#94a3b8;margin-bottom:2px}
+.timeline-content{font-size:0.85rem;color:#334155}
 
 /* Ideas */
-.idea-card{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:16px;margin-bottom:12px;transition:all 0.15s}
+.idea-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:12px;transition:all 0.15s}
 .idea-card:hover{border-color:#3b82f6}
 .idea-rank{font-size:0.7rem;font-weight:700;color:#3b82f6;margin-bottom:4px}
-.idea-title{font-size:0.9rem;font-weight:700;color:#f1f5f9;margin-bottom:6px}
-.idea-desc{font-size:0.78rem;color:#94a3b8;line-height:1.5}
+.idea-title{font-size:0.9rem;font-weight:700;color:#1e293b;margin-bottom:6px}
+.idea-desc{font-size:0.78rem;color:#64748b;line-height:1.5}
 .idea-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.idea-tag{font-size:0.65rem;padding:2px 8px;background:#1e293b;border:1px solid #334155;border-radius:10px;color:#94a3b8}
+.idea-tag{font-size:0.65rem;padding:2px 8px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;color:#64748b}
 
 /* Revenue plan */
-.plan-phase{border-left:3px solid #334155;padding:12px 0 12px 16px;margin-bottom:16px}
+.plan-phase{border-left:3px solid #e2e8f0;padding:12px 0 12px 16px;margin-bottom:16px}
 .plan-phase.short{border-color:#3b82f6}
 .plan-phase.mid{border-color:#8b5cf6}
 .plan-phase.long{border-color:#22c55e}
 .plan-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
-.plan-goal{font-size:0.88rem;font-weight:700;color:#f1f5f9;margin-bottom:6px}
-.plan-detail{font-size:0.78rem;color:#94a3b8;line-height:1.6}
+.plan-goal{font-size:0.88rem;font-weight:700;color:#1e293b;margin-bottom:6px}
+.plan-detail{font-size:0.78rem;color:#64748b;line-height:1.6}
 
 /* Note */
-.note-area{width:100%;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:12px;color:#e2e8f0;font-size:0.84rem;font-family:inherit;resize:vertical;min-height:80px}
+.note-area{width:100%;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;color:#334155;font-size:0.84rem;font-family:inherit;resize:vertical;min-height:80px}
 .note-area:focus{outline:none;border-color:#3b82f6}
 .note-save-btn{margin-top:8px;padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer}
 .note-save-btn:hover{background:#2563eb}
-.note-status{font-size:0.75rem;color:#4ade80;margin-left:8px;opacity:0}
+.note-status{font-size:0.75rem;color:#16a34a;margin-left:8px;opacity:0}
 
 /* Mobile */
 @media(max-width:768px){
-  .top-nav{padding:12px 16px;flex-wrap:wrap;gap:8px}
-  .top-nav h1{font-size:1rem}
-  .top-nav-right{width:100%;overflow-x:auto;gap:6px;padding-bottom:2px}
-  .top-nav-right::-webkit-scrollbar{display:none}
-  .container{padding:16px 14px}
+  .top-nav{padding:0 16px;height:48px}
+  .nav-left{font-size:0.95rem}
+  .nav-link{padding:5px 10px;font-size:0.72rem}
+  .nav-date{display:none}
+  .container{padding:20px 14px}
   .stats-row{grid-template-columns:repeat(2,1fr);gap:10px}
   .stat-card{padding:14px 10px}
   .stat-num{font-size:1.4rem}
   .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .tabs::-webkit-scrollbar{display:none}
   .tab{padding:9px 10px;font-size:0.76rem;min-width:0}
-  .grid-2{grid-template-columns:1fr}
   .card{padding:18px 16px}
   .filter-bar{gap:5px}
   .filter-pill{padding:5px 11px;font-size:0.72rem}
-  .cat-header{gap:8px}
-  .task-item{padding:8px 8px;font-size:0.82rem}
 }
 @media(max-width:380px){
   .stats-row{grid-template-columns:1fr 1fr;gap:8px}
@@ -145,38 +138,25 @@ a:hover{text-decoration:underline}
 <body>
 
 <div class="top-nav">
-  <h1>월급연구소 <span>대시보드</span></h1>
-  <div class="top-nav-right">
+  <div class="nav-left"><span>My</span> Dashboard</div>
+  <div class="nav-links">
     <a href="index.html" class="nav-link">홈</a>
     <a href="project-dashboard.html" class="nav-link active">프로젝트</a>
+    <a href="workout-dashboard.html" class="nav-link">워크아웃</a>
     <a href="blog-upload-dashboard.html" class="nav-link">블로그</a>
-    <span id="last-updated" style="font-size:0.72rem;color:#475569;margin-left:4px"></span>
   </div>
+  <span class="nav-date" id="last-updated"></span>
 </div>
 
 <div class="container">
 
-<!-- Stats -->
 <div class="stats-row">
-  <div class="stat-card">
-    <div class="stat-num" id="stat-pages">106</div>
-    <div class="stat-label">사이트 페이지</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="stat-indexed">104</div>
-    <div class="stat-label">구글 색인</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="stat-blog">10/65</div>
-    <div class="stat-label">블로그 업로드</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num" id="stat-adsense">대기 중</div>
-    <div class="stat-label">애드센스</div>
-  </div>
+  <div class="stat-card"><div class="stat-num" id="stat-pages">106</div><div class="stat-label">사이트 페이지</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-indexed">104</div><div class="stat-label">구글 색인</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-blog">10/65</div><div class="stat-label">블로그 업로드</div></div>
+  <div class="stat-card"><div class="stat-num" id="stat-adsense">대기 중</div><div class="stat-label">애드센스</div></div>
 </div>
 
-<!-- Tabs -->
 <div class="tabs">
   <div class="tab active" onclick="switchTab('tasks')">작업 현황</div>
   <div class="tab" onclick="switchTab('plan')">수익화 로드맵</div>
@@ -185,9 +165,7 @@ a:hover{text-decoration:underline}
   <div class="tab" onclick="switchTab('notes')">메모</div>
 </div>
 
-<!-- TAB: 작업 현황 -->
 <div class="tab-content active" id="tab-tasks">
-  <!-- Overall progress -->
   <div class="card" style="margin-bottom:20px">
     <div class="card-header" style="margin-bottom:8px">
       <div class="card-title">전체 진행률</div>
@@ -196,65 +174,33 @@ a:hover{text-decoration:underline}
     <div class="progress-bar"><div class="progress-fill blue" id="task-progress" style="width:0%"></div></div>
     <div class="progress-text" id="task-progress-text">0%</div>
   </div>
-
-  <!-- Filter -->
   <div class="filter-bar" id="filter-bar"></div>
-
-  <!-- Category grouped tasks -->
   <div id="tasks-container"></div>
 </div>
 
-<!-- TAB: 수익화 로드맵 -->
 <div class="tab-content" id="tab-plan">
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">월 100만원+ 수익화 로드맵</div>
-    </div>
-    <div class="plan-phase short">
-      <div class="plan-label" style="color:#3b82f6">단기 (1~3개월)</div>
-      <div class="plan-goal"></div>
-      <div class="plan-detail"></div>
-    </div>
-    <div class="plan-phase mid">
-      <div class="plan-label" style="color:#8b5cf6">중기 (3~6개월)</div>
-      <div class="plan-goal"></div>
-      <div class="plan-detail"></div>
-    </div>
-    <div class="plan-phase long">
-      <div class="plan-label" style="color:#22c55e">장기 (6~12개월)</div>
-      <div class="plan-goal"></div>
-      <div class="plan-detail"></div>
-    </div>
+    <div class="card-header"><div class="card-title">월 100만원+ 수익화 로드맵</div></div>
+    <div class="plan-phase short"><div class="plan-label" style="color:#3b82f6">단기</div><div class="plan-goal"></div><div class="plan-detail"></div></div>
+    <div class="plan-phase mid"><div class="plan-label" style="color:#8b5cf6">중기</div><div class="plan-goal"></div><div class="plan-detail"></div></div>
+    <div class="plan-phase long"><div class="plan-label" style="color:#22c55e">장기</div><div class="plan-goal"></div><div class="plan-detail"></div></div>
   </div>
 </div>
 
-<!-- TAB: 아이디어 -->
 <div class="tab-content" id="tab-ideas">
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">추가 수익 사이트 아이디어</div>
-      <span class="card-badge badge-purple" id="ideas-count">0개</span>
-    </div>
+    <div class="card-header"><div class="card-title">추가 수익 사이트 아이디어</div><span class="card-badge badge-purple" id="ideas-count">0개</span></div>
     <div id="ideas-list"></div>
   </div>
 </div>
 
-<!-- TAB: 일정표 -->
 <div class="tab-content" id="tab-schedule">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">일정표</div>
-    </div>
-    <div class="timeline" id="timeline"></div>
-  </div>
+  <div class="card"><div class="card-header"><div class="card-title">일정표</div></div><div class="timeline" id="timeline"></div></div>
 </div>
 
-<!-- TAB: 메모 -->
 <div class="tab-content" id="tab-notes">
   <div class="card">
-    <div class="card-header">
-      <div class="card-title">자유 메모</div>
-    </div>
+    <div class="card-header"><div class="card-title">자유 메모</div></div>
     <textarea class="note-area" id="note-area" placeholder="자유롭게 메모하세요. 자동 저장됩니다."></textarea>
     <div style="display:flex;align-items:center;margin-top:8px">
       <button class="note-save-btn" onclick="saveNotes()">저장</button>
@@ -271,16 +217,15 @@ var STORAGE_KEY = 'project_dashboard_v2';
 var TASKS = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.tasks) ? PROJECT_DATA.tasks : [];
 var SCHEDULE = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.schedule) ? PROJECT_DATA.schedule : [];
 
-// Category config
 var CATEGORIES = {
-  '사이트':  { icon: '🌐', bg: 'rgba(59,130,246,0.12)', color: '#60a5fa', badgeBg: '#1e3a5f' },
-  '블로그':  { icon: '✍️', bg: 'rgba(251,191,36,0.12)', color: '#fbbf24', badgeBg: '#422006' },
-  'SEO':     { icon: '🔍', bg: 'rgba(34,197,94,0.12)',  color: '#4ade80', badgeBg: '#14532d' },
-  '도구':    { icon: '🔧', bg: 'rgba(139,92,246,0.12)', color: '#c084fc', badgeBg: '#3b0764' },
-  '전략':    { icon: '🎯', bg: 'rgba(248,113,113,0.12)', color: '#f87171', badgeBg: '#450a0a' },
-  '수익화':  { icon: '💸', bg: 'rgba(248,113,113,0.12)', color: '#f87171', badgeBg: '#450a0a' },
-  '부동산':  { icon: '🏠', bg: 'rgba(20,184,166,0.12)',  color: '#2dd4bf', badgeBg: '#134e4a' },
-  '워크아웃': { icon: '💪', bg: 'rgba(249,115,22,0.12)', color: '#fb923c', badgeBg: '#7c2d12' }
+  '사이트':  { icon: '🌐', bg: 'rgba(59,130,246,0.08)',  color: '#2563eb', badgeBg: 'rgba(59,130,246,0.1)' },
+  '블로그':  { icon: '✍️', bg: 'rgba(245,158,11,0.08)',  color: '#d97706', badgeBg: 'rgba(245,158,11,0.1)' },
+  'SEO':     { icon: '🔍', bg: 'rgba(34,197,94,0.08)',   color: '#16a34a', badgeBg: 'rgba(34,197,94,0.1)' },
+  '도구':    { icon: '🔧', bg: 'rgba(139,92,246,0.08)',  color: '#7c3aed', badgeBg: 'rgba(139,92,246,0.1)' },
+  '전략':    { icon: '🎯', bg: 'rgba(239,68,68,0.08)',   color: '#dc2626', badgeBg: 'rgba(239,68,68,0.1)' },
+  '수익화':  { icon: '💸', bg: 'rgba(239,68,68,0.08)',   color: '#dc2626', badgeBg: 'rgba(239,68,68,0.1)' },
+  '부동산':  { icon: '🏠', bg: 'rgba(20,184,166,0.08)',  color: '#0d9488', badgeBg: 'rgba(20,184,166,0.1)' },
+  '워크아웃': { icon: '💪', bg: 'rgba(249,115,22,0.08)', color: '#ea580c', badgeBg: 'rgba(249,115,22,0.1)' }
 };
 
 var currentFilter = 'all';
@@ -297,7 +242,6 @@ function applyProjectData() {
   if (data.ideas) renderIdeas(data.ideas);
   if (data.lastUpdated) document.getElementById('last-updated').textContent = data.lastUpdated;
 }
-
 function renderRoadmap(rm) {
   ['short','mid','long'].forEach(function(p) {
     var el = document.querySelector('.plan-phase.' + p);
@@ -307,7 +251,6 @@ function renderRoadmap(rm) {
     el.querySelector('.plan-detail').innerHTML = rm[p].items.map(function(i){return '• '+i;}).join('<br>');
   });
 }
-
 function renderIdeas(ideas) {
   document.getElementById('ideas-count').textContent = ideas.length + '개';
   var html = '';
@@ -317,153 +260,67 @@ function renderIdeas(ideas) {
   });
   document.getElementById('ideas-list').innerHTML = html;
 }
-
-function getState() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; }
-}
+function getState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; } }
 function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
-
 function toggleTask(id) {
-  var s = getState();
-  if (!s.tasks) s.tasks = {};
-  // Find default from data
+  var s = getState(); if (!s.tasks) s.tasks = {};
   var task = TASKS.find(function(t){return t.id===id;});
   var current = s.tasks[id] !== undefined ? s.tasks[id] : (task ? task.done : false);
-  s.tasks[id] = !current;
-  saveState(s);
-  renderTasks();
+  s.tasks[id] = !current; saveState(s); renderTasks();
 }
-
 function buildFilterBar() {
-  var tags = {};
-  TASKS.forEach(function(t) { tags[t.tag] = (tags[t.tag]||0)+1; });
+  var tags = {}; TASKS.forEach(function(t) { tags[t.tag] = (tags[t.tag]||0)+1; });
   var bar = document.getElementById('filter-bar');
   var html = '<div class="filter-pill active" onclick="setFilter(\'all\',this)">전체 (' + TASKS.length + ')</div>';
-  Object.keys(CATEGORIES).forEach(function(cat) {
-    if (tags[cat]) {
-      html += '<div class="filter-pill" onclick="setFilter(\''+cat+'\',this)">'+cat+' ('+tags[cat]+')</div>';
-    }
-  });
+  Object.keys(CATEGORIES).forEach(function(cat) { if (tags[cat]) html += '<div class="filter-pill" onclick="setFilter(\''+cat+'\',this)">'+cat+' ('+tags[cat]+')</div>'; });
   bar.innerHTML = html;
 }
-
-function setFilter(f, el) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});
-  el.classList.add('active');
-  renderTasks();
-}
-
+function setFilter(f, el) { currentFilter = f; document.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');}); el.classList.add('active'); renderTasks(); }
 function renderTasks() {
-  var s = getState();
-  var taskState = s.tasks || {};
-  var container = document.getElementById('tasks-container');
-
-  // Group by category
-  var groups = {};
-  var doneCount = 0, totalCount = 0;
-
+  var s = getState(), taskState = s.tasks || {}, container = document.getElementById('tasks-container');
+  var groups = {}, doneCount = 0;
   TASKS.forEach(function(t) {
     if (currentFilter !== 'all' && t.tag !== currentFilter) return;
     if (!groups[t.tag]) groups[t.tag] = { done: [], todo: [] };
     var isDone = taskState[t.id] !== undefined ? taskState[t.id] : t.done;
-    if (isDone) { groups[t.tag].done.push(t); doneCount++; }
-    else { groups[t.tag].todo.push(t); }
-    totalCount++;
+    if (isDone) { groups[t.tag].done.push(t); doneCount++; } else { groups[t.tag].todo.push(t); }
   });
-
-  // Also compute overall (unfiltered)
   var allDone = 0;
-  TASKS.forEach(function(t) {
-    var isDone = taskState[t.id] !== undefined ? taskState[t.id] : t.done;
-    if (isDone) allDone++;
-  });
+  TASKS.forEach(function(t) { if (taskState[t.id] !== undefined ? taskState[t.id] : t.done) allDone++; });
   var pct = Math.round(allDone / TASKS.length * 100);
   document.getElementById('task-progress').style.width = pct + '%';
   document.getElementById('task-progress-text').textContent = allDone + ' / ' + TASKS.length + ' 완료 (' + pct + '%)';
   document.getElementById('overall-badge').textContent = allDone + '/' + TASKS.length;
-
   var html = '';
-  // Show todo first, then done
-  var catOrder = Object.keys(CATEGORIES);
-  catOrder.forEach(function(cat) {
-    var g = groups[cat];
-    if (!g) return;
-    var all = g.todo.concat(g.done);
-    if (all.length === 0) return;
-    var cfg = CATEGORIES[cat] || { icon:'📌', bg:'#1e293b', color:'#94a3b8', badgeBg:'#334155' };
-    var doneCat = g.done.length;
-    var totalCat = all.length;
-
-    html += '<div class="cat-group">';
-    html += '<div class="cat-header">';
-    html += '<div class="cat-icon" style="background:'+cfg.bg+'">'+cfg.icon+'</div>';
-    html += '<div class="cat-name">'+cat+'</div>';
-    html += '<div class="cat-count" style="background:'+cfg.badgeBg+';color:'+cfg.color+'">'+doneCat+'/'+totalCat+'</div>';
-    html += '</div>';
-    html += '<ul class="task-list">';
-    // Todos first
-    g.todo.forEach(function(t) {
-      html += '<li class="task-item" onclick="toggleTask(\''+t.id+'\')">';
-      html += '<div class="check-box"></div>';
-      html += '<span class="task-text">'+t.text+'</span>';
-      html += '</li>';
-    });
-    // Done
-    g.done.forEach(function(t) {
-      html += '<li class="task-item done" onclick="toggleTask(\''+t.id+'\')">';
-      html += '<div class="check-box checked"></div>';
-      html += '<span class="task-text">'+t.text+'</span>';
-      html += '</li>';
-    });
+  Object.keys(CATEGORIES).forEach(function(cat) {
+    var g = groups[cat]; if (!g) return;
+    var all = g.todo.concat(g.done); if (!all.length) return;
+    var cfg = CATEGORIES[cat];
+    html += '<div class="cat-group"><div class="cat-header"><div class="cat-icon" style="background:'+cfg.bg+'">'+cfg.icon+'</div><div class="cat-name">'+cat+'</div><div class="cat-count" style="background:'+cfg.badgeBg+';color:'+cfg.color+'">'+g.done.length+'/'+all.length+'</div></div><ul class="task-list">';
+    g.todo.forEach(function(t) { html += '<li class="task-item" onclick="toggleTask(\''+t.id+'\')"><div class="check-box"></div><span class="task-text">'+t.text+'</span></li>'; });
+    g.done.forEach(function(t) { html += '<li class="task-item done" onclick="toggleTask(\''+t.id+'\')"><div class="check-box checked"></div><span class="task-text">'+t.text+'</span></li>'; });
     html += '</ul></div>';
   });
-
   container.innerHTML = html;
 }
-
 function renderTimeline() {
-  var el = document.getElementById('timeline');
-  el.innerHTML = '';
+  var el = document.getElementById('timeline'); el.innerHTML = '';
   SCHEDULE.forEach(function(item) {
-    var div = document.createElement('div');
-    div.className = 'timeline-item';
+    var div = document.createElement('div'); div.className = 'timeline-item';
     div.innerHTML = '<div class="timeline-dot '+item.status+'"></div><div class="timeline-date">'+item.date+'</div><div class="timeline-content">'+item.text+'</div>';
     el.appendChild(div);
   });
 }
-
 function switchTab(name) {
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
   document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
   document.getElementById('tab-'+name).classList.add('active');
   document.querySelector('.tab[onclick*="\''+name+'\'"]').classList.add('active');
 }
-
-function saveNotes() {
-  var s = getState();
-  s.notes = document.getElementById('note-area').value;
-  saveState(s);
-  var st = document.getElementById('note-status');
-  st.style.opacity='1';
-  setTimeout(function(){st.style.opacity='0';},2000);
-}
-function loadNotes() {
-  var s = getState();
-  if (s.notes) document.getElementById('note-area').value = s.notes;
-}
-
-document.getElementById('note-area').addEventListener('input', function() {
-  clearTimeout(this._t);
-  this._t = setTimeout(saveNotes, 1000);
-});
-
-// Init
-applyProjectData();
-buildFilterBar();
-renderTasks();
-renderTimeline();
-loadNotes();
+function saveNotes() { var s = getState(); s.notes = document.getElementById('note-area').value; saveState(s); var st = document.getElementById('note-status'); st.style.opacity='1'; setTimeout(function(){st.style.opacity='0';},2000); }
+function loadNotes() { var s = getState(); if (s.notes) document.getElementById('note-area').value = s.notes; }
+document.getElementById('note-area').addEventListener('input', function() { clearTimeout(this._t); this._t = setTimeout(saveNotes, 1000); });
+applyProjectData(); buildFilterBar(); renderTasks(); renderTimeline(); loadNotes();
 </script>
 </body>
 </html>
