@@ -1,5 +1,4 @@
-var PROJECT_DATA = 
-{
+window.PROJECT_DATA = {
   "lastUpdated": "2026-04-14",
   "stats": {
     "pages": 106,
@@ -39,7 +38,9 @@ var PROJECT_DATA =
     {"id": "t28", "text": "공통 컴포넌트 구현 (trust-layer.js + common.css 확장)", "done": true, "tag": "수익화", "tagColor": "#450a0a"},
     {"id": "t29", "text": "파일럿 페이지 income-tax.html 에 AI 내성 3축 적용 완료", "done": true, "tag": "수익화", "tagColor": "#450a0a"},
     {"id": "t32", "text": "income-tax 파일럿 PDF 결과물 풀패키지 강화 (부호버그 수정 + 캡처 헤더/메타/푸터 + Trust Badge 재구성 + 단일 긴 PDF 페이지)", "done": true, "tag": "수익화", "tagColor": "#450a0a"},
-    {"id": "t30", "text": "메인 계산기 14개 페이지 롤아웃 (AI 내성 레이어) — 파일럿 검증 완료, 다음 단계", "done": false, "tag": "수익화", "tagColor": "#450a0a"},
+    {"id": "t33", "text": "계산기 3개 페이지 롤아웃 (freelancer-tax · year-end-tax · medical-tax) — AI 내성 레이어 + 캡처 풀패키지 + TrustLayer.bind + captureMeta", "done": true, "tag": "수익화", "tagColor": "#450a0a"},
+    {"id": "t30", "text": "메인 계산기 14개 페이지 롤아웃 (AI 내성 레이어) — 4/14 진행 중 (4/14 완료: income-tax + freelancer-tax + year-end-tax + medical-tax)", "done": false, "tag": "수익화", "tagColor": "#450a0a"},
+    {"id": "t34", "text": "남은 10개 계산기 페이지 롤아웃 (gift-tax · acquisition-tax · monthly-salary · salary-table · retirement · insurance · silbi · holiday-pay · unemployment · minimum-wage)", "done": false, "tag": "수익화", "tagColor": "#450a0a"},
     {"id": "t31", "text": "PDF 기획안 v2 리라이트 (긴 글 → 워크시트/템플릿 중심)", "done": false, "tag": "수익화", "tagColor": "#450a0a"},
     {"id": "w1", "text": "맥스아웃 앱 기획안 작성 (APP_PLAN.md)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
     {"id": "w2", "text": "기술 스택 확정 (SwiftUI + CloudKit)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
@@ -79,8 +80,9 @@ var PROJECT_DATA =
     {"date": "2026-04-13", "text": "블로그 #006 예약 발행", "status": "done"},
     {"date": "2026-04-14", "text": "블로그 #007 예약 발행", "status": "done"},
     {"date": "2026-04-14", "text": "income-tax 파일럿 PDF 결과물 풀패키지 강화 완료 (부호버그 + 캡처 헤더/메타/푸터 + 단일 긴 페이지)", "status": "done"},
+    {"date": "2026-04-14", "text": "계산기 3개 페이지 롤아웃 완료 (freelancer-tax · year-end-tax · medical-tax) — AI 내성 레이어 패턴 확장", "status": "done"},
     {"date": "2026-04-15", "text": "구글 색인 현황 확인 (리마인더 설정됨)", "status": "current"},
-    {"date": "2026-04-15~16", "text": "메인 계산기 14개 롤아웃 — AI 내성 레이어 패턴 확장", "status": "upcoming"},
+    {"date": "2026-04-15~16", "text": "남은 10개 계산기 페이지 롤아웃 + 로컬 검증", "status": "upcoming"},
     {"date": "2026-04-15~05-05", "text": "블로그 #008~#028 매일 1개씩 발행", "status": "upcoming"},
     {"date": "2026-04 중", "text": "애드센스 승인 결과 확인", "status": "upcoming"},
     {"date": "2026-04-12", "text": "연말정산 계산기 + 부동산연구소 사이트 5페이지 생성", "status": "done"},
