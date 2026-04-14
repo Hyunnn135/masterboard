@@ -72,7 +72,10 @@
     {"id": "n9", "text": "[Phase 3] watchOS 앱 + 컴플리케이션", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
     {"id": "n10", "text": "[Phase 3] iPhone ↔ Watch 동기화 검증 (CloudKit vs WatchConnectivity)", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
     {"id": "n11", "text": "[Phase 4] 일/주/월/연 통계 화면 (Swift Charts)", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
-    {"id": "n12", "text": "[Phase 4] 폴리싱 + TestFlight 배포", "done": false, "tag": "Nudge", "tagColor": "#0d9488"}
+    {"id": "n12", "text": "[Phase 4] 폴리싱 + TestFlight 배포", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
+    {"id": "n13", "text": "[Monetize] v1.1 IAP '개발자 응원하기 $2.99' 도입 (DAU 500~1000 도달 후)", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
+    {"id": "n14", "text": "[Monetize] v1.2 통계 화면 interstitial 광고 + 빈도 캡 (DAU 2000+ 시점)", "done": false, "tag": "Nudge", "tagColor": "#0d9488"},
+    {"id": "n15", "text": "[Monetize] v1.0 코드에 adsRemoved 플래그·분기 구조 미리 설계 (기능은 off)", "done": false, "tag": "Nudge", "tagColor": "#0d9488"}
   ],
   "schedule": [
     {"date": "2026-04-12", "text": "내부 링크 30페이지 + FAQ 스키마 11페이지 추가, 배포 완료", "status": "done"},
@@ -98,6 +101,7 @@
     {"date": "2026-06~07", "text": "[맥스아웃] Phase 4: 통계 + CloudKit + TestFlight", "status": "upcoming"},
     {"date": "2026-04-14", "text": "[Nudge] 앱 기획 완료 (이름 확정, APP_PLAN, 마스터보드 등록)", "status": "done"},
     {"date": "2026-04-14", "text": "[Nudge] 디자인 시스템 & 아이콘 컨셉 4종 완료 (Teal 팔레트, A안 가결정)", "status": "done"},
+    {"date": "2026-04-14", "text": "[Nudge] 핵심 4화면 HTML 시안 확정 + 수익화 로드맵 문서화 (MONETIZATION.md)", "status": "done"},
     {"date": "2026-04~05", "text": "[Nudge] Phase 1: Xcode 셋업 + App Group + 기본 UI", "status": "upcoming"},
     {"date": "2026-05", "text": "[Nudge] Phase 2: Interactive Widget 구현", "status": "upcoming"},
     {"date": "2026-05~06", "text": "[Nudge] Phase 3: watchOS + 동기화", "status": "upcoming"},

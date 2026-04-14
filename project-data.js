@@ -462,6 +462,27 @@ window.PROJECT_DATA = {
       "done": false,
       "tag": "Nudge",
       "tagColor": "#0d9488"
+    },
+    {
+      "id": "n13",
+      "text": "[Monetize] v1.1 IAP '개발자 응원하기 $2.99' 도입 (DAU 500~1000 도달 후)",
+      "done": false,
+      "tag": "Nudge",
+      "tagColor": "#0d9488"
+    },
+    {
+      "id": "n14",
+      "text": "[Monetize] v1.2 통계 화면 interstitial 광고 + 빈도 캡 (DAU 2000+ 시점)",
+      "done": false,
+      "tag": "Nudge",
+      "tagColor": "#0d9488"
+    },
+    {
+      "id": "n15",
+      "text": "[Monetize] v1.0 코드에 adsRemoved 플래그·분기 구조 미리 설계 (기능은 off)",
+      "done": false,
+      "tag": "Nudge",
+      "tagColor": "#0d9488"
     }
   ],
   "schedule": [
@@ -578,6 +599,11 @@ window.PROJECT_DATA = {
     {
       "date": "2026-04-14",
       "text": "[Nudge] 디자인 시스템 & 아이콘 컨셉 4종 완료 (Teal 팔레트, A안 가결정)",
+      "status": "done"
+    },
+    {
+      "date": "2026-04-14",
+      "text": "[Nudge] 핵심 4화면 HTML 시안 확정 + 수익화 로드맵 문서화 (MONETIZATION.md)",
       "status": "done"
     },
     {
