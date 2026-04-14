@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>워크아웃 앱 — 프로젝트 대시보드</title>
+<title>맥스아웃 앱 — 프로젝트 마스터보드</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#f1f5f9;color:#334155;min-height:100vh}
@@ -128,12 +128,12 @@ a:hover{text-decoration:underline}
 <body>
 
 <div class="top-nav">
-  <div class="nav-left"><span>My</span> Dashboard</div>
+  <div class="nav-left"><span>My</span> Masterboard</div>
   <div class="nav-links">
     <a href="index.html" class="nav-link">홈</a>
-    <a href="project-dashboard.html" class="nav-link">프로젝트</a>
-    <a href="workout-dashboard.html" class="nav-link active">워크아웃</a>
-    <a href="blog-upload-dashboard.html" class="nav-link">블로그</a>
+    <a href="project-masterboard.html" class="nav-link">프로젝트</a>
+    <a href="maxout-board.html" class="nav-link active">맥스아웃</a>
+    <a href="blog-upload-board.html" class="nav-link">블로그</a>
   </div>
 </div>
 
@@ -230,7 +230,7 @@ a:hover{text-decoration:underline}
 <!-- TAB: 메모 -->
 <div class="tab-content" id="tab-notes">
   <div class="card">
-    <div class="card-header"><div class="card-title">워크아웃 앱 메모</div></div>
+    <div class="card-header"><div class="card-title">맥스아웃 앱 메모</div></div>
     <textarea class="note-area" id="note-area" placeholder="자유롭게 메모하세요. 자동 저장됩니다."></textarea>
     <div style="display:flex;align-items:center;margin-top:8px">
       <button class="note-save-btn" onclick="saveNotes()">저장</button>
@@ -243,7 +243,7 @@ a:hover{text-decoration:underline}
 
 <script src="project-data.js"></script>
 <script>
-var STORAGE_KEY = 'workout_dashboard_v1';
+var STORAGE_KEY = 'maxout_masterboard_v1';
 
 var PHASES = [
   { name: 'Phase 0: 기획', icon: '📋', prefix: null, ids: ['w1','w2','w3','w4'] },
@@ -254,9 +254,9 @@ var PHASES = [
 ];
 
 var ALL_TASKS = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.tasks) ? PROJECT_DATA.tasks : [];
-var WORKOUT_TASKS = ALL_TASKS.filter(function(t){ return t.tag === '워크아웃'; });
+var MAXOUT_TASKS = ALL_TASKS.filter(function(t){ return t.tag === '맥스아웃'; });
 var ALL_SCHEDULE = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.schedule) ? PROJECT_DATA.schedule : [];
-var WORKOUT_SCHEDULE = ALL_SCHEDULE.filter(function(s){ return s.text.indexOf('[워크아웃]') !== -1; });
+var MAXOUT_SCHEDULE = ALL_SCHEDULE.filter(function(s){ return s.text.indexOf('[맥스아웃]') !== -1; });
 
 function getState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; } }
 function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
@@ -264,21 +264,21 @@ function isTaskDone(task) { var s = getState(); if (s.tasks && s.tasks[task.id] 
 
 function toggleTask(id) {
   var s = getState(); if (!s.tasks) s.tasks = {};
-  var task = WORKOUT_TASKS.find(function(t){return t.id===id;});
+  var task = MAXOUT_TASKS.find(function(t){return t.id===id;});
   s.tasks[id] = !isTaskDone(task); saveState(s); renderTasks(); updateStats();
 }
 
 function updateStats() {
   var doneCount = 0;
-  WORKOUT_TASKS.forEach(function(t){ if(isTaskDone(t)) doneCount++; });
-  var total = WORKOUT_TASKS.length, pct = Math.round(doneCount / total * 100);
+  MAXOUT_TASKS.forEach(function(t){ if(isTaskDone(t)) doneCount++; });
+  var total = MAXOUT_TASKS.length, pct = Math.round(doneCount / total * 100);
   document.getElementById('stat-done').textContent = doneCount + '/' + total;
   document.getElementById('overall-badge').textContent = doneCount + '/' + total;
   document.getElementById('task-progress').style.width = pct + '%';
   document.getElementById('task-progress-text').textContent = doneCount + ' / ' + total + ' 완료 (' + pct + '%)';
   var currentPhase = 0;
   for (var i = 0; i < PHASES.length; i++) {
-    var allDone = PHASES[i].ids.every(function(id){ var t = WORKOUT_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
+    var allDone = PHASES[i].ids.every(function(id){ var t = MAXOUT_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
     if (allDone) currentPhase = i + 1;
   }
   document.getElementById('stat-phase').textContent = currentPhase >= PHASES.length ? '완료!' : 'Phase ' + currentPhase;
@@ -287,10 +287,10 @@ function updateStats() {
 function renderTasks() {
   var container = document.getElementById('tasks-container'), html = '';
   PHASES.forEach(function(phase, idx) {
-    var tasks = phase.ids.map(function(id){ return WORKOUT_TASKS.find(function(t){return t.id===id;}); }).filter(Boolean);
+    var tasks = phase.ids.map(function(id){ return MAXOUT_TASKS.find(function(t){return t.id===id;}); }).filter(Boolean);
     var doneCnt = tasks.filter(function(t){return isTaskDone(t);}).length;
     var totalCnt = tasks.length, allDone = doneCnt === totalCnt;
-    var prevAllDone = idx === 0 ? true : PHASES[idx-1].ids.every(function(id){ var t = WORKOUT_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
+    var prevAllDone = idx === 0 ? true : PHASES[idx-1].ids.every(function(id){ var t = MAXOUT_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
     var isActive = !allDone && prevAllDone;
     var statusClass = allDone ? 'status-done' : (isActive ? 'status-active' : 'status-waiting');
     var statusText = allDone ? '완료' : (isActive ? '진행 중' : '대기');
@@ -314,9 +314,9 @@ function renderTasks() {
 
 function renderTimeline() {
   var el = document.getElementById('timeline'); el.innerHTML = '';
-  WORKOUT_SCHEDULE.forEach(function(item) {
+  MAXOUT_SCHEDULE.forEach(function(item) {
     var div = document.createElement('div'); div.className = 'timeline-item';
-    div.innerHTML = '<div class="timeline-dot ' + item.status + '"></div><div class="timeline-date">' + item.date + '</div><div class="timeline-content">' + item.text.replace('[워크아웃] ', '') + '</div>';
+    div.innerHTML = '<div class="timeline-dot ' + item.status + '"></div><div class="timeline-date">' + item.date + '</div><div class="timeline-content">' + item.text.replace('[맥스아웃] ', '') + '</div>';
     el.appendChild(div);
   });
 }

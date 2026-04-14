@@ -52,7 +52,7 @@ var PROJECT_DATA = {
     },
     {
       "id": "t7",
-      "text": "블로그 업로드 대시보드 HTML 제작",
+      "text": "블로그 업로드 마스터보드 HTML 제작",
       "done": true,
       "tag": "도구",
       "tagColor": "#3b0764"
@@ -190,25 +190,25 @@ var PROJECT_DATA = {
       "tag": "부동산",
       "tagColor": "#134e4a"
     },
-    {"id": "w1", "text": "워크아웃 앱 기획안 작성 (APP_PLAN.md)", "done": true, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w2", "text": "기술 스택 확정 (SwiftUI + CloudKit)", "done": true, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w3", "text": "핵심 기능 설계 (슈퍼세트, 스마트 과부하, 전환 기록, 자동 카운팅)", "done": true, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w4", "text": "프로젝트 관리 체계 구축 (대시보드, devlog, PROJECT_CONTEXT)", "done": true, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w5", "text": "[Phase 1] Xcode 프로젝트 셋업 (iOS + watchOS)", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w6", "text": "[Phase 1] SwiftData 모델 정의", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w7", "text": "[Phase 1] 기본 화면 구조 (탭 네비게이션)", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w8", "text": "[Phase 1] 홈 화면 + 캘린더 뷰", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w9", "text": "[Phase 1] 세트 구성 설정 화면", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w10", "text": "[Phase 2] 대형 카운터 UI (iPhone + Apple Watch)", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w11", "text": "[Phase 2] 슈퍼세트 진행 로직", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w12", "text": "[Phase 2] 탭 인터랙션 (1탭 전환 / 더블탭 정지+실패)", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w13", "text": "[Phase 2] 휴식 타이머 + 스마트 과부하 계산", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w14", "text": "[Phase 3] Apple Watch 모션 감지 카운팅", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w15", "text": "[Phase 3] 음성 인식 / 카메라 포즈 감지", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w16", "text": "[Phase 3] iPhone ↔ Watch 실시간 동기화", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w17", "text": "[Phase 4] 통계 차트 + 캘린더 뷰", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w18", "text": "[Phase 4] CloudKit 동기화", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"},
-    {"id": "w19", "text": "[Phase 4] UI 폴리싱 & TestFlight 배포", "done": false, "tag": "워크아웃", "tagColor": "#7c2d12"}
+    {"id": "w1", "text": "맥스아웃 앱 기획안 작성 (APP_PLAN.md)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w2", "text": "기술 스택 확정 (SwiftUI + CloudKit)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w3", "text": "핵심 기능 설계 (슈퍼세트, 스마트 과부하, 전환 기록, 자동 카운팅)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w4", "text": "프로젝트 관리 체계 구축 (마스터보드, devlog, PROJECT_CONTEXT)", "done": true, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w5", "text": "[Phase 1] Xcode 프로젝트 셋업 (iOS + watchOS)", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w6", "text": "[Phase 1] SwiftData 모델 정의", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w7", "text": "[Phase 1] 기본 화면 구조 (탭 네비게이션)", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w8", "text": "[Phase 1] 홈 화면 + 캘린더 뷰", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w9", "text": "[Phase 1] 세트 구성 설정 화면", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w10", "text": "[Phase 2] 대형 카운터 UI (iPhone + Apple Watch)", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w11", "text": "[Phase 2] 슈퍼세트 진행 로직", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w12", "text": "[Phase 2] 탭 인터랙션 (1탭 전환 / 더블탭 정지+실패)", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w13", "text": "[Phase 2] 휴식 타이머 + 스마트 과부하 계산", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w14", "text": "[Phase 3] Apple Watch 모션 감지 카운팅", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w15", "text": "[Phase 3] 음성 인식 / 카메라 포즈 감지", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w16", "text": "[Phase 3] iPhone ↔ Watch 실시간 동기화", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w17", "text": "[Phase 4] 통계 차트 + 캘린더 뷰", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w18", "text": "[Phase 4] CloudKit 동기화", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"},
+    {"id": "w19", "text": "[Phase 4] UI 폴리싱 & TestFlight 배포", "done": false, "tag": "맥스아웃", "tagColor": "#7c2d12"}
   ],
   "schedule": [
     {
@@ -276,11 +276,11 @@ var PROJECT_DATA = {
       "text": "Ezoic 전환 검토, 프리미엄 콘텐츠 출시",
       "status": "upcoming"
     },
-    {"date": "2026-04-13", "text": "[워크아웃] 앱 기획안 작성 완료, 기술 스택 확정", "status": "done"},
-    {"date": "2026-04~05", "text": "[워크아웃] Phase 1: Xcode 셋업 + SwiftData 모델 + 기본 UI", "status": "upcoming"},
-    {"date": "2026-05~06", "text": "[워크아웃] Phase 2: 운동 진행 핵심 기능 개발", "status": "upcoming"},
-    {"date": "2026-06", "text": "[워크아웃] Phase 3: 자동 카운팅 & 고도화", "status": "upcoming"},
-    {"date": "2026-06~07", "text": "[워크아웃] Phase 4: 통계 + CloudKit + TestFlight", "status": "upcoming"}
+    {"date": "2026-04-13", "text": "[맥스아웃] 앱 기획안 작성 완료, 기술 스택 확정", "status": "done"},
+    {"date": "2026-04~05", "text": "[맥스아웃] Phase 1: Xcode 셋업 + SwiftData 모델 + 기본 UI", "status": "upcoming"},
+    {"date": "2026-05~06", "text": "[맥스아웃] Phase 2: 운동 진행 핵심 기능 개발", "status": "upcoming"},
+    {"date": "2026-06", "text": "[맥스아웃] Phase 3: 자동 카운팅 & 고도화", "status": "upcoming"},
+    {"date": "2026-06~07", "text": "[맥스아웃] Phase 4: 통계 + CloudKit + TestFlight", "status": "upcoming"}
   ],
   "roadmap": {
     "short": {

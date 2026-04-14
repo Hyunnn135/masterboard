@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Dashboard</title>
+<title>My Masterboard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#f1f5f9;color:#334155;min-height:100vh}
@@ -75,6 +75,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .add-text{font-size:0.85rem;color:#94a3b8;font-weight:600}
 .add-sub{font-size:0.72rem;color:#cbd5e1}
 
+/* === Portfolio Timeline === */
+.timeline-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 28px}
+.timeline-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px}
+.timeline-title{font-size:0.95rem;font-weight:700;color:#1e293b}
+.timeline-sub{font-size:0.72rem;color:#94a3b8}
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,#e2e8f0 0%,#f1f5f9 100%);border-radius:2px}
+.tl-item{position:relative;padding:10px 0 14px 16px;border-left:0}
+.tl-item::before{content:'';position:absolute;left:-22px;top:14px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #cbd5e1;box-sizing:border-box}
+.tl-item.blue::before{border-color:#3b82f6}
+.tl-item.purple::before{border-color:#8b5cf6}
+.tl-item.green::before{border-color:#22c55e}
+.tl-item.orange::before{border-color:#f97316}
+.tl-item.gray::before{border-color:#94a3b8}
+.tl-date{font-size:0.7rem;color:#94a3b8;font-weight:700;letter-spacing:0.4px;margin-bottom:4px}
+.tl-content{font-size:0.86rem;color:#334155;line-height:1.55}
+.tl-content strong{color:#1e293b;font-weight:700}
+.tl-tag{display:inline-block;font-size:0.62rem;padding:2px 8px;border-radius:20px;margin-left:6px;font-weight:600;vertical-align:middle}
+.tl-tag.blue{background:rgba(59,130,246,0.1);color:#2563eb}
+.tl-tag.purple{background:rgba(139,92,246,0.1);color:#7c3aed}
+.tl-tag.green{background:rgba(34,197,94,0.1);color:#16a34a}
+.tl-tag.orange{background:rgba(249,115,22,0.1);color:#ea580c}
+.tl-tag.gray{background:#f1f5f9;color:#64748b}
+.tl-meta{font-size:0.7rem;color:#94a3b8;margin-top:3px}
+
 /* Mobile */
 @media(max-width:640px){
   .top-nav{padding:0 16px;height:48px}
@@ -91,12 +116,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 <body>
 
 <div class="top-nav">
-  <div class="nav-left"><span>My</span> Dashboard</div>
+  <div class="nav-left"><span>My</span> Masterboard</div>
   <div class="nav-links">
     <a href="index.html" class="nav-link active">홈</a>
-    <a href="project-dashboard.html" class="nav-link">프로젝트</a>
-    <a href="workout-dashboard.html" class="nav-link">워크아웃</a>
-    <a href="blog-upload-dashboard.html" class="nav-link">블로그</a>
+    <a href="project-masterboard.html" class="nav-link">프로젝트</a>
+    <a href="maxout-board.html" class="nav-link">맥스아웃</a>
+    <a href="blog-upload-board.html" class="nav-link">블로그</a>
   </div>
   <span class="nav-date" id="nav-date"></span>
 </div>
@@ -128,7 +153,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
     <div class="section-label">활성 프로젝트</div>
     <div class="project-grid">
 
-      <a href="project-dashboard.html" class="project-card blue">
+      <a href="project-masterboard.html" class="project-card blue">
         <div class="card-top">
           <div class="card-icon blue">💰</div>
           <div class="card-info">
@@ -151,7 +176,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
         </div>
       </a>
 
-      <a href="blog-upload-dashboard.html" class="project-card purple">
+      <a href="blog-upload-board.html" class="project-card purple">
         <div class="card-top">
           <div class="card-icon purple">✍️</div>
           <div class="card-info">
@@ -196,11 +221,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
         </div>
       </a>
 
-      <a href="workout-dashboard.html" class="project-card orange">
+      <a href="maxout-board.html" class="project-card orange">
         <div class="card-top">
           <div class="card-icon orange">💪</div>
           <div class="card-info">
-            <div class="card-title">워크아웃 앱</div>
+            <div class="card-title">맥스아웃 앱</div>
             <div class="card-status"><span class="status-dot building"></span> 기획 완료</div>
           </div>
         </div>
@@ -226,6 +251,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
         <div class="add-sub">준비되면 여기에 추가됩니다</div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Portfolio Timeline (recent activity / milestones) -->
+  <div class="section">
+    <div class="section-label">📅 포트폴리오 타임라인</div>
+    <div class="timeline-wrap">
+      <div class="timeline-head">
+        <div class="timeline-title">최근 활동 & 마일스톤</div>
+        <div class="timeline-sub">개발 일지(devlog) 기반 · 최신순</div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item gray">
+          <div class="tl-date">2026-04-14</div>
+          <div class="tl-content">
+            <strong>마스터 작업 규칙(WORKFLOW_RULES) 정립</strong> — 5대 핵심 지침 + 모든 프로젝트 devlog 표준 템플릿 배포, 메모리 0순위 등록
+            <span class="tl-tag gray">프로세스</span>
+          </div>
+          <div class="tl-meta">마스터보드 · 워크플로우</div>
+        </div>
+
+        <div class="tl-item orange">
+          <div class="tl-date">2026-04-13</div>
+          <div class="tl-content">
+            <strong>맥스아웃 앱 기획 완료</strong> — 푸시업+풀업 슈퍼세트 전용, SwiftUI + CloudKit 스택 확정, Phase 0 종료
+            <span class="tl-tag orange">기획</span>
+          </div>
+          <div class="tl-meta">맥스아웃 앱 · Phase 0</div>
+        </div>
+
+        <div class="tl-item purple">
+          <div class="tl-date">2026-04-14</div>
+          <div class="tl-content">
+            <strong>블로그 #007 예약 발행</strong> — 네이버 블로그 시리즈 진행 중 (10/65)
+            <span class="tl-tag purple">블로그</span>
+          </div>
+          <div class="tl-meta">월급연구소 · 블로그</div>
+        </div>
+
+        <div class="tl-item blue">
+          <div class="tl-date">2026-04-12</div>
+          <div class="tl-content">
+            <strong>구글 색인 104개 URL 일괄 요청</strong> — Indexing API 자동화 스크립트로 전체 사이트 색인 요청 완료
+            <span class="tl-tag blue">SEO</span>
+          </div>
+          <div class="tl-meta">월급연구소 · SEO</div>
+        </div>
+
+        <div class="tl-item blue">
+          <div class="tl-date">2026-04-12</div>
+          <div class="tl-content">
+            <strong>내부 링크 30페이지 + FAQ 스키마 11페이지</strong> — 사이트 SEO 강화 배포
+            <span class="tl-tag blue">SEO</span>
+          </div>
+          <div class="tl-meta">월급연구소 · SEO</div>
+        </div>
+
+        <div class="tl-item green">
+          <div class="tl-date">2026-04-12</div>
+          <div class="tl-content">
+            <strong>부동산연구소 사이트 초기 구축</strong> — 5페이지 (index, mortgage, 양도세, 전세전환, 청약점수) 완성
+            <span class="tl-tag green">신규 사이트</span>
+          </div>
+          <div class="tl-meta">부동산연구소 · 초기 구축</div>
+        </div>
+
+      </div>
     </div>
   </div>
 
