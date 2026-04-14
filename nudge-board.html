@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nudge (넛지) — 프로젝트 마스터보드</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:#f1f5f9;color:#334155;min-height:100vh}
+a{color:#3b82f6;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* === Shared Nav === */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:0 24px;display:flex;align-items:center;height:52px}
+.nav-left{font-size:1.05rem;font-weight:800;color:#1e293b;margin-right:auto;white-space:nowrap}
+.nav-left span{color:#3b82f6}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{padding:6px 14px;background:transparent;border:1px solid #e2e8f0;border-radius:8px;color:#64748b;font-size:0.76rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+.nav-link:hover{background:#f1f5f9;color:#334155;text-decoration:none}
+.nav-link.active{background:#14b8a6;border-color:#14b8a6;color:#fff}
+.nav-date{font-size:0.72rem;color:#94a3b8;margin-left:10px;white-space:nowrap}
+
+/* Layout */
+.container{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+
+/* Hero banner — Nudge 정체성 강조 */
+.hero{background:linear-gradient(135deg,#14b8a6 0%,#0d9488 100%);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:22px;position:relative;overflow:hidden}
+.hero::before{content:'🫱';position:absolute;right:-10px;bottom:-20px;font-size:9rem;opacity:0.15}
+.hero-eyebrow{font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:0.85;margin-bottom:6px}
+.hero-title{font-size:1.6rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.hero-sub{font-size:0.92rem;opacity:0.92;line-height:1.55;max-width:640px}
+.hero-philosophy{display:inline-block;margin-top:14px;padding:6px 14px;background:rgba(255,255,255,0.18);border-radius:20px;font-size:0.78rem;font-weight:600}
+
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:#1e293b}
+.stat-label{font-size:0.73rem;color:#94a3b8;margin-top:4px}
+.stat-num.teal{color:#0d9488}
+
+/* Tabs */
+.tabs{display:flex;gap:2px;margin-bottom:24px;background:#fff;border-radius:10px;padding:4px;border:1px solid #e2e8f0}
+.tab{flex:1;padding:10px 12px;font-size:0.82rem;font-weight:600;color:#94a3b8;cursor:pointer;border-radius:8px;transition:all 0.15s;text-align:center;white-space:nowrap}
+.tab:hover{color:#334155}
+.tab.active{color:#fff;background:#14b8a6}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Cards */
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:20px}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card-title{font-size:0.95rem;font-weight:700;color:#1e293b;display:flex;align-items:center;gap:8px}
+.card-badge{font-size:0.7rem;padding:3px 10px;border-radius:20px;font-weight:600}
+.badge-teal{background:rgba(20,184,166,0.1);color:#0d9488}
+.badge-green{background:rgba(34,197,94,0.1);color:#16a34a}
+
+/* Progress */
+.progress-bar{height:6px;background:#e2e8f0;border-radius:3px;margin:12px 0 6px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width 0.5s;background:linear-gradient(90deg,#14b8a6,#2dd4bf)}
+.progress-text{font-size:0.75rem;color:#94a3b8}
+
+/* Phase Group */
+.phase-group{margin-bottom:24px}
+.phase-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9}
+.phase-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
+.phase-name{font-size:0.88rem;font-weight:700;color:#1e293b}
+.phase-count{font-size:0.68rem;padding:2px 8px;border-radius:12px;font-weight:600;margin-left:auto}
+.phase-status{font-size:0.65rem;padding:2px 8px;border-radius:12px;font-weight:700;margin-left:6px}
+.status-waiting{background:#f1f5f9;color:#94a3b8}
+.status-active{background:rgba(20,184,166,0.1);color:#0d9488}
+.status-done{background:rgba(34,197,94,0.1);color:#16a34a}
+
+/* Task list */
+.task-list{list-style:none}
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;font-size:0.84rem;line-height:1.5;cursor:pointer;transition:background 0.15s}
+.task-item:hover{background:#f8fafc}
+.task-item.done{opacity:0.45}
+.task-item.done .task-text{text-decoration:line-through}
+.check-box{width:18px;height:18px;border:2px solid #cbd5e1;border-radius:5px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.check-box.checked{background:#14b8a6;border-color:#14b8a6}
+.check-box.checked::after{content:'\2713';color:white;font-size:11px;font-weight:bold}
+.task-text{flex:1;color:#334155}
+
+/* Timeline */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e2e8f0}
+.timeline-item{position:relative;padding-bottom:20px}
+.timeline-dot{position:absolute;left:-20px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid #fff}
+.timeline-dot.done{background:#22c55e}
+.timeline-dot.current{background:#14b8a6;box-shadow:0 0 8px rgba(20,184,166,0.3)}
+.timeline-dot.upcoming{background:#cbd5e1}
+.timeline-date{font-size:0.72rem;color:#94a3b8;margin-bottom:2px}
+.timeline-content{font-size:0.85rem;color:#334155}
+
+/* Tech Stack */
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.tech-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px}
+.tech-label{font-size:0.72rem;color:#94a3b8}
+.tech-value{font-size:0.84rem;color:#1e293b;font-weight:600}
+
+/* Principles grid — Nudge 핵심 철학 시각화 */
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.principle-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px}
+.principle-title{font-size:0.82rem;font-weight:700;color:#0d9488;margin-bottom:4px}
+.principle-desc{font-size:0.76rem;color:#64748b;line-height:1.5}
+.excluded-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.excluded-list li{font-size:0.72rem;padding:4px 10px;background:#fef2f2;border:1px solid #fecaca;border-radius:20px;color:#b91c1c;font-weight:600}
+.excluded-list li::before{content:'✕  ';color:#ef4444}
+
+/* Ideas */
+.idea-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px;margin-bottom:12px;transition:all 0.15s}
+.idea-card:hover{border-color:#14b8a6}
+.idea-title{font-size:0.9rem;font-weight:700;color:#1e293b;margin-bottom:6px}
+.idea-desc{font-size:0.78rem;color:#64748b;line-height:1.5}
+
+/* Note */
+.note-area{width:100%;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;color:#334155;font-size:0.84rem;font-family:inherit;resize:vertical;min-height:80px}
+.note-area:focus{outline:none;border-color:#14b8a6}
+.note-save-btn{margin-top:8px;padding:8px 16px;background:#14b8a6;color:white;border:none;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer}
+.note-save-btn:hover{background:#0d9488}
+.note-status{font-size:0.75rem;color:#16a34a;margin-left:8px;opacity:0}
+
+/* vs comparison block */
+.vs-block{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.vs-col{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px}
+.vs-col.nudge{border-color:#5eead4;background:rgba(20,184,166,0.06)}
+.vs-col.maxout{border-color:#fdba74;background:rgba(249,115,22,0.06)}
+.vs-name{font-size:0.82rem;font-weight:800;margin-bottom:8px}
+.vs-col.nudge .vs-name{color:#0d9488}
+.vs-col.maxout .vs-name{color:#ea580c}
+.vs-row{display:flex;gap:8px;font-size:0.76rem;line-height:1.5;padding:5px 0;border-top:1px dashed #e2e8f0}
+.vs-row:first-of-type{border-top:0}
+.vs-row .vs-label{width:64px;flex-shrink:0;color:#94a3b8;font-weight:600}
+.vs-row .vs-val{color:#334155}
+
+/* Mobile */
+@media(max-width:768px){
+  .top-nav{padding:0 16px;height:48px}
+  .nav-left{font-size:0.95rem}
+  .nav-link{padding:5px 10px;font-size:0.72rem}
+  .nav-links{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-date{display:none}
+  .container{padding:20px 14px}
+  .hero{padding:22px 20px}
+  .hero-title{font-size:1.3rem}
+  .hero-sub{font-size:0.85rem}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:10px}
+  .stat-card{padding:14px 10px}
+  .stat-num{font-size:1.4rem}
+  .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:9px 10px;font-size:0.76rem;min-width:0}
+  .card{padding:18px 16px}
+  .tech-grid{grid-template-columns:1fr}
+  .vs-block{grid-template-columns:1fr}
+}
+@media(max-width:380px){
+  .stats-row{grid-template-columns:1fr 1fr;gap:8px}
+  .stat-num{font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <div class="nav-left"><span>My</span> Masterboard</div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">홈</a>
+    <a href="project-masterboard.html" class="nav-link">프로젝트</a>
+    <a href="maxout-board.html" class="nav-link">맥스아웃</a>
+    <a href="nudge-board.html" class="nav-link active">Nudge</a>
+    <a href="blog-upload-board.html" class="nav-link">블로그</a>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">iOS · watchOS · Widget-First</div>
+  <div class="hero-title">🫱 Nudge (넛지)</div>
+  <div class="hero-sub">위젯 한 번 탭 = 운동 1회 기록. 목표·세트·스케줄·알림 일체 없음. "딱 한 개만 해보자"는 마음을 배신하지 않는 초미니멀 카운터 앱.</div>
+  <div class="hero-philosophy">🔄 맥스아웃과 정반대 철학 — 시작 문턱 제거에만 집중</div>
+</div>
+
+<!-- Stats -->
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-num teal" id="stat-phase">Phase 0</div>
+    <div class="stat-label">현재 단계</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-done">2/12</div>
+    <div class="stat-label">작업 완료</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-tech">3개</div>
+    <div class="stat-label">운동 종목<br>(푸시업/풀업/스쿼트)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num" id="stat-target">4~5주</div>
+    <div class="stat-label">예상 기간</div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('tasks')">작업 현황</div>
+  <div class="tab" onclick="switchTab('philosophy')">철학</div>
+  <div class="tab" onclick="switchTab('schedule')">일정표</div>
+  <div class="tab" onclick="switchTab('tech')">기술 스택</div>
+  <div class="tab" onclick="switchTab('ideas')">아이디어</div>
+  <div class="tab" onclick="switchTab('notes')">메모</div>
+</div>
+
+<!-- TAB: 작업 현황 -->
+<div class="tab-content active" id="tab-tasks">
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-header" style="margin-bottom:8px">
+      <div class="card-title">전체 진행률</div>
+      <span class="card-badge badge-teal" id="overall-badge">2/12</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="task-progress" style="width:0%"></div></div>
+    <div class="progress-text" id="task-progress-text">0%</div>
+  </div>
+  <div id="tasks-container"></div>
+</div>
+
+<!-- TAB: 철학 -->
+<div class="tab-content" id="tab-philosophy">
+  <div class="card">
+    <div class="card-header"><div class="card-title">핵심 원칙 (Principles)</div><span class="card-badge badge-teal">기획 단계</span></div>
+    <div class="principles">
+      <div class="principle-card">
+        <div class="principle-title">1. 한 동작으로 끝난다</div>
+        <div class="principle-desc">위젯 탭 1회 → 기록 완료. 확인 다이얼로그 없음. 마찰 0에 수렴.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-title">2. 칭찬 최소화, 숫자 증가만</div>
+        <div class="principle-desc">"잘했어요!" 팝업 없음. 숫자가 올라가는 것 자체가 보상. 미세한 햅틱 + 카운트업 애니메이션만.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-title">3. 튜토리얼 강요 금지</div>
+        <div class="principle-desc">처음 여는 사람도 운동 고르기 → 바로 +1 가능. 설명 화면 없음.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-title">4. 실수 회복은 앱 내에만</div>
+        <div class="principle-desc">오늘 기록 -1 취소는 앱 내 제공. 위젯에는 없음 — 기록 마찰 제거가 우선.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-title">5. "3개 고정" 원칙</div>
+        <div class="principle-desc">푸시업·풀업·스쿼트. 맨몸으로 어디서나 가능한 운동만. 추가 요청 와도 동시 노출은 3개까지.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-title">6. 없는 것이 정체성</div>
+        <div class="principle-desc">미니멀리즘이 앱 그 자체. 기능 추가 유혹에 이 문서를 방어선으로 사용.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">의도적으로 넣지 않을 것</div></div>
+    <ul class="excluded-list">
+      <li>목표 설정</li>
+      <li>세트/회차 개념</li>
+      <li>주간 스케줄</li>
+      <li>리마인더 푸시</li>
+      <li>폼/자세 체크</li>
+      <li>타이머/휴식 시간</li>
+      <li>소셜/랭킹</li>
+      <li>프리미엄 구독 (MVP)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">맥스아웃 vs Nudge — 사용자 여정의 다른 단계</div></div>
+    <div class="vs-block">
+      <div class="vs-col nudge">
+        <div class="vs-name">🫱 Nudge</div>
+        <div class="vs-row"><div class="vs-label">대상</div><div class="vs-val">운동 시작 자체가 어려운 사람</div></div>
+        <div class="vs-row"><div class="vs-label">철학</div><div class="vs-val">딱 하나만 한다</div></div>
+        <div class="vs-row"><div class="vs-label">복잡도</div><div class="vs-val">탭 1회 = +1</div></div>
+        <div class="vs-row"><div class="vs-label">기록 단위</div><div class="vs-val">개별 횟수 (집계는 자동)</div></div>
+        <div class="vs-row"><div class="vs-label">주 UI</div><div class="vs-val">홈 화면 위젯</div></div>
+      </div>
+      <div class="vs-col maxout">
+        <div class="vs-name">💪 맥스아웃</div>
+        <div class="vs-row"><div class="vs-label">대상</div><div class="vs-val">이미 운동 중인 점진적 과부하 추구자</div></div>
+        <div class="vs-row"><div class="vs-label">철학</div><div class="vs-val">최대치까지 짜낸다</div></div>
+        <div class="vs-row"><div class="vs-label">복잡도</div><div class="vs-val">슈퍼세트 · 스마트 과부하</div></div>
+        <div class="vs-row"><div class="vs-label">기록 단위</div><div class="vs-val">세트/운동/주간</div></div>
+        <div class="vs-row"><div class="vs-label">주 UI</div><div class="vs-val">앱 내 카운터 화면</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: 일정표 -->
+<div class="tab-content" id="tab-schedule">
+  <div class="card">
+    <div class="card-header"><div class="card-title">개발 일정</div></div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</div>
+
+<!-- TAB: 기술 스택 -->
+<div class="tab-content" id="tab-tech">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">기술 스택</div>
+      <span class="card-badge badge-teal">초안</span>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item"><div><div class="tech-label">언어</div><div class="tech-value">Swift</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">UI</div><div class="tech-value">SwiftUI</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">위젯</div><div class="tech-value">WidgetKit + App Intents</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">인터랙티브 위젯</div><div class="tech-value">iOS 17+ (필수)</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">로컬 DB</div><div class="tech-value">SwiftData</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">앱↔위젯 공유</div><div class="tech-value">App Group</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">클라우드</div><div class="tech-value">CloudKit</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">차트</div><div class="tech-value">Swift Charts</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">Watch</div><div class="tech-value">SwiftUI (watchOS)</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">Watch 통신</div><div class="tech-value">WatchConnectivity (필요 시)</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">타겟</div><div class="tech-value">iOS 17+ / watchOS 10+</div></div></div>
+      <div class="tech-item"><div><div class="tech-label">컬러</div><div class="tech-value">Mint/Teal (#14b8a6)</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-title">🚨 기술 리스크 (개발 전 검증 필요)</div></div>
+    <ul style="list-style:none;font-size:0.84rem;line-height:1.7;color:#334155">
+      <li>• iOS 17 Interactive Widget의 홈 화면·잠금 화면 탭 반응성 실기 확인</li>
+      <li>• App Group + SwiftData 공유가 문제없이 동작하는지 프로토타입 검증</li>
+      <li>• CloudKit 단독 동기화로 iPhone ↔ Watch 지연 허용 가능한지 판단</li>
+      <li>• 위젯 탭 직후 숫자 반영 지연 (<code>WidgetCenter.reloadAllTimelines</code> 타이밍)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB: 아이디어 -->
+<div class="tab-content" id="tab-ideas">
+  <div class="card">
+    <div class="card-header"><div class="card-title">MVP 이후 고려사항</div></div>
+    <div id="ideas-list">
+      <div class="idea-card"><div class="idea-title">Live Activity / Dynamic Island</div><div class="idea-desc">운동 세션 중 실시간 표시, 다이나믹 아일랜드에서 바로 탭 → +1</div></div>
+      <div class="idea-card"><div class="idea-title">잠금 화면 위젯</div><div class="idea-desc">iOS 16+ 잠금 화면에서도 탭 가능 여부 검증 후 지원</div></div>
+      <div class="idea-card"><div class="idea-title">HealthKit 연동</div><div class="idea-desc">기록을 Apple 건강 앱에 자동 반영 (선택 사항)</div></div>
+      <div class="idea-card"><div class="idea-title">운동 추가 옵션</div><div class="idea-desc">버피/런지 등 요청 시 추가. 단 동시 노출은 항상 3개 유지 (미니멀리즘)</div></div>
+      <div class="idea-card"><div class="idea-title">맥스아웃 연동 / 크로스 프로모션</div><div class="idea-desc">Nudge로 습관 잡힌 사용자에게 맥스아웃을 추천. 사용자 여정 설계 기반 자연스러운 전환</div></div>
+      <div class="idea-card"><div class="idea-title">"베스트 일" 축하 (앱 재방문 시)</div><div class="idea-desc">알림이 아니라 앱을 다시 열었을 때만 한 번 표시. 푸시 스팸 금지 원칙 준수</div></div>
+      <div class="idea-card"><div class="idea-title">앱 아이콘 & 컨셉</div><div class="idea-desc">손가락 탭 제스처 추상화 or "+1" 심볼. 과하지 않은 여백·부드러운 톤</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: 메모 -->
+<div class="tab-content" id="tab-notes">
+  <div class="card">
+    <div class="card-header"><div class="card-title">Nudge 메모</div></div>
+    <textarea class="note-area" id="note-area" placeholder="자유롭게 메모하세요. 자동 저장됩니다."></textarea>
+    <div style="display:flex;align-items:center;margin-top:8px">
+      <button class="note-save-btn" onclick="saveNotes()">저장</button>
+      <span class="note-status" id="note-status">저장됨</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="project-data.js"></script>
+<script>
+var STORAGE_KEY = 'nudge_masterboard_v1';
+
+var PHASES = [
+  { name: 'Phase 0: 기획', icon: '📋', ids: ['n1','n2','n3'] },
+  { name: 'Phase 1: 기초', icon: '🏗️', ids: ['n4','n5','n6'] },
+  { name: 'Phase 2: 위젯', icon: '🫱', ids: ['n7','n8'] },
+  { name: 'Phase 3: Watch', icon: '⌚', ids: ['n9','n10'] },
+  { name: 'Phase 4: 마무리', icon: '✨', ids: ['n11','n12'] }
+];
+
+var ALL_TASKS = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.tasks) ? PROJECT_DATA.tasks : [];
+var NUDGE_TASKS = ALL_TASKS.filter(function(t){ return t.tag === 'Nudge'; });
+var ALL_SCHEDULE = (typeof PROJECT_DATA !== 'undefined' && PROJECT_DATA.schedule) ? PROJECT_DATA.schedule : [];
+var NUDGE_SCHEDULE = ALL_SCHEDULE.filter(function(s){ return s.text.indexOf('[Nudge]') !== -1; });
+
+function getState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { return {}; } }
+function saveState(s) { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+function isTaskDone(task) { var s = getState(); if (s.tasks && s.tasks[task.id] !== undefined) return s.tasks[task.id]; return task.done; }
+
+function toggleTask(id) {
+  var s = getState(); if (!s.tasks) s.tasks = {};
+  var task = NUDGE_TASKS.find(function(t){return t.id===id;});
+  s.tasks[id] = !isTaskDone(task); saveState(s); renderTasks(); updateStats();
+}
+
+function updateStats() {
+  var doneCount = 0;
+  NUDGE_TASKS.forEach(function(t){ if(isTaskDone(t)) doneCount++; });
+  var total = NUDGE_TASKS.length, pct = total ? Math.round(doneCount / total * 100) : 0;
+  document.getElementById('stat-done').textContent = doneCount + '/' + total;
+  document.getElementById('overall-badge').textContent = doneCount + '/' + total;
+  document.getElementById('task-progress').style.width = pct + '%';
+  document.getElementById('task-progress-text').textContent = doneCount + ' / ' + total + ' 완료 (' + pct + '%)';
+  var currentPhase = 0;
+  for (var i = 0; i < PHASES.length; i++) {
+    var allDone = PHASES[i].ids.every(function(id){ var t = NUDGE_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
+    if (allDone) currentPhase = i + 1;
+  }
+  document.getElementById('stat-phase').textContent = currentPhase >= PHASES.length ? '완료!' : 'Phase ' + currentPhase;
+}
+
+function renderTasks() {
+  var container = document.getElementById('tasks-container'), html = '';
+  PHASES.forEach(function(phase, idx) {
+    var tasks = phase.ids.map(function(id){ return NUDGE_TASKS.find(function(t){return t.id===id;}); }).filter(Boolean);
+    if (!tasks.length) return;
+    var doneCnt = tasks.filter(function(t){return isTaskDone(t);}).length;
+    var totalCnt = tasks.length, allDone = doneCnt === totalCnt;
+    var prevAllDone = idx === 0 ? true : PHASES[idx-1].ids.every(function(id){ var t = NUDGE_TASKS.find(function(wt){return wt.id===id;}); return t && isTaskDone(t); });
+    var isActive = !allDone && prevAllDone;
+    var statusClass = allDone ? 'status-done' : (isActive ? 'status-active' : 'status-waiting');
+    var statusText = allDone ? '완료' : (isActive ? '진행 중' : '대기');
+
+    html += '<div class="phase-group"><div class="phase-header">';
+    html += '<div class="phase-icon" style="background:rgba(20,184,166,0.08)">' + phase.icon + '</div>';
+    html += '<div class="phase-name">' + phase.name + '</div>';
+    html += '<span class="phase-status ' + statusClass + '">' + statusText + '</span>';
+    html += '<div class="phase-count" style="background:rgba(20,184,166,0.1);color:#0d9488">' + doneCnt + '/' + totalCnt + '</div>';
+    html += '</div><ul class="task-list">';
+    tasks.filter(function(t){return !isTaskDone(t);}).forEach(function(t) {
+      html += '<li class="task-item" onclick="toggleTask(\'' + t.id + '\')"><div class="check-box"></div><span class="task-text">' + t.text.replace(/\[Phase \d\] /, '') + '</span></li>';
+    });
+    tasks.filter(function(t){return isTaskDone(t);}).forEach(function(t) {
+      html += '<li class="task-item done" onclick="toggleTask(\'' + t.id + '\')"><div class="check-box checked"></div><span class="task-text">' + t.text.replace(/\[Phase \d\] /, '') + '</span></li>';
+    });
+    html += '</ul></div>';
+  });
+  container.innerHTML = html;
+}
+
+function renderTimeline() {
+  var el = document.getElementById('timeline'); el.innerHTML = '';
+  if (!NUDGE_SCHEDULE.length) { el.innerHTML = '<div style="color:#94a3b8;font-size:0.85rem">일정 데이터 없음</div>'; return; }
+  NUDGE_SCHEDULE.forEach(function(item) {
+    var div = document.createElement('div'); div.className = 'timeline-item';
+    div.innerHTML = '<div class="timeline-dot ' + item.status + '"></div><div class="timeline-date">' + item.date + '</div><div class="timeline-content">' + item.text.replace('[Nudge] ', '') + '</div>';
+    el.appendChild(div);
+  });
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelector('.tab[onclick*="\'' + name + '\'"]').classList.add('active');
+}
+
+function saveNotes() { var s = getState(); s.notes = document.getElementById('note-area').value; saveState(s); var st = document.getElementById('note-status'); st.style.opacity='1'; setTimeout(function(){st.style.opacity='0';},2000); }
+function loadNotes() { var s = getState(); if (s.notes) document.getElementById('note-area').value = s.notes; }
+document.getElementById('note-area').addEventListener('input', function() { clearTimeout(this._t); this._t = setTimeout(saveNotes, 1000); });
+
+renderTasks(); updateStats(); renderTimeline(); loadNotes();
+</script>
+</body>
+</html>
