@@ -1,5 +1,7 @@
 window.PROJECT_DATA = {
   "lastUpdated": "2026-04-15",
+  // 2026-04-15 22시 갱신 — Nudge 위젯 편집 UI + 아이콘 + Phase 4 통계
+
   "stats": {
     "pages": 106,
     "indexed": 104,
@@ -438,7 +440,21 @@ window.PROJECT_DATA = {
     {
       "id": "n8b",
       "text": "[Phase 1~2] 시뮬레이터 실기 검증 (위젯 탭 → 숫자 반영, 앱↔위젯 동기화)",
-      "done": false,
+      "done": true,
+      "tag": "Nudge",
+      "tagColor": "#0d9488"
+    },
+    {
+      "id": "n8c",
+      "text": "[Phase 2] 위젯 꾹 눌러 편집 UI (ExerciseChoice AppEnum + WidgetConfigurationIntent, 소형=AppIntentConfig / 중형=Static 분리)",
+      "done": true,
+      "tag": "Nudge",
+      "tagColor": "#0d9488"
+    },
+    {
+      "id": "n8d",
+      "text": "[Design] 앱 아이콘 A안(Ripple Tap) 적용 — light/dark/tinted 3종 1024 PNG",
+      "done": true,
       "tag": "Nudge",
       "tagColor": "#0d9488"
     },
@@ -458,8 +474,8 @@ window.PROJECT_DATA = {
     },
     {
       "id": "n11",
-      "text": "[Phase 4] 일/주/월/연 통계 화면 (Swift Charts)",
-      "done": false,
+      "text": "[Phase 4] 주/월/연 통계 화면 (Swift Charts 스택 바 + 12주 히트맵 + TabView)",
+      "done": true,
       "tag": "Nudge",
       "tagColor": "#0d9488"
     },
@@ -621,6 +637,16 @@ window.PROJECT_DATA = {
     {
       "date": "2026-04-15",
       "text": "[Nudge] Phase 1~2 핵심 구현: App Group + SharedStore + 메인 ContentView + Interactive Widget(3버튼, 탭=+1). Watch 타겟 임시 제외. 시뮬레이터 실기 검증 대기",
+      "status": "done"
+    },
+    {
+      "date": "2026-04-15",
+      "text": "[Nudge] 시뮬 실기 검증 통과: +1/−1, 세그먼트 운동 전환, 중형 위젯 3개 독립 탭, 위젯→앱 동기화 OK. 햅틱은 실기기에서 재확인 예정",
+      "status": "done"
+    },
+    {
+      "date": "2026-04-15",
+      "text": "[Nudge] 위젯 편집 UI 추가(소형=AppIntentConfiguration, 운동 선택). 앱 아이콘 A안 light/dark/tinted 적용. Phase 4 통계(주/월/연 스택 바 + 12주 히트맵) + TabView 완료",
       "status": "done"
     },
     {
