@@ -1,4 +1,4 @@
-[
+window.DEVLOG_INDEX = [
   {
     "file": "2026-04-18-masterboard-2.md",
     "date": "2026-04-18",
@@ -119,4 +119,4 @@
     "project": "maxout",
     "title": "개발일지 #001 — 프로젝트 시작 & 기획"
   }
-]
+];

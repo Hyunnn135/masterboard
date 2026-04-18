@@ -213,6 +213,7 @@ section { margin-bottom: 44px; }
 </main>
 
 <script src="project-data.js"></script>
+<script src="devlog/index.js"></script>
 <script>
 (function () {
   const data = window.PROJECT_DATA;
@@ -290,13 +291,11 @@ section { margin-bottom: 44px; }
   }).join('');
 
   // ---------- Recent devlog ----------
-  // TODO(Phase 3 이후): masterboard/devlog/index.json 자동 생성 도입
-  // 임시로 최근 3개 하드코딩 — devlog 추가 시 index.html 갱신 필요.
-  const recentDevlog = [
-    { file: '2026-04-18-salarykorea.md', date: '2026-04-18', project: 'salarykorea', title: '수익화 보수 리뷰 + 5개 긴급액션 수립' },
-    { file: '2026-04-17-nudge-2.md',     date: '2026-04-17', project: 'nudge',       title: 'handleRemote WidgetCenter 가드 버그 수정' },
-    { file: '2026-04-17-nudge.md',       date: '2026-04-17', project: 'nudge',       title: 'NudgeSync 3-copy 드리프트 정합화' },
-  ];
+  // window.DEVLOG_INDEX (devlog/index.js) 에서 최신 3개 자동 렌더.
+  // 갱신: `python3 update-devlog-index.py` 실행 시 index.js 재생성.
+  const allDevlog = (window.DEVLOG_INDEX || []).slice()
+    .sort((a,b) => (b.date+b.file).localeCompare(a.date+a.file));
+  const recentDevlog = allDevlog.slice(0, 3);
   document.getElementById('devlogList').innerHTML = recentDevlog.map(d => {
     const p = projectBySlug[d.project] || {};
     const color = p.themeColor || '#64748b';

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>프로젝트 상세 — 마스터보드</title>
+<script src="project-data.js"></script>
+<script src="devlog/index.js"></script>
+<style>
+  :root {
+    --bg:#f8fafc; --fg:#0f172a; --mute:#64748b; --line:#e2e8f0;
+    --card:#ffffff; --accent:#3b82f6;
+    --accent-bg:rgba(59,130,246,0.08);
+    --high:#dc2626; --mid:#d97706; --low:#94a3b8;
+  }
+  * { box-sizing:border-box; }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",sans-serif;
+    background:var(--bg); color:var(--fg);
+    margin:0; padding:0; line-height:1.55;
+  }
+  .wrap { max-width:960px; margin:0 auto; padding:24px 20px 80px; }
+  a { color:inherit; text-decoration:none; }
+  .back {
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; color:var(--mute); margin-bottom:16px;
+  }
+  .back:hover { color:var(--fg); }
+
+  /* 헤더 */
+  header.hero {
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:28px 28px 24px; margin-bottom:20px;
+    border-left:4px solid var(--accent);
+  }
+  .hero-title {
+    display:flex; align-items:center; gap:14px; margin-bottom:6px;
+  }
+  .hero-icon { font-size:36px; line-height:1; }
+  .hero-name { font-size:28px; font-weight:700; letter-spacing:-0.02em; }
+  .hero-paused {
+    font-size:11px; padding:3px 8px; background:#f1f5f9; color:var(--mute);
+    border-radius:999px; margin-left:8px; font-weight:500;
+  }
+  .hero-oneliner { color:var(--mute); font-size:15px; margin-bottom:18px; }
+  .hero-meta {
+    display:flex; flex-wrap:wrap; gap:16px; font-size:13px; color:var(--mute);
+    padding-top:14px; border-top:1px dashed var(--line);
+  }
+  .hero-meta strong { color:var(--fg); font-weight:600; }
+
+  /* Phase 타임라인 */
+  .phases {
+    display:flex; gap:0; margin-top:16px; background:var(--accent-bg);
+    border-radius:10px; padding:6px; flex-wrap:wrap;
+  }
+  .phase-item {
+    flex:1 1 0; min-width:140px;
+    padding:8px 12px; font-size:12px; color:var(--mute);
+    border-radius:7px; text-align:center;
+  }
+  .phase-item.active {
+    background:var(--card); color:var(--fg); font-weight:600;
+    box-shadow:0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  /* linked docs */
+  .docs-row {
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;
+  }
+  .doc-chip {
+    font-size:12px; padding:5px 11px; background:#f1f5f9;
+    border-radius:999px; color:var(--mute);
+  }
+  .doc-chip:hover { background:#e2e8f0; color:var(--fg); }
+  .doc-chip code { font-family:inherit; }
+
+  /* 섹션 */
+  section.group {
+    background:var(--card); border:1px solid var(--line);
+    border-radius:12px; margin-bottom:12px; overflow:hidden;
+  }
+  .group-head {
+    display:flex; align-items:center; gap:10px;
+    padding:14px 20px; cursor:pointer; user-select:none;
+    background:#fafbfc;
+  }
+  .group-head:hover { background:#f1f5f9; }
+  .group-head .caret {
+    font-size:11px; color:var(--mute); transition:transform 0.15s;
+  }
+  .group.open .caret { transform:rotate(90deg); }
+  .group-title {
+    font-size:15px; font-weight:600; flex:1;
+  }
+  .group-count {
+    font-size:12px; color:var(--mute); padding:2px 9px;
+    background:var(--bg); border-radius:999px;
+  }
+  .group-body { padding:8px 20px 16px; display:none; }
+  .group.open .group-body { display:block; }
+
+  /* 태스크 카드 */
+  .task {
+    padding:12px 14px; border-left:3px solid var(--line);
+    margin:8px 0; background:#fafbfc; border-radius:0 8px 8px 0;
+  }
+  .task.high { border-left-color:var(--high); }
+  .task.mid  { border-left-color:var(--mid); }
+  .task.low  { border-left-color:var(--low); }
+  .task.done { opacity:0.55; }
+  .task-title { font-size:14px; margin-bottom:4px; }
+  .task-meta {
+    font-size:11px; color:var(--mute);
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:4px;
+  }
+  .task-meta .chip {
+    background:#fff; border:1px solid var(--line);
+    padding:2px 7px; border-radius:999px;
+  }
+  .task-notes {
+    font-size:12px; color:var(--mute); margin-top:6px;
+    padding:6px 8px; background:#fff; border-radius:6px; border:1px dashed var(--line);
+  }
+
+  /* 컴팩트(done/archived) */
+  .compact-list { display:flex; flex-direction:column; gap:2px; }
+  .compact-item {
+    font-size:13px; padding:6px 10px; color:var(--mute);
+    display:flex; justify-content:space-between; gap:12px;
+  }
+  .compact-item .date { font-size:11px; flex-shrink:0; }
+  .compact-item:hover { background:#fafbfc; }
+
+  /* devlog */
+  .devlog-list { display:flex; flex-direction:column; gap:8px; }
+  .devlog-item {
+    padding:10px 14px; background:#fafbfc; border-radius:8px;
+    font-size:13px; display:flex; justify-content:space-between; gap:12px;
+  }
+  .devlog-item .date { color:var(--mute); font-size:12px; flex-shrink:0; }
+
+  .empty { color:var(--mute); font-size:13px; padding:10px 0; }
+
+  .not-found {
+    text-align:center; padding:80px 20px; color:var(--mute);
+  }
+  .not-found h1 { color:var(--fg); font-size:24px; margin-bottom:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back">← 마스터보드</a>
+  <div id="content"></div>
+</div>
+
+<script>
+(function(){
+  const D = window.PROJECT_DATA;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const hexToRgba = (hex, a) => {
+    const n = parseInt(hex.slice(1), 16);
+    return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
+  };
+
+  // 쿼리 파라미터
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const project = D.projects.find(p => p.slug === slug);
+
+  if (!project) {
+    $('content').innerHTML = `
+      <div class="not-found">
+        <h1>프로젝트를 찾을 수 없습니다</h1>
+        <p>slug "${esc(slug||'(없음)')}" 에 해당하는 프로젝트가 없어요.</p>
+      </div>`;
+    document.title = '프로젝트 없음 — 마스터보드';
+    return;
+  }
+
+  // 테마 적용
+  const root = document.documentElement;
+  root.style.setProperty('--accent', project.themeColor);
+  root.style.setProperty('--accent-bg', hexToRgba(project.themeColor, 0.08));
+  document.title = `${project.icon} ${project.name} — 마스터보드`;
+
+  // 태스크 분류
+  const projTasks = D.tasks.filter(t => t.project === slug);
+  const priOrder = { high:0, mid:1, low:2 };
+  const byStatus = {
+    now:      projTasks.filter(t=>t.status==='now').sort((a,b)=>priOrder[a.priority]-priOrder[b.priority]),
+    next:     projTasks.filter(t=>t.status==='next').sort((a,b)=>priOrder[a.priority]-priOrder[b.priority]),
+    later:    projTasks.filter(t=>t.status==='later').sort((a,b)=>priOrder[a.priority]-priOrder[b.priority]),
+    done:     projTasks.filter(t=>t.status==='done').sort((a,b)=>(b.completedAt||'').localeCompare(a.completedAt||'')),
+    archived: projTasks.filter(t=>t.status==='archived'),
+  };
+
+  // devlog 필터링 — window.DEVLOG_INDEX (devlog/index.js) 에서 project==slug 만
+  const projDevlogs = (window.DEVLOG_INDEX || [])
+    .filter(e => e.project === slug)
+    .sort((a,b) => (b.date+b.file).localeCompare(a.date+a.file));
+
+  // Phase 타임라인
+  const phaseHtml = (project.phases||[]).map(ph => {
+    const active = ph === project.currentPhase;
+    return `<div class="phase-item ${active?'active':''}">${esc(ph)}</div>`;
+  }).join('');
+
+  // linked docs
+  const docs = project.linkedDocs || {};
+  const docChips = Object.entries(docs).map(([k,v]) =>
+    `<span class="doc-chip">${esc(k)}: <code>${esc(v)}</code></span>`
+  ).join('');
+
+  // 태스크 렌더러 (상세형 — now/next/later)
+  const renderTask = t => {
+    const metaParts = [];
+    if (t.phase) metaParts.push(`<span class="chip">${esc(t.phase)}</span>`);
+    (t.tags||[]).forEach(tag => metaParts.push(`<span class="chip">#${esc(tag)}</span>`));
+    if (t.createdAt) metaParts.push(`<span>생성 ${esc(t.createdAt)}</span>`);
+    return `
+      <div class="task ${esc(t.priority)}">
+        <div class="task-title">${esc(t.title)}</div>
+        ${metaParts.length ? `<div class="task-meta">${metaParts.join('')}</div>` : ''}
+        ${t.notes ? `<div class="task-notes">${esc(t.notes)}</div>` : ''}
+      </div>`;
+  };
+
+  // 컴팩트 렌더러 (done/archived)
+  const renderCompact = t => `
+    <div class="compact-item">
+      <span>${esc(t.title)}</span>
+      <span class="date">${esc(t.completedAt||t.createdAt||'')}</span>
+    </div>`;
+
+  const group = (key, label, open, items, compact) => {
+    const body = items.length === 0
+      ? `<div class="empty">없음</div>`
+      : (compact
+          ? `<div class="compact-list">${items.map(renderCompact).join('')}</div>`
+          : items.map(renderTask).join(''));
+    return `
+      <section class="group ${open?'open':''}" data-key="${key}">
+        <div class="group-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="caret">▶</span>
+          <span class="group-title">${label}</span>
+          <span class="group-count">${items.length}</span>
+        </div>
+        <div class="group-body">${body}</div>
+      </section>`;
+  };
+
+  // 전체 렌더
+  const totalDone = byStatus.done.length + byStatus.archived.length;
+  const totalAll  = projTasks.length;
+  const progress  = totalAll ? Math.round(totalDone*100/totalAll) : 0;
+
+  const extraWidget = (slug === 'salarykorea')
+    ? `<div class="docs-row" style="margin-top:10px">
+         <a class="doc-chip" href="blog-upload-board.html">📝 블로그 업로드 보드 (별도 페이지)</a>
+       </div>`
+    : '';
+
+  $('content').innerHTML = `
+    <header class="hero">
+      <div class="hero-title">
+        <span class="hero-icon">${esc(project.icon)}</span>
+        <span class="hero-name">${esc(project.name)}</span>
+        ${project.status==='paused' ? '<span class="hero-paused">PAUSED</span>' : ''}
+      </div>
+      <div class="hero-oneliner">${esc(project.oneLiner||'')}</div>
+      ${project.phases ? `<div class="phases">${phaseHtml}</div>` : ''}
+      <div class="hero-meta">
+        <span>진행률 <strong>${progress}%</strong> (${totalDone}/${totalAll})</span>
+        <span>Now <strong>${byStatus.now.length}</strong></span>
+        <span>Next <strong>${byStatus.next.length}</strong></span>
+        <span>Later <strong>${byStatus.later.length}</strong></span>
+        <span>Done <strong>${byStatus.done.length}</strong></span>
+        ${byStatus.archived.length ? `<span>Archived <strong>${byStatus.archived.length}</strong></span>` : ''}
+      </div>
+      ${docChips ? `<div class="docs-row">${docChips}</div>` : ''}
+      ${extraWidget}
+    </header>
+
+    ${group('now',      '🔴 Now — 지금 바로',   true,  byStatus.now,      false)}
+    ${group('next',     '🟡 Next — 다음 차례',  true,  byStatus.next,     false)}
+    ${group('later',    '⚪ Later — 언젠가',    false, byStatus.later,    false)}
+    ${group('done',     '✅ Done — 완료',       false, byStatus.done,     true)}
+    ${byStatus.archived.length ? group('archived', '📦 Archived', false, byStatus.archived, true) : ''}
+
+    ${projDevlogs.length ? `
+      <section class="group open">
+        <div class="group-head" onclick="this.parentElement.classList.toggle('open')">
+          <span class="caret">▶</span>
+          <span class="group-title">📖 ${esc(project.name)} devlog</span>
+          <span class="group-count">${projDevlogs.length}</span>
+        </div>
+        <div class="group-body">
+          <div class="devlog-list">
+            ${projDevlogs.slice(0,15).map(e =>
+              `<a class="devlog-item" href="devlog/${esc(e.file)}">
+                 <span>${esc(e.title || e.file)}</span>
+                 <span class="date">${esc(e.date)}</span>
+               </a>`
+            ).join('')}
+          </div>
+        </div>
+      </section>` : ''}
+  `;
+})();
+</script>
+</body>
+</html>
