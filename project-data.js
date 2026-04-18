@@ -1,15 +1,48 @@
 window.PROJECT_DATA = {
-  "lastUpdated": "2026-04-17 (Nudge NudgeSync 3-copy 드리프트 정합화 + handleRemote WidgetCenter 가드 버그 수정 + 진단 로그 보강)",
-  // 2026-04-17 — 이전 세션에서 추가된 컴플리케이션 타겟 상태를 PROGRESS/project-data에 정합화
-
+  "lastUpdated": "2026-04-18 (salarykorea 수익화 보수 리뷰 — 시장·경쟁·RPM 실측 후 5개 긴급 액션 최상단 추가 / 남은 계산기 10개 롤아웃은 데이터 확인 후 결정으로 보류)",
   "stats": {
-    "pages": 106,
+    "pages": 145,
     "indexed": 104,
     "blogUploaded": 10,
     "blogTotal": 65,
-    "adsense": "대기 중"
+    "adsense": "거절 (재심사 대기)"
   },
   "tasks": [
+    {
+      "id": "r1",
+      "text": "🔴 [1순위] GA4 전 페이지 실설치 — 현재 gtag 0개 설치 (dns-prefetch만 존재). 측정 없이는 어떤 판단도 불가",
+      "done": false,
+      "tag": "🔴 리뷰 액션",
+      "tagColor": "#991b1b"
+    },
+    {
+      "id": "r2",
+      "text": "🔴 [2순위] Search Console 실측 — 지난 30일 노출/클릭/상위 쿼리 확인 후 실제 유입 규모 파악",
+      "done": false,
+      "tag": "🔴 리뷰 액션",
+      "tagColor": "#991b1b"
+    },
+    {
+      "id": "r3",
+      "text": "🔴 [3순위] i18n 33개(-en/-ja/-zh) noindex 처리 — AdSense 재심사 전 기계번역 리스크 제거 (현재 noindex 0개)",
+      "done": false,
+      "tag": "🔴 리뷰 액션",
+      "tagColor": "#991b1b"
+    },
+    {
+      "id": "r4",
+      "text": "🟡 [4순위] 카카오 AdFit 등록 + 슬롯 삽입 — AdSense 재거절 대비 백업 광고 네트워크 (개인 승인 1~2일)",
+      "done": false,
+      "tag": "🔴 리뷰 액션",
+      "tagColor": "#991b1b"
+    },
+    {
+      "id": "r5",
+      "text": "🟡 [5순위] 2026-05-18 ±3일 재판단 — GA/SC 30일 데이터로 유지/자동화/피벗 결정. 일50PV미만=자동화, 100~300PV=최소수익화, 500PV+=계속투자",
+      "done": false,
+      "tag": "🔴 리뷰 액션",
+      "tagColor": "#991b1b"
+    },
     {
       "id": "t1",
       "text": "사이트 68개 HTML 페이지 제작",
@@ -103,7 +136,7 @@ window.PROJECT_DATA = {
     },
     {
       "id": "t14",
-      "text": "블로그 포스트 #029~#060 생성 (32개)",
+      "text": "블로그 포스트 #029~#060 생성 (32개) — ⏸ 2026-04-18 리뷰 결과 보류, 5/18 데이터 확인 후 재개 여부 결정",
       "done": false,
       "tag": "블로그",
       "tagColor": "#422006"
@@ -236,7 +269,7 @@ window.PROJECT_DATA = {
     },
     {
       "id": "t34",
-      "text": "남은 10개 계산기 페이지 롤아웃 (gift-tax · acquisition-tax · monthly-salary · salary-table · retirement · insurance · silbi · holiday-pay · unemployment · minimum-wage)",
+      "text": "남은 10개 계산기 페이지 롤아웃 (gift-tax · acquisition-tax · monthly-salary · salary-table · retirement · insurance · silbi · holiday-pay · unemployment · minimum-wage) — ⏸ 2026-04-18 리뷰 결과 보류, 데이터로 트래픽 증가 확인 후 재개 (매몰비용 방지)",
       "done": false,
       "tag": "수익화",
       "tagColor": "#450a0a"
@@ -582,13 +615,23 @@ window.PROJECT_DATA = {
       "status": "done"
     },
     {
-      "date": "2026-04-15",
-      "text": "구글 색인 현황 확인 (리마인더 설정됨)",
+      "date": "2026-04-18",
+      "text": "[salarykorea] 🔴 수익화 보수 리뷰 완료 — 시장경쟁 실측, 145페이지 중 gtag 0 설치/i18n noindex 0 발견, 월100만원 단독 불가능 판단. 5개 긴급액션 최상단 배치 + 남은 계산기 10개·블로그 32개 보류",
+      "status": "done"
+    },
+    {
+      "date": "2026-04-18~25",
+      "text": "[salarykorea] 🔴 긴급액션 1~3 — GA4 실설치, Search Console 데이터 점검, i18n 33개 noindex 처리",
       "status": "current"
     },
     {
-      "date": "2026-04-15~16",
-      "text": "남은 10개 계산기 페이지 롤아웃 + 로컬 검증",
+      "date": "2026-04-25~30",
+      "text": "[salarykorea] 🟡 긴급액션 4 — 카카오 AdFit 등록 및 슬롯 삽입 (AdSense 백업망)",
+      "status": "upcoming"
+    },
+    {
+      "date": "2026-05-18",
+      "text": "[salarykorea] 🟡 재판단 — GA/SC 30일 데이터로 유지·자동화·피벗 의사결정",
       "status": "upcoming"
     },
     {
@@ -598,7 +641,7 @@ window.PROJECT_DATA = {
     },
     {
       "date": "2026-04 중",
-      "text": "애드센스 승인 결과 확인",
+      "text": "애드센스 재심사 요청 — 단, AdFit 등록과 i18n noindex 선행 필수",
       "status": "upcoming"
     },
     {
@@ -608,7 +651,7 @@ window.PROJECT_DATA = {
     },
     {
       "date": "2026-05 중",
-      "text": "블로그 포스트 #029~#060 생성",
+      "text": "블로그 포스트 #029~#060 생성 — ⏸ 재판단 결과 의존",
       "status": "upcoming"
     },
     {
@@ -618,12 +661,12 @@ window.PROJECT_DATA = {
     },
     {
       "date": "2026-05~06",
-      "text": "제휴 마케팅 시작 (리더스CPA, 쿠팡파트너스)",
+      "text": "제휴 마케팅 시작 (리더스CPA, 쿠팡파트너스) — AdFit 데이터 기반 의사결정",
       "status": "upcoming"
     },
     {
       "date": "2026-06~07",
-      "text": "2번째 수익 사이트 구축 시작",
+      "text": "2번째 수익 사이트 구축 시작 — 5/18 재판단에서 피벗 결정 시 1순위",
       "status": "upcoming"
     },
     {
@@ -724,15 +767,16 @@ window.PROJECT_DATA = {
   ],
   "roadmap": {
     "short": {
-      "label": "단기 (1~3개월)",
-      "goal": "애드센스 승인 + 일 방문자 100~300명",
+      "label": "단기 (1~3개월) — 🔴 2026-04-18 리뷰로 재정의",
+      "goal": "측정 인프라 구축 + 30일 관찰 + 5/18 재판단",
       "items": [
-        "블로그 65개 포스트 완성 및 매일 1개씩 발행",
-        "페이지 100개 이상 채우기 (현재 106개 달성)",
-        "스키마 마크업, 내부 링크 강화 (완료)",
-        "구글 색인 104개 전체 요청 (완료)",
-        "애드센스 승인 획득",
-        "네이버 블로그 → salarykorea.site 유입 동선 구축"
+        "🔴 GA4 전 페이지 실설치 (현재 0)",
+        "🔴 Search Console 30일 노출/클릭 실측",
+        "🔴 i18n 33개 noindex 처리 (AdSense 리스크 제거)",
+        "🟡 카카오 AdFit 등록 + 슬롯 삽입 (AdSense 백업)",
+        "🟡 AdSense 재심사 요청 — 완화된 기대치",
+        "🟡 2026-05-18 데이터 기반 의사결정 — 유지/자동화/피벗",
+        "⏸ 남은 계산기 10개 롤아웃 & 블로그 32개 생성 (데이터 확인 후 재개 결정)"
       ]
     },
     "mid": {

@@ -45,6 +45,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
 .qs-num{font-size:1.3rem;font-weight:800;color:#1e293b}
 .qs-label{font-size:0.72rem;color:#94a3b8;line-height:1.3}
 
+/* Urgent Review Actions Banner */
+.urgent-banner{background:linear-gradient(135deg,#7f1d1d 0%,#991b1b 100%);border-radius:14px;padding:22px 26px;margin-bottom:28px;color:#fff;box-shadow:0 8px 20px rgba(127,29,29,0.25)}
+.urgent-head{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.urgent-title{font-size:0.95rem;font-weight:800;letter-spacing:0.3px}
+.urgent-sub{font-size:0.75rem;color:#fecaca;margin-bottom:14px;line-height:1.45}
+.urgent-list{list-style:none;display:flex;flex-direction:column;gap:8px;padding:0;margin:0}
+.urgent-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:11px 14px;font-size:0.82rem;line-height:1.5;display:flex;gap:10px;align-items:flex-start}
+.urgent-badge{display:inline-block;min-width:28px;height:22px;padding:0 7px;border-radius:6px;background:rgba(255,255,255,0.15);font-size:0.68rem;font-weight:800;text-align:center;line-height:22px;flex-shrink:0;margin-top:1px}
+.urgent-item strong{color:#fff;font-weight:700}
+.urgent-item span{color:#fecaca;font-size:0.75rem;display:block;margin-top:3px}
+.urgent-link{display:inline-block;margin-top:14px;padding:7px 14px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);border-radius:8px;color:#fff;font-size:0.72rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+.urgent-link:hover{background:rgba(255,255,255,0.28);color:#fff}
+
 /* Project Cards Grid */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px}
 
@@ -180,17 +193,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans
       <div class="qs-label">활성<br>프로젝트</div>
     </div>
     <div class="qs">
-      <div class="qs-num" id="qs-pages">106</div>
+      <div class="qs-num" id="qs-pages">145</div>
       <div class="qs-label">전체<br>페이지</div>
     </div>
     <div class="qs">
-      <div class="qs-num" id="qs-tasks">10</div>
-      <div class="qs-label">남은<br>작업</div>
+      <div class="qs-num" id="qs-tasks" style="color:#dc2626">🔴 5</div>
+      <div class="qs-label">긴급<br>리뷰 액션</div>
     </div>
     <div class="qs">
-      <div class="qs-num" id="qs-adsense">대기</div>
-      <div class="qs-label">애드센스<br>승인</div>
+      <div class="qs-num" id="qs-adsense">거절</div>
+      <div class="qs-label">애드센스<br>(재심사 대기)</div>
     </div>
+  </div>
+
+  <!-- 🔴 Urgent Review Actions — salarykorea 수익화 보수 리뷰(2026-04-18) 결과 -->
+  <div class="urgent-banner">
+    <div class="urgent-head">
+      <span style="font-size:1.2rem">🔴</span>
+      <div class="urgent-title">긴급 리뷰 액션 — salarykorea 수익화 재조정 (2026-04-18)</div>
+    </div>
+    <div class="urgent-sub">
+      시장·경쟁·RPM 실측 결과 이 사이트 단독 월 100만원은 현실적으로 불가. 매몰비용을 피하기 위해 신규 콘텐츠 추가는 보류하고 <strong>측정 → 30일 관찰 → 5/18 재판단</strong>이 최우선.
+    </div>
+    <ul class="urgent-list">
+      <li class="urgent-item">
+        <span class="urgent-badge">1</span>
+        <div><strong>GA4 전 페이지 실설치</strong><span>현재 gtag 0개 설치 (dns-prefetch 힌트만 존재). 측정 없이는 어떤 판단도 불가</span></div>
+      </li>
+      <li class="urgent-item">
+        <span class="urgent-badge">2</span>
+        <div><strong>Search Console 실측 데이터 확인</strong><span>지난 30일 노출·클릭·상위 쿼리 — 이미 색인은 된 상태이므로 숫자는 있을 것</span></div>
+      </li>
+      <li class="urgent-item">
+        <span class="urgent-badge">3</span>
+        <div><strong>i18n 33개 noindex 처리</strong><span>-en/-ja/-zh 기계번역 페이지 33개 모두 noindex 0개 — AdSense 재심사 전 리스크 제거 필수</span></div>
+      </li>
+      <li class="urgent-item">
+        <span class="urgent-badge">4</span>
+        <div><strong>카카오 AdFit 등록 + 슬롯 삽입</strong><span>AdSense 재거절 대비 백업 광고망. 개인 승인 1~2일, 실측 RPM 확보 목적</span></div>
+      </li>
+      <li class="urgent-item">
+        <span class="urgent-badge">5</span>
+        <div><strong>2026-05-18 재판단</strong><span>GA/SC 30일 데이터로 결정 — 일 50PV 미만=자동화 / 100~300PV=최소수익화 / 500+=계속투자</span></div>
+      </li>
+    </ul>
+    <a href="../salarykorea/MARKET_REVIEW_2026-04-18.md" class="urgent-link">📄 풀버전 리뷰 리포트 →</a>
+    <a href="project-masterboard.html" class="urgent-link" style="margin-left:8px">🗂 프로젝트 상세 →</a>
   </div>
 
   <!-- Active Projects -->
